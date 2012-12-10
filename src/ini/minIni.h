@@ -14,7 +14,7 @@
  *  License for the specific language governing permissions and limitations
  *  under the License.
  *
- *  Version: $Id: minIni.h 44 2012-01-04 15:52:56Z thiadmer.riemersma@gmail.com $
+ *  Version: $Id$
  */
 #ifndef MININI_H
 #define MININI_H
