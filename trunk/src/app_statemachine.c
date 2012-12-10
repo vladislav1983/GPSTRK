@@ -9,7 +9,7 @@
  *===================================================================================================================*/
 
 /*=====================================================================================================================
- * Body Identification  
+ * Body Identification   
  *===================================================================================================================*/
 #ifdef __APP_STATEMACHINE_C
     #error "!!! FileName ID. It should be Unique !!!"
@@ -98,8 +98,6 @@ void __attribute__((user_init)) App_Init(void)
     AppStateAlarm.TaskID = cAppStatemachineTaskId;
     OsSetAlarm(&AppStateAlarm, (cAppStateMachineTaskPeriodUs/cOsAlarmTickUs));
     u16SYSTEM_FLAGS = 0;
-
-    
 }
 
 /*=====================================================================================================================
