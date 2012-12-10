@@ -17,7 +17,7 @@
  *  License for the specific language governing permissions and limitations
  *  under the License.
  *
- *  Version: $Id: minIni.c 42 2012-01-04 12:14:54Z thiadmer.riemersma $
+ *  Version: $Id$
  */
 
 #if (defined _UNICODE || defined __UNICODE__ || defined UNICODE) && !defined MININI_ANSI
