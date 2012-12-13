@@ -106,7 +106,7 @@
  *===================================================================================================================*/
 GpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, GpsMask GpsStat)
 {
-    GpsMask GpsMaskLocal = 0;
+    GpsMask GpsMaskLocal = GpsStat;
     U8 *pu8Char;
 
     if(*pu8GpsField[cVTG_FixStatusIndex] == 'A')
