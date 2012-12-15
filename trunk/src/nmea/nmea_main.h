@@ -75,7 +75,6 @@ extern tNMEA_GPS_Data NMEA_GPS_Data;
 /*=====================================================================================================================
  * Exported functions                     				                        
  *===================================================================================================================*/
-extern void NmeaMain_RxCharCallback(void);
 extern void NMEAMain_DecodeTask(void);
 extern void NMEAMain_DecodingEngine(void);
 

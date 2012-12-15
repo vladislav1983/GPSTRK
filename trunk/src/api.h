@@ -19,7 +19,12 @@
  * Callback channels                                                              
  *===================================================================================================================*/
 /*
-** APRS channel
+** GPS MAIN 
+*/
+extern void NmeaMain_RxCharCallback(void);
+
+/*
+** APRS 
 */
 //controls
 #define cAprsCtrlStartTrmt                  0
@@ -29,6 +34,10 @@
 #define cAprsCallbackCtrlError              1
 // callback funct
 extern void Aprs_TransmitCallback(tCtrl Ctrl);
+/*
+** Application state machine
+*/
+extern void AppStatemachine_GpsMsgReceivedCallback(void);
 
 /*=====================================================================================================================
  * Exported functions                     				                        

@@ -27,6 +27,8 @@
 #include "FSIO.h"
 #include "devconfig.h"
 #include "aprs.h"
+#include "nmea_process.h"
+#include "fsio_main.h"
 
 
 /*=====================================================================================================================
@@ -34,6 +36,7 @@
  *===================================================================================================================*/
 #define cAppStateMachineTaskPeriodUs            40E3
 #define cOsTimerTick_ms                         (cOsTimerTickUs/1000UL)
+
 
 /*=====================================================================================================================
  * Local macros
@@ -45,7 +48,8 @@
 typedef enum teAppState
 {
     eAPP_STATE_INIT = 0,
-    eAPP_SD_CARD_LOAD_CONFIGURATION,
+    eAPP_NMEA_MSG_POOL,
+    eAPP_SD_CARD_WRITE_POSITION,
     eApp_APRS_TRANSMIT,
     eAPP_WAIT_STATE
 
@@ -59,7 +63,8 @@ static tAppState AppState;
 static tAppState AppNextState;
 static tOSAlarm  AppStateAlarm;
 static tOSTimer  AppStateTimer;
-static tOSTimer WaitTimeTicks;
+static tOSTimer  WaitTimeTicks;
+static BOOL bGpsMsgReceived;
 
 
 /*=====================================================================================================================
@@ -98,6 +103,7 @@ void __attribute__((user_init)) App_Init(void)
     AppStateAlarm.TaskID = cAppStatemachineTaskId;
     OsSetAlarm(&AppStateAlarm, (cAppStateMachineTaskPeriodUs/cOsAlarmTickUs));
     u16SYSTEM_FLAGS = 0;
+    bGpsMsgReceived = 0;
 }
 
 /*=====================================================================================================================
@@ -109,7 +115,7 @@ void __attribute__((user_init)) App_Init(void)
  *===================================================================================================================*/
 void App_StatemachineTask(void)
 {
-
+    BOOL bBeaconNow;
     switch(AppState)
     {
     //------------------------------------------------------------------------------------------------------------------
@@ -119,7 +125,36 @@ void App_StatemachineTask(void)
         // wait 1s before configuration load
         WaitTimeTicks = 1000UL/cOsTimerTick_ms;
         AppState = eAPP_WAIT_STATE;
-        AppNextState = eApp_APRS_TRANSMIT;
+        AppNextState = eAPP_NMEA_MSG_POOL;
+
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPP_NMEA_MSG_POOL:
+
+        if (    (bGpsMsgReceived)
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_ONLINE_SET)
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_MODE_SET)
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_STATUS_SET)
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_TIME_SET)
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_DATE_SET)
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_LATLON_SET)
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_ALTITUDE_SET)
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_SPEED_SET)
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_COURSE_SET))
+        {
+            // set file system date and time
+            if (S_OK == FSIOMain_SetTimeDate(&NMEA_GPS_Data))
+            {
+                bBeaconNow = NmeaProc_SmartBeaconing(&NMEA_GPS_Data);
+
+                if(bBeaconNow)
+                    AppState = eApp_APRS_TRANSMIT;
+                else
+                    AppState = eAPP_SD_CARD_WRITE_POSITION;
+            }
+
+            bGpsMsgReceived = cFalse;
+        }
 
         break;
     //------------------------------------------------------------------------------------------------------------------
@@ -129,8 +164,15 @@ void App_StatemachineTask(void)
 
         OSStartTimer(&AppStateTimer);
         WaitTimeTicks = 5000UL/cOsTimerTick_ms;
-        AppState = eAPP_WAIT_STATE;
-        AppNextState = eApp_APRS_TRANSMIT;
+
+
+        AppState = eAPP_SD_CARD_WRITE_POSITION;
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPP_SD_CARD_WRITE_POSITION:
+
+
+        AppState = eAPP_NMEA_MSG_POOL;
 
         break;
     //------------------------------------------------------------------------------------------------------------------
@@ -156,7 +198,17 @@ void App_StatemachineTask(void)
 
 }
 
-
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+void AppStatemachine_GpsMsgReceivedCallback(void)
+{
+    bGpsMsgReceived = cTrue;
+}
 
 /*=====================================================================================================================
  *                                                                            

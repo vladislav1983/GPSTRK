@@ -131,32 +131,6 @@ extern GpsMask GPS_STSTUS_FLAGS;
 ** GPS Status flags macros
 **----------------------------------------------------------------
 */
-#define _gps_online()                       (_getbit(     GPS_STSTUS_FLAGS, /*bit*/ 0))
-#define _set_gps_online(x)                  (_putbit((x), GPS_STSTUS_FLAGS, /*bit*/ 0))
-
-#define _gps_time_set()                     (_getbit(     GPS_STSTUS_FLAGS, /*bit*/ 1))
-#define _set_gps_time_set(x)                (_putbit((x), GPS_STSTUS_FLAGS, /*bit*/ 1))
-
-#define _gps_timeerr_set()                  (_getbit(     GPS_STSTUS_FLAGS, /*bit*/ 2))
-#define _set_gps_timeerr_set(x)             (_putbit((x), GPS_STSTUS_FLAGS, /*bit*/ 2))
-
-#define _gps_latlon_set()                   (_getbit(     GPS_STSTUS_FLAGS, /*bit*/ 3))
-#define _set_gps_latlon_set(x)              (_putbit((x), GPS_STSTUS_FLAGS, /*bit*/ 3))
-
-#define _gps_altitude_set()                 (_getbit(     GPS_STSTUS_FLAGS, /*bit*/ 4))
-#define _set_gps_altitude_set(x)            (_putbit((x), GPS_STSTUS_FLAGS, /*bit*/ 4))
-
-#define _gps_speed_set()                    (_getbit(     GPS_STSTUS_FLAGS, /*bit*/ 5))
-#define _set_gps_speed_set(x)               (_putbit((x), GPS_STSTUS_FLAGS, /*bit*/ 5))
-
-#define _gps_status_set()                   (_getbit(     GPS_STSTUS_FLAGS, /*bit*/ 6))
-#define _set_gps_status_set(x)              (_putbit((x), GPS_STSTUS_FLAGS, /*bit*/ 6))
-
-#define _gps_mode_set()                     (_getbit(     GPS_STSTUS_FLAGS, /*bit*/ 7))
-#define _set_gps_mode_set(x)                (_putbit((x), GPS_STSTUS_FLAGS, /*bit*/ 7))
-
-
-
 
 /*=====================================================================================================================
  * Exported functions                     				                        
