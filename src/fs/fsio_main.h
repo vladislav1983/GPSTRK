@@ -40,5 +40,6 @@
  *===================================================================================================================*/
 extern void __attribute__((user_init)) FsioMain_Init(void);
 extern void FSIO_Task(void);
+extern HRESULT FSIOMain_SetTimeDate(tNMEA_GPS_Data *GpsData);
 
 #endif /* __FSIO_MAIN_H */
