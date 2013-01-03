@@ -124,6 +124,7 @@ void Aprs_TransmitCallback(tCtrl Ctrl)
 {
     if(Ctrl == cAprsCallbackCtrlOK)
     {
+        App_Statemachine_AprsMsgTxOkCallback();
         AprsTrmtState = eAPRS_IDLE;
     }
     else
@@ -260,11 +261,11 @@ HRESULT Aprs_Transmit(BOOL bTrmtStatus)
         memcpy((U8*)&au8AprsBuff[u16DataIndex], NMEA_GPS_Data.AX25_GPS_Data.u8Altitude, sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Altitude));
         u16DataIndex += sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Altitude);
 
-        // set battery voltage text => _YY.XV
+        // set battery voltage text => _YY.XV Note: "_" is space
         f32Tmp = (F32)u16BatteryVoltage_mv / 1000UL;
         u16DataIndex += sprintf((char*)&au8AprsBuff[u16DataIndex], " %2.1fV", f32Tmp);
     
-        // set temperature text => _YY.XC
+        // set temperature text => _YY.XC Note: "_" is space
         f32Tmp = (F32)u16Tmperature_x10 / 10UL;
         u16DataIndex +=sprintf((char*)&au8AprsBuff[u16DataIndex], " %2.1fC", f32Tmp);
 
