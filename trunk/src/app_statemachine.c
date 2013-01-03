@@ -26,9 +26,9 @@
 #include "kernelparam.h"
 #include "FSIO.h"
 #include "devconfig.h"
-#include "aprs.h"
 #include "nmea_process.h"
 #include "fsio_main.h"
+#include "aprs.h"
 
 
 /*=====================================================================================================================
@@ -48,12 +48,14 @@
 typedef enum teAppState
 {
     eAPP_STATE_INIT = 0,
+    eAPP_STATE_WAIT_GPS,
+    eAPP_STATE_WAIT_TIME_SYNC,
     eAPP_NMEA_MSG_POOL,
     eAPP_SD_CARD_WRITE_POSITION,
-    eApp_APRS_TRANSMIT,
+    eAPP_APRS_TRANSMIT_DATA,
+    eAPP_APRS_TRANSMIT_INFO,
+    eAPP_ARRS_WAIT_TRANSMIT,
     eAPP_WAIT_STATE
-
-
 }tAppState;
 
 /*=====================================================================================================================
@@ -65,6 +67,7 @@ static tOSAlarm  AppStateAlarm;
 static tOSTimer  AppStateTimer;
 static tOSTimer  WaitTimeTicks;
 static BOOL bGpsMsgReceived;
+static BOOL bAprsMsgTxOk;
 
 
 /*=====================================================================================================================
@@ -103,7 +106,8 @@ void __attribute__((user_init)) App_Init(void)
     AppStateAlarm.TaskID = cAppStatemachineTaskId;
     OsSetAlarm(&AppStateAlarm, (cAppStateMachineTaskPeriodUs/cOsAlarmTickUs));
     u16SYSTEM_FLAGS = 0;
-    bGpsMsgReceived = 0;
+    bGpsMsgReceived = cFalse;
+    bAprsMsgTxOk = cFalse;
 }
 
 /*=====================================================================================================================
@@ -115,7 +119,8 @@ void __attribute__((user_init)) App_Init(void)
  *===================================================================================================================*/
 void App_StatemachineTask(void)
 {
-    BOOL bBeaconNow;
+    tAprsTrmtCmd BeaconTypeSend = cAprsProcNotSend;
+
     switch(AppState)
     {
     //------------------------------------------------------------------------------------------------------------------
@@ -125,32 +130,50 @@ void App_StatemachineTask(void)
         // wait 1s before configuration load
         WaitTimeTicks = 1000UL/cOsTimerTick_ms;
         AppState = eAPP_WAIT_STATE;
-        AppNextState = eAPP_NMEA_MSG_POOL;
+        AppNextState = eAPP_STATE_WAIT_GPS;
+
+        break;
+        //------------------------------------------------------------------------------------------------------------------
+    case eAPP_STATE_WAIT_GPS:
+
+        if((GPS_STSTUS_FLAGS & cGPS_STAT_ONLINE_SET) && (GPS_STSTUS_FLAGS & cGPS_STAT_MODE_SET))
+            AppNextState = eAPP_STATE_WAIT_TIME_SYNC;
+
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPP_STATE_WAIT_TIME_SYNC:
+
+        if((GPS_STSTUS_FLAGS & cGPS_STAT_TIME_SET ) && (GPS_STSTUS_FLAGS & cGPS_STAT_DATE_SET))
+            AppNextState = eAPP_NMEA_MSG_POOL;
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_NMEA_MSG_POOL:
 
-        if (    (bGpsMsgReceived)
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_ONLINE_SET)
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_MODE_SET)
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_STATUS_SET)
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_TIME_SET)
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_DATE_SET)
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_LATLON_SET)
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_ALTITUDE_SET)
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_SPEED_SET)
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_COURSE_SET))
+        if (    (bGpsMsgReceived                           )
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_ONLINE_SET   )
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_MODE_SET     )
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_STATUS_SET   )
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_TIME_SET     )
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_DATE_SET     )
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_LATLON_SET   )
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_ALTITUDE_SET )
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_SPEED_SET    )
+            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_COURSE_SET   ))
         {
             // set file system date and time
             if (S_OK == FSIOMain_SetTimeDate(&NMEA_GPS_Data))
             {
-                bBeaconNow = NmeaProc_SmartBeaconing(&NMEA_GPS_Data);
+                BeaconTypeSend = NMEAProc_AprsProcessingTransmit(&NMEA_GPS_Data);
 
-                if(bBeaconNow)
-                    AppState = eApp_APRS_TRANSMIT;
-                else
+                if(BeaconTypeSend == cAprsProcSendData)
+                    AppState = eAPP_APRS_TRANSMIT_DATA;
+                else if(BeaconTypeSend == cAprsProcSendTrackerInfo)
+                    AppState = eAPP_APRS_TRANSMIT_INFO;
+                else if(BeaconTypeSend == cAprsProcNotSend)
                     AppState = eAPP_SD_CARD_WRITE_POSITION;
+                else
+                    _Assert(cFalse);
             }
 
             bGpsMsgReceived = cFalse;
@@ -158,20 +181,37 @@ void App_StatemachineTask(void)
 
         break;
     //------------------------------------------------------------------------------------------------------------------
-    case eApp_APRS_TRANSMIT:
+    case eAPP_APRS_TRANSMIT_DATA:
+        
+        if(S_OK == Aprs_Transmit(cAPRS_TransmitData))
+            AppState = eAPP_ARRS_WAIT_TRANSMIT;
+        else
+            _Assert(cFalse);
 
-        Aprs_Transmit(0);
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPP_APRS_TRANSMIT_INFO:
 
-        OSStartTimer(&AppStateTimer);
-        WaitTimeTicks = 5000UL/cOsTimerTick_ms;
+        if(S_OK == Aprs_Transmit(cAPRS_TransmitTrackerInfo))
+            AppState = eAPP_ARRS_WAIT_TRANSMIT;
+        else
+            _Assert(cFalse);
 
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPP_ARRS_WAIT_TRANSMIT:
 
-        AppState = eAPP_SD_CARD_WRITE_POSITION;
+        if(cFalse != bAprsMsgTxOk)
+        {
+            bAprsMsgTxOk = cFalse;
+            AppState = eAPP_SD_CARD_WRITE_POSITION;
+        }
+
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_SD_CARD_WRITE_POSITION:
 
-
+        // TODO: not implemented yet!
         AppState = eAPP_NMEA_MSG_POOL;
 
         break;
@@ -186,7 +226,7 @@ void App_StatemachineTask(void)
         }
 
         break;
-    //------------------------------------------------------------------------------------------------------------------
+    
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -194,8 +234,6 @@ void App_StatemachineTask(void)
         _Assert(cFalse);
         break;
     }
-
-
 }
 
 /*=====================================================================================================================
@@ -208,6 +246,18 @@ void App_StatemachineTask(void)
 void AppStatemachine_GpsMsgReceivedCallback(void)
 {
     bGpsMsgReceived = cTrue;
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+void App_Statemachine_AprsMsgTxOkCallback(void)
+{
+    bAprsMsgTxOk = cTrue;
 }
 
 /*=====================================================================================================================

@@ -28,7 +28,7 @@
 */
 #define cDeviceConfigParamsInit()                   	                                                                \
 {                                                   	                                                                \
-    .u8ConfAprsTxDelay          = 30,                                                                                   \
+    .u8ConfAprsTxDelay          = 60,                                                                                   \
     .u8ConfAprsPropath          = 0,                                                                                    \
     .u8ConfigAprsSourceAddr     = "NOCALL0",          	                                                                \
     .u8ConfigAprsDestAddr       = "APERXQ0",         	                                                                \
@@ -36,20 +36,15 @@
     .u8ConfAprsSymbolTable      = cAPRS_PrimarySimbolTable,                                                             \
     .u8ConfAprsSymbol           = cAPRS_SimbolTableCar,                                                                 \
     /* smart beaconing settings */                                                                                      \
-    .u16ConfAprs_SB_Interval_s      = (28u*60u),                	                                                    \
-    .u8ConfAprs_sb_turn_min         = 20u,                                                                              \
-    .u8ConfAprs_sb_turn_slope       = 25u,                                                                              \
-    .u8ConfAprs_sb_turn_time        = 5u,                                                                               \
-    .u8ConfAprs_sb_posit_fast       = 23u,                                                                              \
-    .u8ConfAprs_sb_posit_slow       = 24,                                                                               \
-    .u8ConfAprs_sb_low_speed_limit  = 25u,                                                                              \
-    .u8ConfAprs_sb_high_speed_limit = 26u,                                                                              \
+    .u16ConfAprsSbInterval_sec      = 0,                	                                                            \
+    .u8ConfAprsSbPositFast_sec      = 90u,                                                                              \
+    .u8ConfAprsSbPositSlow_min      = 20u,                                                                              \
+    .u8ConfAprsSbLowSpeedLimit_kmh  = 6u,                                                                               \
+    .u8ConfAprsSbHighSpeedLimit_kmh = 90u,                                                                              \
     /* NO user accessible configuration */                                                                              \
     .u8ConfigTrackerVersion     = "GPS tracker by _maker_ V1.01 <vladislav_1@abv.bg>",                                  \
     .u8ConfigBeaonText          = "beacon text"                                                                         \
 }
-
-
 
 /*=====================================================================================================================
  * Exported type                                                             
@@ -65,14 +60,11 @@ struct sDeviceConfigParams
     U8 u8ConfAprsSymbolTable;
     U8 u8ConfAprsSymbol;
     // smart beaconing settings
-    U16 u16ConfAprs_SB_Interval_s;
-    U8  u8ConfAprs_sb_turn_min;
-    U8  u8ConfAprs_sb_turn_slope;
-    U8  u8ConfAprs_sb_turn_time;
-    U8  u8ConfAprs_sb_posit_fast;
-    U8  u8ConfAprs_sb_posit_slow;
-    U8  u8ConfAprs_sb_low_speed_limit;
-    U8  u8ConfAprs_sb_high_speed_limit;
+    U16 u16ConfAprsSbInterval_sec;
+    U8  u8ConfAprsSbPositFast_sec;
+    U8  u8ConfAprsSbPositSlow_min;
+    U8  u8ConfAprsSbLowSpeedLimit_kmh;
+    U8  u8ConfAprsSbHighSpeedLimit_kmh;
     //--- NO user accessible configuration
     U8 u8ConfigTrackerVersion[cAPRS_VersionInfoLength+1];
     U8 u8ConfigBeaonText[cAPRS_BeaconTextLen+1];

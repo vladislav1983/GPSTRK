@@ -157,35 +157,23 @@ HRESULT Devconfig_LoadConfig(void)
     // SMART_BEACONING_SETTINGS
     //==================================================================================================================
     u16Tmp= (U16)ini_getl("SMART_BEACONING_SETTINGS", "sb_interval_min", 5UL, inifile);
-    DeviceConfigParams.u16ConfAprs_SB_Interval_s  = u16Tmp * 60u;
-    DeviceConfigParams.u8ConfAprs_sb_turn_min = (U16)ini_getl("SMART_BEACONING_SETTINGS",                   /* \param Section  */
-                                                              "sb_turn_min",                                /* \param Key      */
-                                                              DeviceConfigParams.u8ConfAprs_sb_turn_min ,   /* \param DefValue */
-                                                              inifile);                                     /* \param Filename */
+    DeviceConfigParams.u16ConfAprsSbInterval_sec  = u16Tmp * 60u;
 
-    DeviceConfigParams.u8ConfAprs_sb_turn_slope = (U8)ini_getl("SMART_BEACONING_SETTINGS",                 /* \param Section */
-                                                                "sb_turn_slope",                            /* \param Key      */
-                                                                DeviceConfigParams.u8ConfAprs_sb_turn_slope,/* \param DefValue */
-                                                                inifile);                                   /* \param Filename */
-    DeviceConfigParams.u8ConfAprs_sb_turn_time = (U8)ini_getl("SMART_BEACONING_SETTINGS",                  /* \param Section  */
-                                                               "sb_turn_time",                              /* \param Key      */
-                                                               DeviceConfigParams.u8ConfAprs_sb_turn_time,  /* \param DefValue */
-                                                               inifile);                                    /* \param Filename */
-    DeviceConfigParams.u8ConfAprs_sb_posit_fast = (U8)ini_getl("SMART_BEACONING_SETTINGS",                 /* \param Section  */
-                                                               "sb_posit_fast",                             /* \param Key      */
-                                                               DeviceConfigParams.u8ConfAprs_sb_posit_fast, /* \param DefValue */
-                                                               inifile);                                    /* \param Filename */
-    DeviceConfigParams.u8ConfAprs_sb_posit_slow = (U8)ini_getl("SMART_BEACONING_SETTINGS",                  /* \param Section  */
-                                                                "sb_posit_slow",                             /* \param Key      */
-                                                                DeviceConfigParams.u8ConfAprs_sb_posit_slow, /* \param DefValue */
-                                                                inifile);                                    /* \param Filename */
-    DeviceConfigParams.u8ConfAprs_sb_low_speed_limit = (U8)ini_getl("SMART_BEACONING_SETTINGS",                  /* \param Section  */
-                                                                "sb_low_speed_limit",                             /* \param Key      */
-                                                                DeviceConfigParams.u8ConfAprs_sb_low_speed_limit, /* \param DefValue */
-                                                                inifile);                                         /* \param Filename */
-    DeviceConfigParams.u8ConfAprs_sb_high_speed_limit = (U8)ini_getl("SMART_BEACONING_SETTINGS",                        /* \param Section  */
-                                                                      "sb_high_speed_limit",                             /* \param Key      */
-                                                                      DeviceConfigParams.u8ConfAprs_sb_high_speed_limit, /* \param DefValue */
+    DeviceConfigParams.u8ConfAprsSbPositFast_sec = (U8)ini_getl("SMART_BEACONING_SETTINGS",                 /* \param Section  */
+                                                                "sb_posit_fast_sec",                             /* \param Key      */
+                                                                 DeviceConfigParams.u8ConfAprsSbPositFast_sec, /* \param DefValue */
+                                                                 inifile);                                    /* \param Filename */
+    DeviceConfigParams.u8ConfAprsSbPositSlow_min = (U8)ini_getl("SMART_BEACONING_SETTINGS",                  /* \param Section  */
+                                                                "sb_posit_slow_min",                             /* \param Key      */
+                                                                 DeviceConfigParams.u8ConfAprsSbPositSlow_min, /* \param DefValue */
+                                                                 inifile);                                    /* \param Filename */
+    DeviceConfigParams.u8ConfAprsSbLowSpeedLimit_kmh = (U8)ini_getl("SMART_BEACONING_SETTINGS",                  /* \param Section  */
+                                                                    "sb_low_speed_limit_kmh",                             /* \param Key      */
+                                                                     DeviceConfigParams.u8ConfAprsSbLowSpeedLimit_kmh, /* \param DefValue */
+                                                                     inifile);                                         /* \param Filename */
+    DeviceConfigParams.u8ConfAprsSbHighSpeedLimit_kmh = (U8)ini_getl("SMART_BEACONING_SETTINGS",                        /* \param Section  */
+                                                                     "sb_high_speed_limit_kmh",                             /* \param Key      */
+                                                                      DeviceConfigParams.u8ConfAprsSbHighSpeedLimit_kmh, /* \param DefValue */
                                                                       inifile);                                          /* \param Filename */
 
     result = S_OK;
