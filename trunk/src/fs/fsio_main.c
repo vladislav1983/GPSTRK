@@ -192,7 +192,7 @@ HRESULT FSIOMain_SetTimeDate(tNMEA_GPS_Data *GpsData)
     HRESULT res = S_NOK;
 
     s16res = SetClockVars( GpsData->DateTime.tm_year, 
-                          (GpsData->DateTime.tm_mon + 1),   // note that function receive month in different format
+                           GpsData->DateTime.tm_mon,
                            GpsData->DateTime.tm_mday,
                            GpsData->DateTime.tm_hour,
                            GpsData->DateTime.tm_min, 

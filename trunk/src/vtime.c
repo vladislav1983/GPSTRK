@@ -122,13 +122,17 @@ U32 VTime_GetSystemTick(void)
  *===================================================================================================================*/
 void VTime_GpsSet_ddmmyy(U8 *pu8ddmmyy, tNMEA_GPS_Data *GpsData)
 {
+    U8 *pu8ddmmyyL = pu8ddmmyy;
+
+    GpsData->DateTime.tm_mday = mDD(pu8ddmmyyL);
+    GpsData->DateTime.tm_mon  = mDD(pu8ddmmyyL+2U);
+    
     // 241012 - date 24.10.2012
     if(GpsData->DateTime.tm_year == 0)
     {
-        GpsData->DateTime.tm_year = ((2000U + mDD(pu8ddmmyy+4)));
+        GpsData->DateTime.tm_year = ((2000U + mDD(pu8ddmmyyL+4U)));
     }
-    GpsData->DateTime.tm_mon = (mDD(pu8ddmmyy+2)-1U); /*month ( 0 to 11 where January = 0 )*/
-    GpsData->DateTime.tm_mday = mDD(pu8ddmmyy);
+    
 }
 
 /*=====================================================================================================================
@@ -140,15 +144,16 @@ void VTime_GpsSet_ddmmyy(U8 *pu8ddmmyy, tNMEA_GPS_Data *GpsData)
  *===================================================================================================================*/
 void VTime_GpsSet_hhmmss(U8 *pu8hhmmss, tNMEA_GPS_Data *GpsData)
 {
+    U8 *pu8hhmmssL = pu8hhmmss;
     U16 u16OldHour = GpsData->DateTime.tm_hour;
 
-    GpsData->DateTime.tm_hour = mDD(pu8hhmmss);
+    GpsData->DateTime.tm_hour = mDD(pu8hhmmssL);
     if(GpsData->DateTime.tm_hour < u16OldHour)
     {
         GpsData->DateTime.tm_mday++;    // midnight wrap
     }
-    GpsData->DateTime.tm_min = mDD(pu8hhmmss+2);
-    GpsData->DateTime.tm_sec = mDD(pu8hhmmss+4);
+    GpsData->DateTime.tm_min = mDD(pu8hhmmssL+2U);
+    GpsData->DateTime.tm_sec = mDD(pu8hhmmssL+4U);
 }
 
 /*=====================================================================================================================
