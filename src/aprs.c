@@ -106,6 +106,10 @@ void __attribute__((user_init)) Arps_Init(void)
     memset(&au8AprsBuff[0], 0, sizeof(au8AprsBuff));
     u8Propath = 0;
     AprsTrmtState = eAPRS_IDLE;
+    // Config PTT pin as open drain
+    _DioWritePin(cDioPin_PTT, 0);
+    _DioPinOpenDrainConfig(cDioPin_PTT, cPinOpenDrainMode);
+    _DioPinConfig(cDioPin_PTT, cPinModeOutput);
 }
 
 /*=====================================================================================================================
@@ -129,7 +133,7 @@ void Aprs_TransmitCallback(tCtrl Ctrl)
     }
     else
     {
-        _Assert(cFalse);
+        _assert(cFalse);
     }
 }
 

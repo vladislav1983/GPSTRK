@@ -33,8 +33,9 @@
 #define cFirstBeaconTimeInSeconds   5u
 #define cMaxInfoBeaconIntervalSec   1800u
 #define cTurnThresholdMaxDeg        80u
+
 /*
-// smart beaconing params
+* smart beaconing params
 */
 #define cSbTurnMinimum_deg          20u     // cSbTurnMinimum_deg   Minimum degrees at which corner pegging will occur.  
                                             //                      The next parameter affects this for lower speeds.
@@ -42,7 +43,8 @@
                                             //                      lower speeds.  No real units on this one.
                                             //                      It ends up being non-linear over the speed
                                             //                      range the way the original SmartBeaconing(tm)algorithm works.
-#define cSbTurnTime_sec             5u
+#define cSbTurnTime_sec             5u      // cSbTurnTime_sec      Dead-time before/after a corner peg beacon.
+                                            //                      Units are in seconds.
 
 /*=====================================================================================================================
  * Local macros

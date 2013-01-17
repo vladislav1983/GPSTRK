@@ -193,7 +193,7 @@ void Adc_ConvertChannels(tMsg Msg)
     }
     else
     {
-        _Assert(cFalse);
+        _assert(cFalse);
     }
 }
 

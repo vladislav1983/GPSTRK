@@ -40,20 +40,20 @@
  * Exported Macros                                                            
  *===================================================================================================================*/
 #ifdef __DEBUG
-    #define _Assert(Cond)                   \
+    #define _assert(Cond)       \
     do                                      \
     {                                       \
         if ((Cond) == 0)                    \
         {                                   \
-            AssertExternal();               \
+            AssertExternal(__LINE__, __FILE__);     \
         }                                   \
     }while(0)
 #else
-    #define _Assert(Cond)   
+    #define _assert(Cond)  
 #endif
 /*=====================================================================================================================
  * Exported functions                     				                        
  *===================================================================================================================*/
-extern void __attribute__((noreturn)) AssertExternal(void);
+extern void __attribute__((noreturn)) AssertExternal(U16 u16Line, const char *File);
 
 #endif /* __TRAPS_H */

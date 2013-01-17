@@ -44,15 +44,15 @@
 /*Scheduler stack treat only tSchedulerStack type*/
     #define _PushToSchedulerStack(Type, Data)                               \
     do{                                                                     \
-        _Assert(sizeof(Type) == sizeof(tOSTaskID));                         \
+        _assert(sizeof(Type) == sizeof(tOSTaskID));                         \
         s16SchedulerStackLevel++;                                           \
-        _Assert(s16SchedulerStackLevel < (S16)(cOSSchedulerStackSize));     \
+        _assert(s16SchedulerStackLevel < (S16)(cOSSchedulerStackSize));     \
         SchedulerStack[s16SchedulerStackLevel] = ((Type)(Data));            \
     }while(0)
 
 #define _PopFromSchedulerStack(Type, Data)                                  \
     do{                                                                     \
-        _Assert(s16SchedulerStackLevel >= 0);                               \
+        _assert(s16SchedulerStackLevel >= 0);                               \
         (Data) = ((Type)SchedulerStack[s16SchedulerStackLevel]);            \
         s16SchedulerStackLevel--;                                           \
     }while(0)

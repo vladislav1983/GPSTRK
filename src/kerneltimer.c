@@ -89,7 +89,7 @@ void OsTimerInit(void)
 
     OSClock = 1;
 
-    _Assert((cClockCycleInAlarmTick * cOsAlarmTickUs ) == cOsTimerTickUs);
+    _assert((cClockCycleInAlarmTick * cOsAlarmTickUs ) == cOsTimerTickUs);
 
 #ifndef USE_DISABLE_OSTIMER
     Alarm.TaskID = cOsTimerTaskId;
@@ -197,7 +197,7 @@ tOSTimer OSGetTimerElapsedTime(tOSTimer *pTimer)
     if ( *pTimer == 0 )
     {
         // This function must not be call with a stopped tempo
-        _Assert( cFalse );
+        _assert(cFalse );
     }
     else
     {
@@ -240,7 +240,7 @@ void OsTimerTask(void)
  *===================================================================================================================*/
 void OSEnableTimer(U16 Period)
 {
-    _Assert(Period >= cMinMultiplicationValue);
+    _assertPeriod >= cMinMultiplicationValue);
 
     u8OSMultiplicationFactor = Period;
     TOSAlarmTPO.Period = (tOSAlarmTick)(cClockCycleInAlarmTick * ((U32)u8OSMultiplicationFactor));
