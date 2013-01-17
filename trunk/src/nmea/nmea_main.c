@@ -32,8 +32,8 @@
  * Local constants
  *===================================================================================================================*/
 #define cNMEAMainTaskPeruidUs           10000UL
-#define cNMEACommTimeoutUs              60000UL
-#define cNMEAProcessingTimeoutUs        200000UL
+#define cNMEACommTimeoutUs              300000UL
+#define cNMEAProcessingTimeoutUs        700000UL
 
 
 /*=====================================================================================================================
@@ -164,16 +164,20 @@ void NMEAMain_DecodingEngine(void)
                 NmeaDecodeState = eNMEA_DECODE_WAIT_DATA;
             }
             ++u8NmeaDecMsgCounter;
+            _DioWritePin(cDioPin_GpsLed, 0);
         }
         else
         {
             // processing done. wait for data
             u8NmeaDecMsgCounter = 0;
             NmeaDecodeState     = eNMEA_DECODE_WAIT_DATA;
+            AppStatemachine_GpsMsgReceivedCallback();
+            _DioWritePin(cDioPin_GpsLed, 1);
         }
+
         break;
     default:
-        _Assert(cFalse);
+        _assert(cFalse);
         break;
     }
 }
@@ -217,7 +221,7 @@ static HRESULT NMEAMain_MsgDecode(U8 u8MsgIndex)
     if(u8CurrentBuffSize == GPSMain_GetDataCnt(u8CurrentBuffIndex))
     {
         // get buffer
-        Msg.pBuff = u8TempBuffer;
+        Msg.pBuff = &u8TempBuffer[0];
         Msg.Lng = u8CurrentBuffSize;
 
         if(S_OK ==  GPSMain_GetMsg(u8CurrentBuffIndex, Msg))
@@ -232,6 +236,7 @@ static HRESULT NMEAMain_MsgDecode(U8 u8MsgIndex)
                 {
                     // decode message
                     GpsStatus = NmeaDecoders[u8MsgIndex].NmeaDecoder(&pu8NmeaFields[0], &NMEA_GPS_Data, GpsStatus);
+                    GPS_STSTUS_FLAGS |= GpsStatus;
                     result = S_OK;
                 }
             }

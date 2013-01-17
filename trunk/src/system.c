@@ -134,7 +134,6 @@ void IdleTask(void)
     NMEAMain_DecodingEngine();
 }
 
-
 /*=====================================================================================================================
  *                                                                            
  *                                     L O C A L    F U N C T I O N S                   
@@ -155,9 +154,9 @@ static void SetupPeripheralPinSelect(void)
     ** This is hardware specific pin remapping
     */
     // RP30 -> U1RX
-    iPPSInput(IN_FN_PPS_U1RX, IN_PIN_PPS_RP30);
+    iPPSInput(IN_FN_PPS_U1RX, IN_PIN_PPS_RP23);
     // U1TX -> RP16
-    iPPSOutput(OUT_PIN_PPS_RP16, OUT_FN_PPS_U1TX);
+    iPPSOutput(OUT_PIN_PPS_RP24, OUT_FN_PPS_U1TX);
     // RP21 -> SCK1
     iPPSOutput(OUT_PIN_PPS_RP21, OUT_FN_PPS_SCK1OUT);
     // SDI1 -> RP19

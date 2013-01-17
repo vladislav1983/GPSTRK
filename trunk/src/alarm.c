@@ -96,8 +96,8 @@ void OsAlarmInit(void)
  *===================================================================================================================*/
 void OsAlarmStart(tOSAlarmTick AlarmCycleInit)
 {
-    _Assert(0 != AlarmCycleInit);
-    _Assert((cOsTimerPeriodUs * 2UL * cOsHardwareTimerTickUs) ==  cOsAlarmTickUs);
+    _assert(0 != AlarmCycleInit);
+    _assert((cOsTimerPeriodUs * 2UL * cOsHardwareTimerTickUs) ==  cOsAlarmTickUs);
 
     AlarmCycle = AlarmCycleInit;
     AlarmState &= (tOSAlarmTick) ~((tOSAlarmTick)(AlarmCycle - 1));
@@ -135,7 +135,7 @@ void OsSetAlarm(tOSAlarm *pAlarm, tOSAlarmTick Cycle)
         SlotID = GetSlot(Cycle);
 
         // Check if the asked period is 2 to power of x compatible.
-        _Assert(((tOSAlarmTick)1 << SlotID) == Cycle);
+        _assert(((tOSAlarmTick)1 << SlotID) == Cycle);
 
         pAlarm->Period = Cycle;
 
@@ -145,7 +145,7 @@ void OsSetAlarm(tOSAlarm *pAlarm, tOSAlarmTick Cycle)
     }
     else
     {
-        _Assert(cFalse);
+        _assert(cFalse);
     }
 }
 
@@ -165,7 +165,7 @@ void OsCancelAlarm(tOSAlarm * pAlarm)
         SlotID = GetSlot(pAlarm->Period);
 
         // Check if the asked period is 2 to power of x compatible.
-        _Assert(((tOSAlarmTick)1 << SlotID) == pAlarm->Period);
+        _assert(((tOSAlarmTick)1 << SlotID) == pAlarm->Period);
 
         _OsSuspendOsInterrupts();
         _OSRemoveTaskFromList(&TasksList[SlotID],pAlarm->TaskID);
@@ -174,7 +174,7 @@ void OsCancelAlarm(tOSAlarm * pAlarm)
     }
     else
     {
-        _Assert(cFalse);
+        _assert(cFalse);
     }
 }
 
@@ -212,7 +212,7 @@ void OsAlarmTickCallback(void)
  *===================================================================================================================*/
 static tOSAlarmTick GetSlot(tOSAlarmTick Duration)
 {
-    _Assert(Duration != 0);
+    _assert(Duration != 0);
 
 #if OS_AlarmGetSlotOptimization == 1
     register U16 w0_local asm("w0");

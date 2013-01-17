@@ -210,7 +210,7 @@ void __attribute__((user_init)) Timer1Init(void)
     TMR1 = 0;
 
     u32TimerTicks = (U32)(((cFCY_MHz * cTimer1Ticks_us)/cTimer1Prescaler) - 1);
-    _Assert(u32TimerTicks < 65535);
+    _assert(u32TimerTicks < 65535);
     PR1 = (U16)u32TimerTicks; /*set period1 register*/
 
     _SetPriorityIntT1(cTIMER1_ISR_Priority);
@@ -227,7 +227,7 @@ void __attribute__((user_init)) Timer1Init(void)
  *===================================================================================================================*/
 void __attribute__((user_init)) SoftTimersInit(void)
 {
-    _Assert(cNumberSoftTimers > 0);
+    _assert(cNumberSoftTimers > 0);
     u16SoftTimerCounter = 0;
     memset((void*)u16SoftTimerListTicks, 0, sizeof(u16SoftTimerListTicks));
 }

@@ -94,7 +94,7 @@ void __attribute__((user_init)) VTime_Init(void)
  *===================================================================================================================*/
 void VTime_Task(void)
 {
-    if(cTrue == OSIsTimerElapsed(&TimeTimer, (1000UL/(cOsTimerTickUs/1000UL))-1UL))
+    if(cFalse != OSIsTimerElapsed(&TimeTimer, (1000UL/(cOsTimerTickUs/1000UL))-1UL))
     {
         ++u32SystemTimeSec;
         OSStartTimer(&TimeTimer);

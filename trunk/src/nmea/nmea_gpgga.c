@@ -169,7 +169,7 @@ GpsMask NMEAGga_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, GpsMask GpsS
             GpsData->u16Altitude = atoi((const char*)pu8GpsField[cGGA_AltitudeIndex]);
 
             memset(GpsData->AX25_GPS_Data.u8Altitude, '0', sizeof(GpsData->AX25_GPS_Data.u8Altitude));
-            // for ax15 it need a leading zeros.
+            // for ax25 it need a leading zeros.
             while(((u8Char = *pu8GpsField[cGGA_AltitudeIndex]++) != '.') && (u8Char != '\0'))
             {
                 GpsData->AX25_GPS_Data.u8Altitude[0] = GpsData->AX25_GPS_Data.u8Altitude[1];

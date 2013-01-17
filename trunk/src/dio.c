@@ -86,11 +86,19 @@ void __attribute__((user_init)) DioInit(void)
     /* Pins Init */
     _DioWritePin(cDioPin_GreenLed, 1);
     _DioPinConfig(cDioPin_GreenLed, cPinModeOutput);
+
     _DioPinConfig(cDioPin_SD_CardPresent, cPinModeInput);
     _DioAnalogConfig(cDioPin_SD_CardPresent, cPinModeDigital);
 
     _DioWritePin(cDioPin_DEBUG, 1);
     _DioPinConfig(cDioPin_DEBUG, cPinModeOutput);
+    // Gps led config
+    _DioWritePin(cDioPin_GpsLed, 1);
+    _DioPinConfig(cDioPin_GpsLed, cPinModeOutput);
+
+    // Gps led config
+    _DioPinConfig(cDioPin_AssertLed, 1);
+    _DioPinConfig(cDioPin_AssertLed, cPinModeOutput);
 
     memset(DioFiltCounters,   0, sizeof(DioFiltCounters));
     memset(DioInputBuffer,    0, sizeof(DioInputBuffer));

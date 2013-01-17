@@ -173,7 +173,7 @@ void FSIO_Task(void)
         break;
     //-------------------------------------------------------------------------------------------------------------------
     default:
-        _Assert(cFalse);
+        _assert(cFalse);
         CardState = eCardNotPresent;
         break;
     }

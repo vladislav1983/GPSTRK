@@ -86,6 +86,7 @@ _CONFIG2(  POSCMD_NONE		\
  int main(void)
 {
     SET_CPU_IPL(0);
+
     _system_lowlevel_init();
     /* Startup OS */
     OsStartup();

@@ -36,7 +36,7 @@
 #define cGPS_NMEA_VTG_BuffIndex         2
 #define cGPS_BuffersNb                  3
 
-#define cGPS_NMEA_GGA_MsgLen            72UL
+#define cGPS_NMEA_GGA_MsgLen            79UL
 #define cGPS_NMEA_RMC_MsgLen            69UL
 #define cGPS_NMEA_VTG_MsgLen            36UL
 
@@ -45,22 +45,22 @@
 #define cGPS_NMEA_VTG_BufferLen         (cGPS_NMEA_VTG_MsgLen + 1UL)
 
 // GPS status masks
-#define cGPS_STAT_ONLINE_SET            0x00000001UL
-#define cGPS_STAT_TIME_SET              0x00000002UL
-#define cGPS_STAT_DATE_SET              0x00000004UL
-#define cGPS_STAT_LATLON_SET            0x00000008UL
-#define cGPS_STAT_ALTITUDE_SET          0x00000010UL
-#define cGPS_STAT_SPEED_SET             0x00000020UL
-#define cGPS_STAT_COURSE_SET            0x00000040UL
-#define cGPS_STAT_CLIMB_SET             0x00000080UL
-#define cGPS_STAT_STATUS_SET            0x00000100UL
-#define cGPS_STAT_MODE_SET              0x00000200UL
-#define cGPS_STAT_HDOP_SET              0x00000400UL
-#define cGPS_STAT_VDOP_SET              0x00000800UL
-#define cGPS_STAT_PDOP_SET              0x00001000UL
-#define cGPS_STAT_TDOP_SET              0x00002000UL
-#define cGPS_STAT_GDOP_SET              0x00004000UL
-#define cGPS_STAT_HERR_SET              0x00008000UL
+#define cGPS_STAT_ONLINE_SET            0x0001UL
+#define cGPS_STAT_TIME_SET              0x0002UL
+#define cGPS_STAT_DATE_SET              0x0004UL
+#define cGPS_STAT_LATLON_SET            0x0008UL
+#define cGPS_STAT_ALTITUDE_SET          0x0010UL
+#define cGPS_STAT_SPEED_SET             0x0020UL
+#define cGPS_STAT_COURSE_SET            0x0040UL
+#define cGPS_STAT_CLIMB_SET             0x0080UL
+#define cGPS_STAT_STATUS_SET            0x0100UL
+#define cGPS_STAT_MODE_SET              0x0200UL
+#define cGPS_STAT_HDOP_SET              0x0400UL
+#define cGPS_STAT_VDOP_SET              0x0800UL
+#define cGPS_STAT_PDOP_SET              0x1000UL
+#define cGPS_STAT_TDOP_SET              0x2000UL
+#define cGPS_STAT_GDOP_SET              0x4000UL
+#define cGPS_STAT_HERR_SET              0x8000UL
 
 
 /*=====================================================================================================================

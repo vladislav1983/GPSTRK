@@ -207,7 +207,7 @@ void GpsMain_RxCallback(U8 u8Char)
                 memcpy(GPS_MSgBuffer[cGPS_NMEA_GGA_BuffIndex].pBuff, au8TempBuffer, cNMEA_HeaderSize);
 
                 u8CurrentBuffIndex = cGPS_NMEA_GGA_BuffIndex;
-                u8CurrentBuffSize = cGPS_NMEA_GGA_BufferLen;
+                u8CurrentBuffSize = cGPS_NMEA_GGA_MsgLen;
 
                 GpsDispatchState = eNMEAMsgCollect;
             }
@@ -217,7 +217,7 @@ void GpsMain_RxCallback(U8 u8Char)
                 memcpy(GPS_MSgBuffer[cGPS_NMEA_RMC_BuffIndex].pBuff, au8TempBuffer, cNMEA_HeaderSize);
 
                 u8CurrentBuffIndex = cGPS_NMEA_RMC_BuffIndex;
-                u8CurrentBuffSize = cGPS_NMEA_RMC_BufferLen;
+                u8CurrentBuffSize = cGPS_NMEA_RMC_MsgLen;
 
                 GpsDispatchState = eNMEAMsgCollect;
             }
@@ -227,7 +227,7 @@ void GpsMain_RxCallback(U8 u8Char)
                 memcpy(GPS_MSgBuffer[cGPS_NMEA_VTG_BuffIndex].pBuff, au8TempBuffer, cNMEA_HeaderSize);
 
                 u8CurrentBuffIndex = cGPS_NMEA_VTG_BuffIndex;
-                u8CurrentBuffSize = cGPS_NMEA_VTG_BufferLen;
+                u8CurrentBuffSize = cGPS_NMEA_VTG_MsgLen;
 
                 GpsDispatchState = eNMEAMsgCollect;
             }
@@ -278,7 +278,7 @@ void GpsMain_RxCallback(U8 u8Char)
         break;
         //-----------------------------------------------------------------------------
     default:
-        _Assert(cFalse);
+        _assert(cFalse);
         break;
     }
 }

@@ -77,9 +77,15 @@ void __attribute__((__interrupt__)) _AltMathError(void);
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((noreturn)) AssertExternal(void)
+void __attribute__((noreturn)) AssertExternal(U16 u16Line, const char *File)
 {
-    //PIN_ASSERT_LED = 1; /* RED LED LIGHT ON*/
+    volatile char DbgFileBuff[20];
+    volatile U16 u16LineL = u16Line;
+
+    memcpy(DbgFileBuff, File, sizeof(DbgFileBuff));
+
+    _DioPinConfig(cDioPin_AssertLed, 1);
+    _DioPinConfig(cDioPin_AssertLed, cPinModeOutput);
 
     while(1)
     {

@@ -129,8 +129,8 @@ void App_StatemachineTask(void)
         OSStartTimer(&AppStateTimer);
         // wait 1s before configuration load
         WaitTimeTicks = 1000UL/cOsTimerTick_ms;
-        AppState = eAPP_WAIT_STATE;
-        AppNextState = eAPP_STATE_WAIT_GPS;
+        //AppState = eAPP_WAIT_STATE;
+        //AppNextState = eAPP_STATE_WAIT_GPS;
 
         break;
         //------------------------------------------------------------------------------------------------------------------
@@ -173,7 +173,7 @@ void App_StatemachineTask(void)
                 else if(BeaconTypeSend == cAprsProcNotSend)
                     AppState = eAPP_SD_CARD_WRITE_POSITION;
                 else
-                    _Assert(cFalse);
+                    _assert(cFalse);
             }
 
             bGpsMsgReceived = cFalse;
@@ -186,7 +186,7 @@ void App_StatemachineTask(void)
         if(S_OK == Aprs_Transmit(cAPRS_TransmitData))
             AppState = eAPP_ARRS_WAIT_TRANSMIT;
         else
-            _Assert(cFalse);
+            _assert(cFalse);
 
         break;
     //------------------------------------------------------------------------------------------------------------------
@@ -195,7 +195,7 @@ void App_StatemachineTask(void)
         if(S_OK == Aprs_Transmit(cAPRS_TransmitTrackerInfo))
             AppState = eAPP_ARRS_WAIT_TRANSMIT;
         else
-            _Assert(cFalse);
+            _assert(cFalse);
 
         break;
     //------------------------------------------------------------------------------------------------------------------
@@ -218,7 +218,7 @@ void App_StatemachineTask(void)
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_WAIT_STATE:
 
-        _Assert(AppState != AppNextState);
+        _assert(AppState != AppNextState);
 
         if(cFalse != OSIsTimerElapsed(&AppStateTimer, WaitTimeTicks))
         {
@@ -231,7 +231,7 @@ void App_StatemachineTask(void)
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     default:
-        _Assert(cFalse);
+        _assert(cFalse);
         break;
     }
 }
@@ -246,6 +246,7 @@ void App_StatemachineTask(void)
 void AppStatemachine_GpsMsgReceivedCallback(void)
 {
     bGpsMsgReceived = cTrue;
+    GPS_STSTUS_FLAGS = 0;
 }
 
 /*=====================================================================================================================

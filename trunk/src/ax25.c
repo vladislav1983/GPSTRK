@@ -252,7 +252,7 @@ void AX25_Control(tControl Ctrl)
     }
     else
     {
-        _Assert(cFalse);
+        _assert(cFalse);
     }
 }
 
@@ -431,7 +431,7 @@ _DECLARE_ISR(_T3Interrupt)
     //------------------------------------------------------------------------------------------------------------------
     default:
         AX25TrmtState = eAX25_IDLE;
-        _Assert(cFalse);
+        _assert(cFalse);
         break;
     }
 
@@ -478,10 +478,10 @@ static void AX25_TimersInit(void)
     TMR2 = TMR2_VALUE;
     // check 1200Hz trigger period
     u32TimerTicks = (U32)((((F32)cFCY_MHz * (F32)(c1200Hz_TriggerTimerIntPer_us)) / (F32)cAprsTriggerTimerPrescaller) - 1UL);
-    _Assert(u32TimerTicks < 65535UL);
+    _assert(u32TimerTicks < 65535UL);
     // set 2200Hz trigger period
     u32TimerTicks = (U32)((((F32)cFCY_MHz * (F32)(c2200Hz_TriggerTimerIntPer_us)) / (F32)cAprsTriggerTimerPrescaller) - 1UL);
-    _Assert(u32TimerTicks < 65535UL);
+    _assert(u32TimerTicks < 65535UL);
     // set period
     PR2 = (U16)u32TimerTicks;
 
@@ -513,7 +513,7 @@ static void AX25_TimersInit(void)
     TMR3 = TMR3_VALUE;
     // check trigger period
     u32TimerTicks = (U32)((((F32)cFCY_MHz * (F32)(cAprsBitTime_us)) / (F32)cAprsBitTimerPrescaller) - 1UL);
-    _Assert(u32TimerTicks < 65535UL);
+    _assert(u32TimerTicks < 65535UL);
     // set period
     PR3 = (U16)u32TimerTicks;
 
