@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv3_30 (B) b
+Microchip Technology Inc, vv3_30 (B) ^
 
 Tool Name:
   c:\program files (x86)\microchip\mplabc30\v3.30c\bin\bin\..\bin/pic30-coff-ld.exe
@@ -228,8 +228,8 @@ section                    address      alignment gaps    total length  (dec)
 .icd                         0x800                0x50            0x50  (80)
 .dmaram                      0x850                   0            0x20  (32)
 .nbss                        0x870                   0           0x538  (1336)
-_04192b6050f882a3            0xda8                   0           0x200  (512)
-_04192cb050f882a3            0xfa8                   0           0x200  (512)
+_043d1b6050f889cf            0xda8                   0           0x200  (512)
+_043d1cb050f889cf            0xfa8                   0           0x200  (512)
 .nbss                       0x11a8                   0           0x284  (644)
 .ndata                      0x142c                   0            0x6c  (108)
 .nbss                       0x1498                   0            0x64  (100)
@@ -2909,15 +2909,15 @@ __c30_signature
                     0x0da4                  fileNameLength
                     0x0da6                  utf16Filename
 
-_04192b6050f882a3
+_043d1b6050f889cf
                     0x0da8        0x200
- _04192b6050f882a3
+ _043d1b6050f889cf
                     0x0da8        0x200 src\hex\FSIO.o
                     0x0da8                  gDataBuffer
 
-_04192cb050f882a3
+_043d1cb050f889cf
                     0x0fa8        0x200
- _04192cb050f882a3
+ _043d1cb050f889cf
                     0x0fa8        0x200 src\hex\FSIO.o
                     0x0fa8                  gFATBuffer
 
