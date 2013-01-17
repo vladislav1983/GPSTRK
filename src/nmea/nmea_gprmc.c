@@ -135,9 +135,9 @@
                  9: 241012,     - date
                  ,,A
  *===================================================================================================================*/
-GpsMask NMEARmc_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, GpsMask GpsStat)
+tGpsMask NMEARmc_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 {
-    GpsMask GpsStatLocal = GpsStat;
+    tGpsMask GpsStatLocal = GpsStat;
     U8 u8Char;
 
     if(*pu8GpsField[cRMC_FixStatusIndex] == 'V') 
@@ -228,7 +228,7 @@ GpsMask NMEARmc_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, GpsMask GpsS
             GpsStatLocal |= cGPS_STAT_STATUS_SET;
         }
 
-        if(GpsData->u8GpsMode < cGPS_MODE_2D)
+        if(GpsData->u8GpsMode <= cGPS_MODE_2D)
         {
             GpsData->u8GpsMode = cGPS_MODE_2D;
             GpsStatLocal |= cGPS_STAT_MODE_SET;

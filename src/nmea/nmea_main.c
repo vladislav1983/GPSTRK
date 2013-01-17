@@ -142,6 +142,8 @@ void NMEAMain_DecodeTask(void)
  *===================================================================================================================*/
 void NMEAMain_DecodingEngine(void)
 {
+    tMsg Msg;
+
     switch(NmeaDecodeState)
     {
     //------------------------------------------------------------------------------------------------------------------
@@ -160,6 +162,7 @@ void NMEAMain_DecodingEngine(void)
             if(S_OK != NMEAMain_MsgDecode(u8NmeaDecMsgCounter))
             {
                 // error in processing. reset state and wait new data
+                GPS_STSTUS_FLAGS = 0;
                 u8NmeaDecMsgCounter = 0;
                 NmeaDecodeState = eNMEA_DECODE_WAIT_DATA;
             }
@@ -168,10 +171,16 @@ void NMEAMain_DecodingEngine(void)
         }
         else
         {
+            Msg.pBuff = (U8*)&GPS_STSTUS_FLAGS;
+            Msg.Lng = sizeof(GPS_STSTUS_FLAGS);
+
+            AppStatemachine_GpsMsgReceivedCallback(Msg);
+            GPS_STSTUS_FLAGS = 0;
+
             // processing done. wait for data
             u8NmeaDecMsgCounter = 0;
             NmeaDecodeState     = eNMEA_DECODE_WAIT_DATA;
-            AppStatemachine_GpsMsgReceivedCallback();
+            
             _DioWritePin(cDioPin_GpsLed, 1);
         }
 
@@ -215,7 +224,6 @@ static HRESULT NMEAMain_MsgDecode(U8 u8MsgIndex)
     U8 u8CurrentBuffSize  = NmeaDecoders[u8MsgIndex].u8BufferSize;
     tMsg Msg;
     U16 u16MsgFieldsCount;
-    GpsMask GpsStatus = 0;
 
     // verify buffer size
     if(u8CurrentBuffSize == GPSMain_GetDataCnt(u8CurrentBuffIndex))
@@ -235,8 +243,7 @@ static HRESULT NMEAMain_MsgDecode(U8 u8MsgIndex)
                 if( (pu8NmeaFields[0] != NULL) && (u16MsgFieldsCount >= NmeaDecoders[u8MsgIndex].uMsgFieldsNumber) )
                 {
                     // decode message
-                    GpsStatus = NmeaDecoders[u8MsgIndex].NmeaDecoder(&pu8NmeaFields[0], &NMEA_GPS_Data, GpsStatus);
-                    GPS_STSTUS_FLAGS |= GpsStatus;
+                    GPS_STSTUS_FLAGS |= NmeaDecoders[u8MsgIndex].NmeaDecoder(&pu8NmeaFields[0], &NMEA_GPS_Data, GPS_STSTUS_FLAGS);
                     result = S_OK;
                 }
             }

@@ -39,6 +39,6 @@
 /*=====================================================================================================================
  * Exported functions                     				                        
  *===================================================================================================================*/
-extern GpsMask NMEARmc_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, GpsMask GpsStat);
+extern tGpsMask NMEARmc_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat);
 
 #endif /* __NMEA_GPRMC_H */

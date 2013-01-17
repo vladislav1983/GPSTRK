@@ -38,7 +38,7 @@ extern void Aprs_TransmitCallback(tCtrl Ctrl);
 /***********************************************************************************************************************
 ** Application state machine
 ************************************************************************************************************************/
-extern void AppStatemachine_GpsMsgReceivedCallback(void);
+extern void AppStatemachine_GpsMsgReceivedCallback(tMsg Msg);
 extern void App_Statemachine_AprsMsgTxOkCallback(void);
 
 /*=====================================================================================================================

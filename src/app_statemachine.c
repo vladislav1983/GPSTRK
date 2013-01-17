@@ -67,6 +67,7 @@ static tOSAlarm  AppStateAlarm;
 static tOSTimer  AppStateTimer;
 static tOSTimer  WaitTimeTicks;
 static BOOL bGpsMsgReceived;
+static tGpsMask GpsStatusLocal;
 static BOOL bAprsMsgTxOk;
 
 
@@ -129,37 +130,39 @@ void App_StatemachineTask(void)
         OSStartTimer(&AppStateTimer);
         // wait 1s before configuration load
         WaitTimeTicks = 1000UL/cOsTimerTick_ms;
-        //AppState = eAPP_WAIT_STATE;
-        //AppNextState = eAPP_STATE_WAIT_GPS;
+        AppState = eAPP_WAIT_STATE;
+        AppNextState = eAPP_STATE_WAIT_GPS;
 
         break;
         //------------------------------------------------------------------------------------------------------------------
     case eAPP_STATE_WAIT_GPS:
 
-        if((GPS_STSTUS_FLAGS & cGPS_STAT_ONLINE_SET) && (GPS_STSTUS_FLAGS & cGPS_STAT_MODE_SET))
-            AppNextState = eAPP_STATE_WAIT_TIME_SYNC;
+        if((GpsStatusLocal & cGPS_STAT_ONLINE_SET) && (GpsStatusLocal & cGPS_STAT_MODE_SET))
+        {
+            AppState = eAPP_STATE_WAIT_TIME_SYNC;
+        }
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_STATE_WAIT_TIME_SYNC:
 
-        if((GPS_STSTUS_FLAGS & cGPS_STAT_TIME_SET ) && (GPS_STSTUS_FLAGS & cGPS_STAT_DATE_SET))
-            AppNextState = eAPP_NMEA_MSG_POOL;
+        if((GpsStatusLocal & cGPS_STAT_TIME_SET ) && (GpsStatusLocal & cGPS_STAT_DATE_SET))
+            AppState = eAPP_NMEA_MSG_POOL;
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_NMEA_MSG_POOL:
 
-        if (    (bGpsMsgReceived                           )
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_ONLINE_SET   )
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_MODE_SET     )
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_STATUS_SET   )
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_TIME_SET     )
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_DATE_SET     )
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_LATLON_SET   )
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_ALTITUDE_SET )
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_SPEED_SET    )
-            &&  (GPS_STSTUS_FLAGS & cGPS_STAT_COURSE_SET   ))
+        if (    (bGpsMsgReceived                         )
+            &&  (GpsStatusLocal & cGPS_STAT_ONLINE_SET   )
+            &&  (GpsStatusLocal & cGPS_STAT_MODE_SET     )
+            &&  (GpsStatusLocal & cGPS_STAT_STATUS_SET   )
+            &&  (GpsStatusLocal & cGPS_STAT_TIME_SET     )
+            &&  (GpsStatusLocal & cGPS_STAT_DATE_SET     )
+            &&  (GpsStatusLocal & cGPS_STAT_LATLON_SET   )
+            &&  (GpsStatusLocal & cGPS_STAT_ALTITUDE_SET )
+            &&  (GpsStatusLocal & cGPS_STAT_SPEED_SET    )
+            &&  (GpsStatusLocal & cGPS_STAT_COURSE_SET   ))
         {
             // set file system date and time
             if (S_OK == FSIOMain_SetTimeDate(&NMEA_GPS_Data))
@@ -243,10 +246,20 @@ void App_StatemachineTask(void)
  *
  * Description: 
  *===================================================================================================================*/
-void AppStatemachine_GpsMsgReceivedCallback(void)
+void AppStatemachine_GpsMsgReceivedCallback(tMsg Msg)
 {
-    bGpsMsgReceived = cTrue;
-    GPS_STSTUS_FLAGS = 0;
+
+    if(sizeof(tGpsMask) == Msg.Lng)
+    {
+        GpsStatusLocal = 0;
+        GpsStatusLocal = *(tGpsMask*)Msg.pBuff;
+    }
+    else
+    {
+        _assert(cFalse);
+    }
+
+    bGpsMsgReceived = cTrue; 
 }
 
 /*=====================================================================================================================
