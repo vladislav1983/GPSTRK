@@ -66,7 +66,7 @@
 /*=====================================================================================================================
  * Exported type                                                             
  *===================================================================================================================*/
-typedef U16 GpsMask;
+typedef U16 tGpsMask;
 
 typedef struct tsAX25_GPS_Data
 {
@@ -104,7 +104,7 @@ typedef struct tsNMEA_GPS_Data
 }tNMEA_GPS_Data;
 
 //decoder function
-typedef GpsMask (*NmeaDecoderFct)(U8 *pu8GpsField[], tNMEA_GPS_Data *GpsData, GpsMask GpsStat);
+typedef tGpsMask (*NmeaDecoderFct)(U8 *pu8GpsField[], tNMEA_GPS_Data *GpsData, tGpsMask GpsStat);
 
 typedef struct tsNmeaDecoders
 {
@@ -117,7 +117,7 @@ typedef struct tsNmeaDecoders
 /*=====================================================================================================================
  * Exported data                                                              
  *===================================================================================================================*/
-extern GpsMask GPS_STSTUS_FLAGS;
+extern tGpsMask GPS_STSTUS_FLAGS;
 
 /*=====================================================================================================================
  * Constant exported data                                                     

@@ -104,9 +104,9 @@
  *
  * Description: 
  *===================================================================================================================*/
-GpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, GpsMask GpsStat)
+tGpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 {
-    GpsMask GpsMaskLocal = GpsStat;
+    tGpsMask tGpsMaskLocal = GpsStat;
     U8 *pu8Char;
 
     if(*pu8GpsField[cVTG_FixStatusIndex] == 'A')
@@ -117,7 +117,7 @@ GpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, GpsMask GpsS
         GpsData->u16GpsSpeed = atoi((const char*)pu8Char);
     }
 
-    return GpsMaskLocal;
+    return tGpsMaskLocal;
 }
 
 

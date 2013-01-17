@@ -39,7 +39,7 @@
 /*=====================================================================================================================
  * Exported functions                     				                        
  *===================================================================================================================*/
-extern GpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, GpsMask GpsStat);
+extern tGpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat);
 
 
 #endif /* __NMEA_GPVTG_H */

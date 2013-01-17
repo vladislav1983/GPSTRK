@@ -139,9 +139,9 @@
            12: M,,
            *66
  *===================================================================================================================*/
-GpsMask NMEAGga_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, GpsMask GpsStat)
+tGpsMask NMEAGga_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 {
-    GpsMask GpsStatLocal = GpsStat;
+    tGpsMask GpsStatLocal = GpsStat;
     U8 u8Char;
 
     GpsData->u8GpsFixStatus = atoi((const char*)pu8GpsField[cGGA_FixQualityIndex]);
