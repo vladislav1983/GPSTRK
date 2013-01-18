@@ -181,7 +181,8 @@ void NMEAMain_DecodingEngine(void)
             u8NmeaDecMsgCounter = 0;
             NmeaDecodeState     = eNMEA_DECODE_WAIT_DATA;
             
-            _DioWritePin(cDioPin_GpsLed, 1);
+            //_DioWritePin(cDioPin_GpsLed, 1);
+            _DioTogglePin(cDioPin_GpsLed);
         }
 
         break;
