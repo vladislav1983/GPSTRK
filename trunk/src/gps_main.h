@@ -36,8 +36,8 @@
 #define cGPS_NMEA_VTG_BuffIndex         2
 #define cGPS_BuffersNb                  3
 
-#define cGPS_NMEA_GGA_MsgLen            79UL
-#define cGPS_NMEA_RMC_MsgLen            69UL
+#define cGPS_NMEA_GGA_MsgLen            71UL
+#define cGPS_NMEA_RMC_MsgLen            70UL
 #define cGPS_NMEA_VTG_MsgLen            36UL
 
 #define cGPS_NMEA_GGA_BufferLen         (cGPS_NMEA_GGA_MsgLen + 1UL) // + 1 for null terminating character '\0'
