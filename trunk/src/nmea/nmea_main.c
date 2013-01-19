@@ -32,7 +32,7 @@
  * Local constants
  *===================================================================================================================*/
 #define cNMEAMainTaskPeruidUs           10000UL
-#define cNMEACommTimeoutUs              300000UL
+#define cNMEACommTimeoutUs              100000UL
 #define cNMEAProcessingTimeoutUs        700000UL
 
 
@@ -115,80 +115,27 @@ void __attribute__((user_init)) NMEAMain_Init(void)
  *===================================================================================================================*/
 void NMEAMain_DecodeTask(void)
 {
-    if(NmeaDecodeState == eNMEA_DECODE_WAIT_DATA)
-    {
-        if(cTrue == OSIsTimerElapsed(&NMEADecodeCommTimeout, (cNMEACommTimeoutUs/cOsTimerTickUs)))
-        {
-            // Clear processing timer
-            OSStartTimer(&NMEAProcessingTimeout);
-            // Start to decode message
-            u8NmeaDecMsgCounter = 0;
-            NmeaDecodeState = eNMEA_DECODE_PROCESSING;
-        }
-    }
-    else if(cTrue == OSIsTimerElapsed(&NMEAProcessingTimeout, (cNMEAProcessingTimeoutUs/cOsTimerTickUs)))
-    {
-        // processing delay too much time. reset state to wait new data
-        NmeaDecodeState = eNMEA_DECODE_WAIT_DATA;
-    }
-}
-
-/*=====================================================================================================================
- * Parameters: void 
- *
- * Return: void
- *
- * Description: run in idle task
- *===================================================================================================================*/
-void NMEAMain_DecodingEngine(void)
-{
+    U16 u16Index;
     tMsg Msg;
 
-    switch(NmeaDecodeState)
+    if(    (cFalse != OSIsTimerStarted(&NMEADecodeCommTimeout))
+        && (cFalse != OSIsTimerElapsed(&NMEADecodeCommTimeout, (cNMEACommTimeoutUs/cOsTimerTickUs))))
     {
-    //------------------------------------------------------------------------------------------------------------------
-    // eNMEA_DECODE_WAIT_DATA
-    //------------------------------------------------------------------------------------------------------------------
-    case eNMEA_DECODE_WAIT_DATA:
-        // Do nothing
-        break;
-    //------------------------------------------------------------------------------------------------------------------
-    // eNMEA_DECODE_WAIT_DATA
-    //------------------------------------------------------------------------------------------------------------------
-    case eNMEA_DECODE_PROCESSING:
+        OSStopTimer(&NMEADecodeCommTimeout);
+
+        // Decode GPS messages
+        for(u16Index = 0; u16Index < cGPS_BuffersNb; u16Index++)
+        {
+            (void)NMEAMain_MsgDecode(u16Index);
+        }
+
+        Msg.pBuff = (U8*)&GPS_STSTUS_FLAGS;
+        Msg.Lng = sizeof(GPS_STSTUS_FLAGS);
+
+        AppStatemachine_GpsMsgReceivedCallback(Msg);
+        GPS_STSTUS_FLAGS = 0;
         
-        if(u8NmeaDecMsgCounter < cGPS_BuffersNb)
-        {
-            if(S_OK != NMEAMain_MsgDecode(u8NmeaDecMsgCounter))
-            {
-                // error in processing. reset state and wait new data
-                GPS_STSTUS_FLAGS = 0;
-                u8NmeaDecMsgCounter = 0;
-                NmeaDecodeState = eNMEA_DECODE_WAIT_DATA;
-            }
-            ++u8NmeaDecMsgCounter;
-            _DioWritePin(cDioPin_GpsLed, 0);
-        }
-        else
-        {
-            Msg.pBuff = (U8*)&GPS_STSTUS_FLAGS;
-            Msg.Lng = sizeof(GPS_STSTUS_FLAGS);
-
-            AppStatemachine_GpsMsgReceivedCallback(Msg);
-            GPS_STSTUS_FLAGS = 0;
-
-            // processing done. wait for data
-            u8NmeaDecMsgCounter = 0;
-            NmeaDecodeState     = eNMEA_DECODE_WAIT_DATA;
-            
-            //_DioWritePin(cDioPin_GpsLed, 1);
-            _DioTogglePin(cDioPin_GpsLed);
-        }
-
-        break;
-    default:
-        _assert(cFalse);
-        break;
+        _DioTogglePin(cDioPin_GpsLed);
     }
 }
 
@@ -201,9 +148,7 @@ void NMEAMain_DecodingEngine(void)
  *===================================================================================================================*/
 void NmeaMain_RxCharCallback(void)
 {
-    // reset communication timeout only when data is waiting 
-    if(NmeaDecodeState == eNMEA_DECODE_WAIT_DATA)
-        OSStartTimer(&NMEADecodeCommTimeout);
+    OSStartTimer(&NMEADecodeCommTimeout);
 }
 
 /*=====================================================================================================================
@@ -249,7 +194,7 @@ static HRESULT NMEAMain_MsgDecode(U8 u8MsgIndex)
                 }
             }
         }
-        
+
         // flush buffer
         GPSMain_ClearMsgBuff(u8CurrentBuffIndex);
     }

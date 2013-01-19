@@ -201,7 +201,7 @@ void GpsMain_RxCallback(U8 u8Char)
         if(u8BuffCounter >= cTempBufferSize)
         {
             // check message header $GPxxx or $PMTK
-            if(strcmp((const char*)cu8NMEA_GGA_HEADER, (const char*)au8TempBuffer) == 0)
+            if((0 == strcmp((const char*)cu8NMEA_GGA_HEADER, (const char*)au8TempBuffer)))
             {
                 // it is a GGA message
                 memcpy(GPS_MSgBuffer[cGPS_NMEA_GGA_BuffIndex].pBuff, au8TempBuffer, cNMEA_HeaderSize);
@@ -211,7 +211,7 @@ void GpsMain_RxCallback(U8 u8Char)
 
                 GpsDispatchState = eNMEAMsgCollect;
             }
-            else if(strcmp((const char*)au8TempBuffer, (const char*)cu8NMEA_RMC_HEADER) == 0)
+            else if((0 == strcmp((const char*)au8TempBuffer, (const char*)cu8NMEA_RMC_HEADER)))
             {
                 // it is a RMC message
                 memcpy(GPS_MSgBuffer[cGPS_NMEA_RMC_BuffIndex].pBuff, au8TempBuffer, cNMEA_HeaderSize);
@@ -221,7 +221,7 @@ void GpsMain_RxCallback(U8 u8Char)
 
                 GpsDispatchState = eNMEAMsgCollect;
             }
-            else if(strcmp((const char*)au8TempBuffer, (const char*)cu8NMEA_VTG_HEADER) == 0)
+            else if((0 == strcmp((const char*)au8TempBuffer, (const char*)cu8NMEA_VTG_HEADER)))
             {
                 // it is a VTG message
                 memcpy(GPS_MSgBuffer[cGPS_NMEA_VTG_BuffIndex].pBuff, au8TempBuffer, cNMEA_HeaderSize);
