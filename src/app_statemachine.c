@@ -139,7 +139,7 @@ void App_StatemachineTask(void)
 
         if((GpsStatusLocal & cGPS_STAT_ONLINE_SET) && (GpsStatusLocal & cGPS_STAT_MODE_SET))
         {
-            AppState = eAPP_STATE_WAIT_TIME_SYNC;
+            //AppState = eAPP_STATE_WAIT_TIME_SYNC;
         }
 
         break;
