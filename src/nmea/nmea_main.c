@@ -172,7 +172,7 @@ static HRESULT NMEAMain_MsgDecode(U8 u8MsgIndex)
     U16 u16MsgFieldsCount;
 
     // verify buffer size
-    if(u8CurrentBuffSize == GPSMain_GetDataCnt(u8CurrentBuffIndex))
+    //if(u8CurrentBuffSize == GPSMain_GetDataCnt(u8CurrentBuffIndex))
     {
         // get buffer
         Msg.pBuff = &u8TempBuffer[0];
@@ -193,10 +193,10 @@ static HRESULT NMEAMain_MsgDecode(U8 u8MsgIndex)
                     result = S_OK;
                 }
             }
-        }
 
-        // flush buffer
-        GPSMain_ClearMsgBuff(u8CurrentBuffIndex);
+            // flush buffer
+            GPSMain_ClearMsgBuff(u8CurrentBuffIndex);
+        }
     }
 
     return result;
