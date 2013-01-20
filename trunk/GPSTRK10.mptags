@@ -5835,8 +5835,8 @@ Measure_Task	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.h	52;"	p	line:52	s
 ModeC	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	5399;"	l	line:5399
 Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	153;"	l	line:153
 Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	97;"	l	line:97
-Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	145;"	l	line:145
-Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	231;"	l	line:231
+Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	119;"	l	line:119
+Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	171;"	l	line:171
 N	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	43;"	m	line:43	struct:tagSRBITS::<anonymous>::<anonymous>
 NAC_TIMEOUT::(DWORD)0x40000	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	440;"	d	line:440
 NAME_8P3_ASCII_CAPS_TYPE	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	262;"	e	line:262	file:
@@ -5852,16 +5852,15 @@ NMEADecodeCommTimeout	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	
 NMEADecodeTaskAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	54;"	v	line:54	file:
 NMEAGga_Decoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpgga.c	142;"	f	line:142	signature:(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 NMEAGga_Decoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpgga.h	42;"	p	line:42	signature:(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
-NMEAMain_ChecksumCheck	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	272;"	f	line:272	file:	signature:(tMsg Msg)
+NMEAMain_ChecksumCheck	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	212;"	f	line:212	file:	signature:(tMsg Msg)
 NMEAMain_ChecksumCheck	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	80;"	p	line:80	file:	signature:(tMsg Msg)
 NMEAMain_DecodeTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	116;"	f	line:116	signature:(void)
 NMEAMain_DecodeTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.h	78;"	p	line:78	signature:(void)
-NMEAMain_DecodingEngine	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	143;"	f	line:143	signature:(void)
-NMEAMain_DecodingEngine	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.h	79;"	p	line:79	signature:(void)
 NMEAMain_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	96;"	f	line:96	signature:(void)
-NMEAMain_MessageTrim	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	315;"	f	line:315	file:	signature:(tMsg Msg)
+NMEAMain_MessageTrim	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	255;"	f	line:255	file:	signature:(tMsg Msg)
 NMEAMain_MessageTrim	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	81;"	p	line:81	file:	signature:(tMsg Msg)
-NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	226;"	f	line:226	file:	signature:(U8 u8MsgIndex)
+NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	129;"	p	line:129	file:
+NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	166;"	f	line:166	file:	signature:(U8 u8MsgIndex)
 NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	79;"	p	line:79	file:	signature:(U8 u8MsgIndex)
 NMEAProc_AprsProcessingTransmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	116;"	f	line:116	signature:(tNMEA_GPS_Data *GpsData)
 NMEAProc_AprsProcessingTransmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.h	46;"	p	line:46	signature:(tNMEA_GPS_Data *GpsData)
@@ -5904,7 +5903,7 @@ NmeaDecoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	111;"	m	line:111
 NmeaDecoderFct	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	107;"	t	line:107
 NmeaDecoders	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	73;"	v	line:73
 NmeaMain_RxCharCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	24;"	p	line:24	signature:(void)
-NmeaMain_RxCharCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	207;"	f	line:207	signature:(void)
+NmeaMain_RxCharCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	149;"	f	line:149	signature:(void)
 NmeaProc_SmartBeaconing	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	168;"	f	line:168	file:	signature:(tNMEA_GPS_Data *GpsData)
 NmeaProc_SmartBeaconing	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	84;"	p	line:84	file:	signature:(tNMEA_GPS_Data *GpsData)
 Nop::__builtin_nop	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\Compiler.h	106;"	d	line:106
@@ -13335,7 +13334,7 @@ cGPS_NMEA_RMC_BuffIndex::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	3
 cGPS_NMEA_RMC_MsgLen::70UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	40;"	d	line:40
 cGPS_NMEA_VTG_BuffIndex::2	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	36;"	d	line:36
 cGPS_NMEA_VTG_BufferLen::(cGPS_NMEA_VTG_MsgLen+1UL)	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	45;"	d	line:45
-cGPS_NMEA_VTG_MsgLen::36UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	41;"	d	line:41
+cGPS_NMEA_VTG_MsgLen::37UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	41;"	d	line:41
 cGPS_ParityBits::UART_NO_PAR_8BIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	28;"	d	line:28
 cGPS_STATUS_DGPS_FIX::2	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	94;"	d	line:94
 cGPS_STATUS_FIX::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	93;"	d	line:93
@@ -14062,8 +14061,8 @@ ptr	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	115;"	l	line:115
 ptr0	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3953;"	l	line:3953
 ptr1	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3953;"	l	line:3953
 pu16AdcBasePtr	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	153;"	l	line:153
-pu8Buff	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	317;"	l	line:317
-pu8BuffPtrL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	275;"	l	line:275
+pu8Buff	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	257;"	l	line:257
+pu8BuffPtrL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	215;"	l	line:215
 pu8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpvtg.c	110;"	l	line:110
 pu8NmeaFields	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	60;"	v	line:60	file:
 pu8ddmmyyL	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	125;"	l	line:125
@@ -14138,8 +14137,8 @@ result	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	8609;"	l	line:8609
 result	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	9870;"	l	line:9870
 result	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	2118;"	l	line:2118
 result	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	141;"	l	line:141
-result	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	228;"	l	line:228
-result	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	274;"	l	line:274
+result	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	168;"	l	line:168
+result	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	214;"	l	line:214
 results	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	278;"	m	line:278
 ret	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	353;"	l	line:353
 returnPointer	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	9390;"	l	line:9390
@@ -14200,7 +14199,7 @@ spixbuf	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2565;"	m	line:2
 spixcon1	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2562;"	m	line:2562	struct:tagSPI
 spixcon2	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2563;"	m	line:2563	struct:tagSPI
 spixstat	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2561;"	m	line:2561	struct:tagSPI
-sprintf	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	296;"	p	line:296	file:	signature:(char *)u8CalcChecksumString, Ó, u8CalculatedChecksum
+sprintf	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	236;"	p	line:236	file:	signature:(char *)u8CalcChecksumString, Ó, u8CalculatedChecksum
 sram_v1_1	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\periph_features_mcp.h	110;"	d	line:110
 src	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3222;"	l	line:3222
 src	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	4862;"	l	line:4862
@@ -14669,7 +14668,7 @@ u16ByteIdx	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	111;"	l	line:111
 u16ByteIdx	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	146;"	l	line:146
 u16Checksum	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	154;"	l	line:154
 u16ConfAprsSbInterval_sec	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	63;"	m	line:63	struct:sDeviceConfigParams
-u16Count	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	318;"	l	line:318
+u16Count	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	258;"	l	line:258
 u16Crc	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	164;"	v	line:164	file:
 u16Crc	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	113;"	l	line:113
 u16Crc	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	147;"	l	line:147
@@ -14684,8 +14683,9 @@ u16Idx	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	150;"	l	line:150
 u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	200;"	l	line:200
 u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	127;"	l	line:127
 u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	84;"	l	line:84
+u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	118;"	l	line:118
 u16LineL	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	83;"	l	line:83
-u16MsgFieldsCount	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	232;"	l	line:232
+u16MsgFieldsCount	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	172;"	l	line:172
 u16NbSlot	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	81;"	l	line:81
 u16OldHour	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	148;"	l	line:148
 u16SYSTEM_FLAGS	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	85;"	v	line:85
@@ -14714,11 +14714,11 @@ u8Altitude	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	75;"	m	line:75	st
 u8BuffCounter	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	52;"	v	line:52	file:
 u8BufferIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	113;"	m	line:113	struct:tsNmeaDecoders
 u8BufferSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	114;"	m	line:114	struct:tsNmeaDecoders
-u8CalcChecksumString	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	278;"	l	line:278
-u8CalculatedChecksum	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	276;"	l	line:276
+u8CalcChecksumString	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	218;"	l	line:218
+u8CalculatedChecksum	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	216;"	l	line:216
 u8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpgga.c	145;"	l	line:145
 u8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gprmc.c	141;"	l	line:141
-u8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	277;"	l	line:277
+u8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	217;"	l	line:217
 u8ConfAprsPropath	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	55;"	m	line:55	struct:sDeviceConfigParams
 u8ConfAprsSbHighSpeedLimit_kmh	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	67;"	m	line:67	struct:sDeviceConfigParams
 u8ConfAprsSbLowSpeedLimit_kmh	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	66;"	m	line:66	struct:sDeviceConfigParams
@@ -14734,9 +14734,9 @@ u8ConfigBeaonText	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	70;"	m	li
 u8ConfigTrackerVersion	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	69;"	m	line:69	struct:sDeviceConfigParams
 u8Course	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	76;"	m	line:76	struct:tsAX25_GPS_Data
 u8CurrentBuffIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	53;"	v	line:53	file:
-u8CurrentBuffIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	229;"	l	line:229
+u8CurrentBuffIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	169;"	l	line:169
 u8CurrentBuffSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	54;"	v	line:54	file:
-u8CurrentBuffSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	230;"	l	line:230
+u8CurrentBuffSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	170;"	l	line:170
 u8Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	237;"	l	line:237
 u8Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	275;"	l	line:275
 u8DataCnt	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	236;"	l	line:236
