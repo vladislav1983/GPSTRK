@@ -128,7 +128,7 @@ tAprsTrmtCmd NMEAProc_AprsProcessingTransmit(tNMEA_GPS_Data *GpsData)
     // get system time in seconds
     u32CurrentSystemTime = VTime_GetSystemTick();
 
-    if(u16BeaconingDownCounter > (U16)(u32CurrentSystemTime - u32SystemTime))
+    if(u16BeaconingDownCounter < (U16)(u32CurrentSystemTime - u32SystemTime))
     {
         // send tracker info
         BeaconTypeSend = cAprsProcSendTrackerInfo;
@@ -212,7 +212,7 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData)
     // do smart beaconing if beacon interval = 0 sec
     if (DeviceConfigParams.u16ConfAprsSbInterval_sec != 0)
     {
-        if(DeviceConfigParams.u16ConfAprsSbInterval_sec > (U16)(u32BeaconTimeStamp - u32BeaconTime))
+        if(DeviceConfigParams.u16ConfAprsSbInterval_sec < (U16)(u32BeaconTimeStamp - u32BeaconTime))
         {
             bBeaconSend = cTrue;
             u32BeaconTime = u32BeaconTimeStamp;

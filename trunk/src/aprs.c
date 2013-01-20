@@ -46,8 +46,8 @@
 #define cAprs_PID_Pos_wo_timestamp_aprs         '='
 #define cAprs_PID_Pos_with_timestamp_aprs       '@'
 
-#define cAprsTaskPeriod_us                      80E3
-#define cAprs_PttActivePeriod_ms                160UL
+#define cAprsTaskPeriod_us                      40E3
+#define cAprs_PttActivePeriod_ms                40UL
 
 /*=====================================================================================================================
  * Local macros
@@ -74,6 +74,7 @@ static U8  u8Propath;
 static tAprsTrmtState AprsTrmtState = eAPRS_IDLE;
 static tOSAlarm AprsTaskAlarm;
 static tOSTimer AprsTimer;
+static BOOL bAprsTxType;
 
 /*=====================================================================================================================
  * Constant Local Data
@@ -112,6 +113,7 @@ void __attribute__((user_init)) Arps_Init(void)
     memset(&au8AprsBuff[0], 0, sizeof(au8AprsBuff));
     u8Propath = 0;
     AprsTrmtState = eAPRS_IDLE;
+    bAprsTxType = cAPRS_TransmitTrackerInfo;
 
     AprsTaskAlarm.TaskID = cAprsTaskId;
     OsSetAlarm(&AprsTaskAlarm, (cAprsTaskPeriod_us/cOsAlarmTickUs));
@@ -149,8 +151,10 @@ void Aprs_Task(void)
     //------------------------------------------------------------------------------------------------------------------
     case eAprs_TRMT_TRANSMIT:
 
-        // transmit aprs message. TX callback will reset state machine state
+        // transmit aprs info message. 
+        (void)Aprs_Transmit(bAprsTxType);
 
+        AprsTrmtState = eAPRS_IDLE;
 
         break;
     //------------------------------------------------------------------------------------------------------------------
@@ -201,7 +205,20 @@ void Aprs_TransmitCallback(tCtrl Ctrl)
  *===================================================================================================================*/
 void Aprs_Control(tControl Control)
 {
-    
+    if(Control == cAPRS_TransmitTrackerInfo)
+    {
+        bAprsTxType = cAPRS_TransmitTrackerInfo;
+        AprsTrmtState = eAprs_TRMT_SET_PTT;
+    }
+    else if(Control == cAPRS_TransmitData)
+    {
+         bAprsTxType = cAPRS_TransmitData;
+         AprsTrmtState = eAprs_TRMT_SET_PTT;
+    }
+    else
+    {
+        _assert(cFalse);
+    }
 }
 
 /*=====================================================================================================================
@@ -226,9 +243,23 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
     U16 u16Checksum;
     F32 f32Tmp;
 
-    if(AprsTrmtState != eAPRS_IDLE)
+//     if(AprsTrmtState != eAPRS_IDLE)
+//     {
+//         return(res);
+//     }
+
+    // Don't do proportional pathing if 255
+    if(DeviceConfigParams.u8ConfAprsPropath == 0xFFu)
     {
-        return(res);
+        u8Propath = 3;
+    }
+    else if(DeviceConfigParams.u8ConfAprsPropath == u8Propath)
+    {
+        u8Propath = 0;
+    }
+    else
+    {
+        u8Propath++;
     }
 
     AX25_Control(cAX25CtrlStop);
