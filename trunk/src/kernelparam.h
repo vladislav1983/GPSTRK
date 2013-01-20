@@ -28,6 +28,7 @@
 #include "app_statemachine.h"
 #include "fsio_main.h"
 #include "measure.h"
+#include "aprs.h"
 
 /*=====================================================================================================================
  * Constant data                                                              
@@ -38,13 +39,13 @@
 /*0 */#define cIdleTaskId                           ((tOSTaskID)(0x00000000)) /* Idle task always have ID = 0 */
 /*1 */#define cRefreshWatchDogTaskId                ((tOSTaskID)(1UL<<(0UL)))
 /*2 */#define cSysTimeTaskId                        ((tOSTaskID)(1UL<<(1UL)))
-/*3 */#define cMeasureTaskId                        ((tOSTaskID)(1UL<<(2UL)))
-/*4 */#define cFSIOTaskId                           ((tOSTaskID)(1UL<<(3UL)))
-/*5 */#define cDioTaskId                            ((tOSTaskID)(1UL<<(4UL)))
-/*6 */#define cNMEAMainDecodeTaskID                 ((tOSTaskID)(1UL<<(5UL)))
-/*7 */#define cAppStatemachineTaskId                ((tOSTaskID)(1UL<<(6UL)))
-/*8 */#define cOsTimerTaskId                        ((tOSTaskID)(1UL<<(7UL)))
-///*9*/ #define cxxxTaskId                          ((tOSTaskID)(1UL<<(8UL)))   // (0x00000100)
+/*3 */#define cAprsTaskId                           ((tOSTaskID)(1UL<<(2UL)))
+/*4 */#define cMeasureTaskId                        ((tOSTaskID)(1UL<<(3UL)))
+/*5 */#define cFSIOTaskId                           ((tOSTaskID)(1UL<<(4UL)))
+/*6 */#define cDioTaskId                            ((tOSTaskID)(1UL<<(5UL)))
+/*7 */#define cNMEAMainDecodeTaskID                 ((tOSTaskID)(1UL<<(6UL)))
+/*8 */#define cAppStatemachineTaskId                ((tOSTaskID)(1UL<<(7UL)))
+/*9 */#define cOsTimerTaskId                        ((tOSTaskID)(1UL<<(8UL)))
 ///*10*/ #define cxxxTaskId                         ((tOSTaskID)(1UL<<(9UL)))   // (0x00000200)
 ///*11*/ #define cxxxTaskId                         ((tOSTaskID)(1UL<<(10UL)))  // (0x00000400)
 ///*12*/ #define cxxxTaskId                         ((tOSTaskID)(1UL<<(11UL)))  // (0x00000800)
@@ -52,7 +53,7 @@
 /*
 ** ************* Define task number here - include idle task *************
 */
-#define cOsTaskNumber                             9
+#define cOsTaskNumber                               10UL
 /*
 ** ************* Define task list here *************
 **
@@ -68,14 +69,14 @@
 /* 0 */      OsIdleTask,                        /*	IDLE task is only at position 0     */\
 /* 1 */      RefreshWatchDogTask,               /*	Refresh WatchDog task               */\
 /* 2 */      VTime_Task,                        /*	System time task                    */\
-/* 3 */      Measure_Task,                      /*	Analog measurements task            */\
-/* 4 */      FSIO_Task,                         /*	SD Card polling task                */\
-/* 5 */      DioTask,                           /* 	DIO task                            */\
-/* 6 */      NMEAMain_DecodeTask,               /* 	NMEA decoder                        */\
-/* 7 */      App_StatemachineTask,              /* 	Application state machine task      */\
-/* 8 */      OsTimerTask                        /* 	OS timer task - Highest priority    */\
+/* 3 */      Aprs_Task,                         /*	APRS transmission task              */\
+/* 4 */      Measure_Task,                      /*	Analog measurements task            */\
+/* 5 */      FSIO_Task,                         /*	SD Card polling task                */\
+/* 6 */      DioTask,                           /* 	DIO task                            */\
+/* 7 */      NMEAMain_DecodeTask,               /* 	NMEA decoder                        */\
+/* 8 */      App_StatemachineTask,              /* 	Application state machine task      */\
+/* 9 */      OsTimerTask                        /* 	OS timer task - Highest priority    */\
 }
-
 
 /*
 ** Define here OS interrupts level. This is maximum level of interrupt priority which OS will operate.

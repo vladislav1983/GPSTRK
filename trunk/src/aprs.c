@@ -21,6 +21,9 @@
  * Included files to resolve specific definitions in this file
  *===================================================================================================================*/
 #include "aprs.h"
+#include "alarm.h"
+#include "kerneltimer.h"
+#include "kernelparam.h"
 #include "tools.h"
 #include "devconfig.h"
 #include "gps_main.h"
@@ -45,6 +48,8 @@
 #define cAprs_PID_Pos_wo_timestamp_aprs         '='
 #define cAprs_PID_Pos_with_timestamp_aprs       '@'
 
+#define cAprsTaskPeriod_us                      80E3
+#define cAprs_PttActivePeriod_ms                160UL
 
 /*=====================================================================================================================
  * Local macros
@@ -57,8 +62,9 @@
  *===================================================================================================================*/
 typedef enum teAprsTrmtState
 {
-    eAPRS_TRMT_UNINIT = 0,
-    eAPRS_TRMT_IN_PROGRESS,
+    eAprs_TRMT_SET_PTT,
+    eAprs_TRMT_TRANSMIT,
+    eAPRS_TRMT_WAIT,
     eAPRS_IDLE
 }tAprsTrmtState;
 
@@ -67,7 +73,9 @@ typedef enum teAprsTrmtState
  *===================================================================================================================*/
 static U8 au8AprsBuff[cAPRS_BufferSize];
 static U8  u8Propath;
-static tAprsTrmtState AprsTrmtState = eAPRS_TRMT_UNINIT;
+static tAprsTrmtState AprsTrmtState = eAPRS_IDLE;
+static tOSAlarm AprsTaskAlarm;
+static tOSTimer AprsTimer;
 
 /*=====================================================================================================================
  * Constant Local Data
@@ -86,7 +94,7 @@ static const U8 au8AprsAltitudeHeader[] = "/A=";
 /*=====================================================================================================================
  * Local Functions Prototypes
  *===================================================================================================================*/
-
+static HRESULT Aprs_Transmit(BOOL bTrmtStatus);
 
 
 /*=====================================================================================================================
@@ -106,6 +114,10 @@ void __attribute__((user_init)) Arps_Init(void)
     memset(&au8AprsBuff[0], 0, sizeof(au8AprsBuff));
     u8Propath = 0;
     AprsTrmtState = eAPRS_IDLE;
+
+    AprsTaskAlarm.TaskID = cAppStatemachineTaskId;
+    OsSetAlarm(&AprsTaskAlarm, (cAprsTaskPeriod_us/cOsAlarmTickUs));
+
     // Config PTT pin as open drain
     _DioWritePin(cDioPin_PTT, 0);
     _DioPinOpenDrainConfig(cDioPin_PTT, cPinOpenDrainMode);
@@ -113,10 +125,52 @@ void __attribute__((user_init)) Arps_Init(void)
 }
 
 /*=====================================================================================================================
- *                                                                            
- *                                     L O C A L    F U N C T I O N S                   
- *                                                                            
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
  *===================================================================================================================*/
+void Aprs_Task(void)
+{
+    switch(AprsTrmtState)
+    {
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPRS_IDLE:
+        // do nothing in this state
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAprs_TRMT_SET_PTT:
+        _DioWritePin(cDioPin_PTT, 1);
+
+        OSStartTimer(&AprsTimer);
+
+        AprsTrmtState = eAPRS_TRMT_WAIT;
+
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAprs_TRMT_TRANSMIT:
+
+        // transmit aprs message. TX callback will reset state machine state
+
+
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPRS_TRMT_WAIT:
+        
+        if(cFalse != OSIsTimerElapsed(&AprsTimer, (cAprs_PttActivePeriod_ms/cOsTimerTickUs)))
+        {
+            AprsTrmtState = eAprs_TRMT_TRANSMIT;
+        }
+
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    default:
+        _assert(cFalse);
+        AprsTrmtState = eAPRS_IDLE;
+    }
+}
+
 /*=====================================================================================================================
  * Parameters: void
  *
@@ -129,6 +183,9 @@ void Aprs_TransmitCallback(tCtrl Ctrl)
     if(Ctrl == cAprsCallbackCtrlOK)
     {
         App_Statemachine_AprsMsgTxOkCallback();
+        // immediately clear PTT pin
+        _DioWritePin(cDioPin_PTT, 0);
+
         AprsTrmtState = eAPRS_IDLE;
     }
     else
@@ -144,7 +201,24 @@ void Aprs_TransmitCallback(tCtrl Ctrl)
  *
  * Description: 
  *===================================================================================================================*/
-HRESULT Aprs_Transmit(BOOL bTrmtStatus)
+void Aprs_Control(tControl Control)
+{
+    
+}
+
+/*=====================================================================================================================
+ *                                                                            
+ *                                     L O C A L    F U N C T I O N S                   
+ *                                                                            
+ *===================================================================================================================*/
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
 {
     HRESULT res = S_NOK;
     U16 u16Idx;
@@ -159,7 +233,7 @@ HRESULT Aprs_Transmit(BOOL bTrmtStatus)
         return(res);
     }
 
-    AX25_Control(cAprsCtrlStop);
+    AX25_Control(cAX25CtrlStop);
 
 //  AX.25 UI-FRAME FORMAT
 //      ___________________________________________________________________________________________________________
@@ -302,10 +376,14 @@ HRESULT Aprs_Transmit(BOOL bTrmtStatus)
 
     if(S_OK == AX25_SendData(Msg))
     {
-        AprsTrmtState = eAPRS_TRMT_IN_PROGRESS;
-        AX25_Control(cAprsCtrlStartTrmt);
+        AX25_Control(cAX25CtrlStartTrmt);
         res = S_OK;
     }
 
     return res;
 }
+
+
+
+
+

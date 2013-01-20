@@ -230,7 +230,7 @@ void __attribute__((user_init)) AX25_Init(void)
  *===================================================================================================================*/
 void AX25_Control(tControl Ctrl)
 {
-    if(Ctrl == cAprsCtrlStartTrmt)
+    if(Ctrl == cAX25CtrlStartTrmt)
     {
         if(AX25Msg.pBuff != NULL && AX25Msg.Lng != 0)
         {
@@ -244,7 +244,7 @@ void AX25_Control(tControl Ctrl)
             cAX25SetIdle();
         }
     } 
-    else if(Ctrl == cAprsCtrlStop)
+    else if(Ctrl == cAX25CtrlStop)
     {
         AX25Msg.pBuff = NULL;
         AX25Msg.Lng = 0;
