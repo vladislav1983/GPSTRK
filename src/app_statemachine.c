@@ -137,7 +137,7 @@ void App_StatemachineTask(void)
 
         if((GpsStatusLocal & cGPS_STAT_ONLINE_SET) && (GpsStatusLocal & cGPS_STAT_MODE_SET))
         {
-            //AppState = eAPP_STATE_WAIT_TIME_SYNC;
+            AppState = eAPP_STATE_WAIT_TIME_SYNC;
         }
 
         break;
@@ -151,16 +151,7 @@ void App_StatemachineTask(void)
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_NMEA_MSG_POOL:
 
-        if (    (bGpsMsgReceived                         )
-            &&  (GpsStatusLocal & cGPS_STAT_ONLINE_SET   )
-            &&  (GpsStatusLocal & cGPS_STAT_MODE_SET     )
-            &&  (GpsStatusLocal & cGPS_STAT_STATUS_SET   )
-            &&  (GpsStatusLocal & cGPS_STAT_TIME_SET     )
-            &&  (GpsStatusLocal & cGPS_STAT_DATE_SET     )
-            &&  (GpsStatusLocal & cGPS_STAT_LATLON_SET   )
-            &&  (GpsStatusLocal & cGPS_STAT_ALTITUDE_SET )
-            &&  (GpsStatusLocal & cGPS_STAT_SPEED_SET    )
-            &&  (GpsStatusLocal & cGPS_STAT_COURSE_SET   ))
+        if (bGpsMsgReceived                         )
         {
             // set file system date and time
             if (S_OK == FSIOMain_SetTimeDate(&NMEA_GPS_Data))
@@ -184,23 +175,17 @@ void App_StatemachineTask(void)
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_APRS_TRANSMIT_DATA:
         
-/*
-        if(S_OK == Aprs_Transmit(cAPRS_TransmitData))
-            AppState = eAPP_ARRS_WAIT_TRANSMIT;
-        else
-            _assert(cFalse);
-*/
+        Aprs_Control(cAPRS_TransmitData);
+        
+        AppState = eAPP_ARRS_WAIT_TRANSMIT;
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_APRS_TRANSMIT_INFO:
 
-/*
-        if(S_OK == Aprs_Transmit(cAPRS_TransmitTrackerInfo))
-            AppState = eAPP_ARRS_WAIT_TRANSMIT;
-        else
-            _assert(cFalse);
-*/
+        Aprs_Control(cAPRS_TransmitTrackerInfo);
+
+        AppState = eAPP_ARRS_WAIT_TRANSMIT;
 
         break;
     //------------------------------------------------------------------------------------------------------------------
