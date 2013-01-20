@@ -113,7 +113,7 @@ void __attribute__((user_init)) Arps_Init(void)
     u8Propath = 0;
     AprsTrmtState = eAPRS_IDLE;
 
-    AprsTaskAlarm.TaskID = cAppStatemachineTaskId;
+    AprsTaskAlarm.TaskID = cAprsTaskId;
     OsSetAlarm(&AprsTaskAlarm, (cAprsTaskPeriod_us/cOsAlarmTickUs));
 
     // Config PTT pin as open drain
