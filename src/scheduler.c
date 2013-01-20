@@ -28,7 +28,7 @@
  * Local constants
  *===================================================================================================================*/
 /* This is the ID of task with highest priority */
-#define cTASK_MSB_ID         (((tOSTaskID) 1) << (cOsTaskNumber - (tOSTaskID)2))
+#define cTASK_MSB_ID         (((tOSTaskID) 1UL) << (cOsTaskNumber - (tOSTaskID)2UL))
 
 /*=====================================================================================================================
  * Local macros

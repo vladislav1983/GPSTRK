@@ -53,7 +53,6 @@ typedef enum teNmeaDecodeState
  *===================================================================================================================*/
 static tOSAlarm         NMEADecodeTaskAlarm;
 static tOSTimer         NMEADecodeCommTimeout;
-static tOSTimer         NMEAProcessingTimeout;
 static eNmeaDecodeState NmeaDecodeState;
 static U8               u8NmeaDecMsgCounter;
 static U8               u8TempBuffer[cNMEATempBufferSize];

@@ -186,19 +186,23 @@ void App_StatemachineTask(void)
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_APRS_TRANSMIT_DATA:
         
+/*
         if(S_OK == Aprs_Transmit(cAPRS_TransmitData))
             AppState = eAPP_ARRS_WAIT_TRANSMIT;
         else
             _assert(cFalse);
+*/
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_APRS_TRANSMIT_INFO:
 
+/*
         if(S_OK == Aprs_Transmit(cAPRS_TransmitTrackerInfo))
             AppState = eAPP_ARRS_WAIT_TRANSMIT;
         else
             _assert(cFalse);
+*/
 
         break;
     //------------------------------------------------------------------------------------------------------------------

@@ -26,9 +26,12 @@ extern void NmeaMain_RxCharCallback(void);
 /************************************************************************************************************************
 ** APRS 
 ************************************************************************************************************************/
-//controls
-#define cAprsCtrlStartTrmt                  0
-#define cAprsCtrlStop                       1
+// AX25 controls
+#define cAX25CtrlStartTrmt                  0
+#define cAX25CtrlStop                       1
+// APRS controls
+#define cAPRS_TransmitTrackerInfo           0
+#define cAPRS_TransmitData                  1
 // callback controls
 #define cAprsCallbackCtrlOK                 0
 #define cAprsCallbackCtrlError              1

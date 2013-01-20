@@ -31,7 +31,7 @@
 #elif (cOsTaskNumber <= 33U)
     typedef U32 tOSTaskID;
 #else
-    #error "The maximum task number is reached"
+    #error "The maximum task number is reached!"
 #endif
 
 typedef void (*tpOSTaskFct)(void);
