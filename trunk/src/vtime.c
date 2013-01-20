@@ -21,9 +21,7 @@
  * Included files to resolve specific definitions in this file
  *===================================================================================================================*/
 #include "vtime.h"
-#include "kerneltimer.h"
-#include "kernelparam.h"
-#include "kerneltimer.h"
+#include "kernelinclude.h"
 #include "aprs.h"
 
 /*=====================================================================================================================

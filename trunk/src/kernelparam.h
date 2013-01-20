@@ -13,11 +13,6 @@
 /*=====================================================================================================================
  * Included files to resolve specific definitions in this file                
  *===================================================================================================================*/
-#include "basedef.h"
-#include "alarm.h"
-#include "scheduler.h"
-#include "kerneltimer.h"
-#include "signal.h"
 /*
 ** Include here modules that contains task function
 */
