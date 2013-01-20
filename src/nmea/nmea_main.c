@@ -24,8 +24,7 @@
 #include "nmea_main.h"
 
 #include "alarm.h"
-#include "kernel.h"
-#include "kernelparam.h"
+#include "kernelinclude.h"
 
 
 /*=====================================================================================================================

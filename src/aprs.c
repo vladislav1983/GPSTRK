@@ -21,9 +21,7 @@
  * Included files to resolve specific definitions in this file
  *===================================================================================================================*/
 #include "aprs.h"
-#include "alarm.h"
-#include "kerneltimer.h"
-#include "kernelparam.h"
+#include "kernelinclude.h"
 #include "tools.h"
 #include "devconfig.h"
 #include "gps_main.h"

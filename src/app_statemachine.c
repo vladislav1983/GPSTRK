@@ -21,9 +21,7 @@
  * Included files to resolve specific definitions in this file
  *===================================================================================================================*/
 #include "app_statemachine.h"
-#include "alarm.h"
-#include "kerneltimer.h"
-#include "kernelparam.h"
+#include "kernelinclude.h"
 #include "FSIO.h"
 #include "devconfig.h"
 #include "nmea_process.h"

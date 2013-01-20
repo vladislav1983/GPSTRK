@@ -21,9 +21,7 @@
  * Included files to resolve specific definitions in this file
  *===================================================================================================================*/
 #include "dio.h"
-#include "alarm.h"
-#include "kernelparam.h"
-#include "kerneltimer.h"
+#include "kernelinclude.h"
 
 /*=====================================================================================================================
  * Local constants

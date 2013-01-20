@@ -21,7 +21,8 @@
  * Included files to resolve specific definitions in this file
  *===================================================================================================================*/
 #include "scheduler.h"
-#include "kernelparam.h"
+#include "alarm.h"
+#include "kerneltimer.h"
 
 
 /*=====================================================================================================================
