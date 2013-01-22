@@ -52,7 +52,11 @@
 /*=====================================================================================================================
  * Local macros
  *===================================================================================================================*/
-#define _AprsGetChar(ch)                        (((ch) << 1) & 0xFE)
+#if !defined(APRS_MSG_DEBUG)
+    #define _AprsGetChar(ch)                    (((ch) << 1) & 0xFE)
+#else
+    #define _AprsGetChar(ch)                    (((ch) << 0) & 0xFF)
+#endif
 #define _AprsTerminateField(ch)                 ((ch) = ((ch) + 1))
 
 /*=====================================================================================================================
@@ -242,11 +246,6 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
     tMsg Msg;
     U16 u16Checksum;
     F32 f32Tmp;
-
-//     if(AprsTrmtState != eAPRS_IDLE)
-//     {
-//         return(res);
-//     }
 
     // Don't do proportional pathing if 255
     if(DeviceConfigParams.u8ConfAprsPropath == 0xFFu)

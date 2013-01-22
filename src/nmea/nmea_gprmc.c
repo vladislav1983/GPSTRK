@@ -175,7 +175,9 @@ tGpsMask NMEARmc_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask Gp
         // get speed
         if(((GpsStatLocal & cGPS_STAT_SPEED_SET) == 0) && (*pu8GpsField[cRMC_SpeedIndex] != '\0'))
         {
+#if !defined(SMART_BEACONING_DEBUG)
             GpsData->u16GpsSpeed = atoi((const char*)pu8GpsField[cRMC_SpeedIndex]);
+#endif
             
             memset(GpsData->AX25_GPS_Data.u8Speed, '0', sizeof(GpsData->AX25_GPS_Data.u8Speed));
             // for ax15 it need a leading zeros.
@@ -192,7 +194,9 @@ tGpsMask NMEARmc_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask Gp
         // get course
         if(((GpsStatLocal & cGPS_STAT_COURSE_SET) == 0) && (*pu8GpsField[cRMC_CourseIndex] != '\0'))
         {
+#if !defined(SMART_BEACONING_DEBUG)
             GpsData->u16GpsCouse = atoi((const char*)pu8GpsField[cRMC_CourseIndex]);
+#endif
 
             memset(GpsData->AX25_GPS_Data.u8Course, '0', sizeof(GpsData->AX25_GPS_Data.u8Course));
             // for ax15 it need a leading zeros.

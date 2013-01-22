@@ -183,6 +183,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\kernelinclude.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\kernelparam.h"
 				>
 			</File>
