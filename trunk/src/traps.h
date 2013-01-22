@@ -40,16 +40,15 @@
  * Exported Macros                                                            
  *===================================================================================================================*/
 #ifdef __DEBUG
-    #define _assert(Cond)       \
-    do                                      \
-    {                                       \
-        if ((Cond) == 0)                    \
-        {                                   \
-            AssertExternal(__LINE__, __FILE__);     \
-        }                                   \
-    }while(0)
+    #define _assert(Cond)if(!(Cond)) {_dbgassert()}
 #else
-    #define _assert(Cond)  
+    #define _assert(Cond)  {}
+#endif
+
+#if defined(HALT_TO_DEBUGGER)
+    #define _dbgassert()    {__asm__ volatile (".pword 0xDA4000");__asm__ volatile (".pword 0xDA4000");}
+#else
+    #define _dbgassert()    {AssertExternal(__LINE__, __FILE__);}
 #endif
 /*=====================================================================================================================
  * Exported functions                     				                        

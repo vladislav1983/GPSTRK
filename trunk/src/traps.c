@@ -82,7 +82,9 @@ void __attribute__((noreturn)) AssertExternal(U16 u16Line, const char *File)
     volatile char DbgFileBuff[20];
     volatile U16 u16LineL = u16Line;
 
-    memcpy(DbgFileBuff, File, sizeof(DbgFileBuff));
+    (void)u16LineL;
+
+    sprintf((char*)&DbgFileBuff[0], " %s", File);
 
     _DioPinConfig(cDioPin_AssertLed, 1);
     _DioPinConfig(cDioPin_AssertLed, cPinModeOutput);

@@ -114,7 +114,9 @@ tGpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask Gp
         // get speed in meters
         pu8Char = (U8*)strchr((const char *)&pu8GpsField[cVTG_SpeedIndex], '.');
         memcpy(GpsData->AX25_GPS_Data.u8Speed, pu8Char, sizeof(GpsData->AX25_GPS_Data.u8Speed));
+#if !defined(SMART_BEACONING_DEBUG)
         GpsData->u16GpsSpeed = atoi((const char*)pu8Char);
+#endif
     }
 
     return tGpsMaskLocal;

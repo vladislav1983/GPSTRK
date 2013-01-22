@@ -109,9 +109,14 @@ typedef void (*tFuncCallbackData)(U8);
 #define _DECLARE_ISR(funct)         void __attribute__((__interrupt__,no_auto_psv)) (funct)(void)
 #define _DECLARE_ISRFAST(funct)     void __attribute__((__interrupt__,shadow)) (funct)(void)
 /* 
-** System base definitions
+** System debug definitions
 */
-
+#if defined(__DEBUG)
+    //#define SMART_BEACONING_DEBUG
+    //#define APRS_MSG_DEBUG
+    //#define APRS_DATA_DEBUG
+    #define HALT_TO_DEBUGGER
+#endif
 
 
 /*=====================================================================================================================

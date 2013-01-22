@@ -100,7 +100,8 @@ file_072=.
 file_073=.
 file_074=.
 file_075=.
-file_076=.
+file_076=kernel
+file_077=.
 [GENERATED_FILES]
 file_000=no
 file_001=no
@@ -179,6 +180,7 @@ file_073=no
 file_074=no
 file_075=no
 file_076=no
+file_077=no
 [OTHER_FILES]
 file_000=no
 file_001=no
@@ -257,6 +259,7 @@ file_073=no
 file_074=no
 file_075=no
 file_076=no
+file_077=no
 [FILE_INFO]
 file_000=src\dio.c
 file_001=src\gps_main.c
@@ -334,7 +337,8 @@ file_072=src\measure.h
 file_073=src\vadc.h
 file_074=src\ax25.h
 file_075=src\ax25_crc.h
-file_076=src\p24FJ128GA308.gld
+file_076=src\kernelinclude.h
+file_077=src\p24FJ128GA308.gld
 [SUITE_INFO]
 suite_guid={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 suite_state=

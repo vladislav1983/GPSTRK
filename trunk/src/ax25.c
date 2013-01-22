@@ -112,7 +112,6 @@ do                                                                              
             /* MARK is "1" = 1200Hz. Set 1200Hz timer trigger. */                                                       \
             _SetAprsTriggerTimerPeriod(c1200Hz_TriggerTimerIntPer_us);                                                  \
         }                                                                                                               \
-        _DioWritePin(cDioPin_DEBUG,(out_lev));                                                                          \
     }                                                                                                                   \
 } while (0);                                                                                                            \
 
@@ -434,6 +433,10 @@ _DECLARE_ISR(_T3Interrupt)
         _assert(cFalse);
         break;
     }
+
+#if defined(APRS_DATA_DEBUG)
+    _DioWritePin(cDioPin_DEBUG,(bAX25_OutputLevel));
+#endif
 
     T3_Clear_Intr_Status_Bit;
 }
