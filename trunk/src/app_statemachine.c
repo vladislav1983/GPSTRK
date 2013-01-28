@@ -126,8 +126,8 @@ void App_StatemachineTask(void)
     case eAPP_STATE_INIT:
 
         OSStartTimer(&AppStateTimer);
-        // wait 1s before configuration load
-        WaitTimeTicks = 1000UL/cOsTimerTick_ms;
+        // wait 2s before configuration load
+        WaitTimeTicks = 2000UL/cOsTimerTick_ms;
         AppState = eAPP_WAIT_STATE;
         AppNextState = eAPP_STATE_WAIT_GPS;
 
@@ -151,7 +151,7 @@ void App_StatemachineTask(void)
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_NMEA_MSG_POOL:
 
-        if (bGpsMsgReceived                         )
+        if (cFalse != bGpsMsgReceived)
         {
             // set file system date and time
             if (S_OK == FSIOMain_SetTimeDate(&NMEA_GPS_Data))

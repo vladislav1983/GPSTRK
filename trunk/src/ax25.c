@@ -231,7 +231,7 @@ void AX25_Control(tControl Ctrl)
 {
     if(Ctrl == cAX25CtrlStartTrmt)
     {
-        if(AX25Msg.pBuff != NULL && AX25Msg.Lng != 0)
+        if((AX25Msg.pBuff != NULL) && (AX25Msg.Lng != 0))
         {
 #if (RUNTIME_CRC_CALC == 1)
             u16Crc = cAprs_CRC_Init;
@@ -266,7 +266,9 @@ HRESULT AX25_SendData(tMsg Msg)
 {
     HRESULT res = S_NOK;
 
-    if(AX25TrmtState == eAX25_IDLE)
+    if(    (Msg.pBuff     != NULL)
+        && (Msg.Lng       != 0)
+        && (AX25TrmtState == eAX25_IDLE))
     {
         AX25Msg.pBuff = Msg.pBuff;
         AX25Msg.Lng = Msg.Lng;
@@ -420,6 +422,7 @@ _DECLARE_ISR(_T3Interrupt)
         {
             cAX25SetIdle();
             Aprs_TransmitCallback(cAprsCallbackCtrlOK);
+
             AX25TrmtState = eAX25_IDLE;
         }
         break;

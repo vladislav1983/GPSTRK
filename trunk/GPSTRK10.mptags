@@ -183,57 +183,64 @@ AWAITE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4944;"	m	line:49
 AWAITM	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4945;"	m	line:4945	struct:tagPMCON3BITS::<anonymous>::<anonymous>
 AWAITM0	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4954;"	m	line:4954	struct:tagPMCON3BITS::<anonymous>::<anonymous>
 AWAITM1	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4955;"	m	line:4955	struct:tagPMCON3BITS::<anonymous>::<anonymous>
-AX25Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	162;"	v	line:162	file:
-AX25TrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	161;"	v	line:161	file:
+AX25Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	161;"	v	line:161	file:
+AX25TrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	160;"	v	line:160	file:
 AX25_CRC_PURE_CALC::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.h	21;"	d	line:21
 AX25_CRC_TABLE_CALC::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.h	22;"	d	line:22
-AX25_Control	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	231;"	f	line:231	signature:(tControl Ctrl)
+AX25_Control	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	230;"	f	line:230	signature:(tControl Ctrl)
 AX25_Control	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.h	45;"	p	line:45	signature:(tControl Ctrl)
-AX25_DmaInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	184;"	p	line:184	file:	signature:(void)
+AX25_DmaInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	183;"	p	line:183	file:	signature:(void)
 AX25_GPS_Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	83;"	m	line:83	struct:tsNMEA_GPS_Data
-AX25_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	198;"	f	line:198	signature:(void)
+AX25_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	197;"	f	line:197	signature:(void)
 AX25_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.h	44;"	p	line:44	signature:(void)
-AX25_OutputCompareInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	183;"	p	line:183	file:	signature:(void)
-AX25_SendData	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	266;"	f	line:266	signature:(tMsg Msg)
+AX25_OutputCompareInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	182;"	p	line:182	file:	signature:(void)
+AX25_SendData	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	265;"	f	line:265	signature:(tMsg Msg)
 AX25_SendData	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.h	46;"	p	line:46	signature:(tMsg Msg)
-AX25_TimersInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	182;"	p	line:182	file:	signature:(void)
-AX25_TimersInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	448;"	f	line:448	file:	signature:(void)
+AX25_TimersInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	181;"	p	line:181	file:	signature:(void)
+AX25_TimersInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	454;"	f	line:454	file:	signature:(void)
 Adc_ConvertChannels	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	150;"	f	line:150	signature:(tMsg Msg)
 Adc_ConvertChannels	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.h	49;"	p	line:49	signature:(tMsg Msg)
 Adc_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	81;"	f	line:81	signature:(void)
 Adc_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.h	48;"	p	line:48	signature:(void)
-AddrError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	138;"	l	line:138
-Alarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	87;"	l	line:87	file:
+AddrError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	140;"	l	line:140
+Alarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	86;"	l	line:86	file:
 AlarmCycle	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	47;"	v	line:47	file:
 AlarmState	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	46;"	v	line:46	file:
 Alias_LFN_Object	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	334;"	p	line:334	file:	signature:(FILEOBJ fo)
 Alias_LFN_Object	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3695;"	f	line:3695	signature:(FILEOBJ fo)
-AllItState	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	79;"	v	line:79	file:
-AppNextState	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	65;"	v	line:65	file:
-AppState	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	64;"	v	line:64	file:
-AppStateAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	66;"	v	line:66	file:
-AppStateTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	67;"	v	line:67	file:
-AppStatemachine_GpsMsgReceivedCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	41;"	p	line:41	signature:(tMsg Msg)
-AppStatemachine_GpsMsgReceivedCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	249;"	f	line:249	signature:(tMsg Msg)
-App_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	104;"	f	line:104	signature:(void)
+AllItState	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	80;"	v	line:80	file:
+AppNextState	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	63;"	v	line:63	file:
+AppState	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	62;"	v	line:62	file:
+AppStateAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	64;"	v	line:64	file:
+AppStateTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	65;"	v	line:65	file:
+AppStatemachine_GpsMsgReceivedCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	44;"	p	line:44	signature:(tMsg Msg)
+AppStatemachine_GpsMsgReceivedCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	236;"	f	line:236	signature:(tMsg Msg)
+App_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	102;"	f	line:102	signature:(void)
 App_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.h	50;"	p	line:50	signature:(void)
-App_StatemachineTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	121;"	f	line:121	signature:(void)
+App_StatemachineTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	119;"	f	line:119	signature:(void)
 App_StatemachineTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.h	51;"	p	line:51	signature:(void)
-App_Statemachine_AprsMsgTxOkCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	42;"	p	line:42	signature:(void)
-App_Statemachine_AprsMsgTxOkCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	272;"	f	line:272	signature:(void)
-AprsTrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	70;"	v	line:70	file:
-Aprs_Transmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	147;"	f	line:147	signature:(BOOL bTrmtStatus)
-Aprs_Transmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.h	43;"	p	line:43	signature:(BOOL bTrmtStatus)
-Aprs_TransmitCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	36;"	p	line:36	signature:(tCtrl Ctrl)
-Aprs_TransmitCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	127;"	f	line:127	signature:(tCtrl Ctrl)
-Arps_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	104;"	f	line:104	signature:(void)
-Arps_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.h	42;"	p	line:42	signature:(void)
+App_Statemachine_AprsMsgTxOkCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	45;"	p	line:45	signature:(void)
+App_Statemachine_AprsMsgTxOkCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	259;"	f	line:259	signature:(void)
+AprsTaskAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	79;"	v	line:79	file:
+AprsTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	80;"	v	line:80	file:
+AprsTrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	78;"	v	line:78	file:
+Aprs_Control	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	210;"	f	line:210	signature:(tControl Control)
+Aprs_Control	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.h	43;"	p	line:43	signature:(tControl Control)
+Aprs_Task	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	138;"	f	line:138	signature:(void)
+Aprs_Task	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.h	42;"	p	line:42	signature:(void)
+Aprs_Transmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	100;"	p	line:100	file:	signature:(BOOL bTrmtStatus)
+Aprs_Transmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	159;"	p	line:159	file:
+Aprs_Transmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	240;"	f	line:240	file:	signature:(BOOL bTrmtStatus)
+Aprs_TransmitCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	39;"	p	line:39	signature:(tCtrl Ctrl)
+Aprs_TransmitCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	187;"	f	line:187	signature:(tCtrl Ctrl)
+Arps_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	115;"	f	line:115	signature:(void)
+Arps_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.h	41;"	p	line:41	signature:(void)
 AscciIndication	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	6960;"	l	line:6960
 AscciIndication	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	7260;"	l	line:7260
 AsciiEncodingType	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	238;"	m	line:238
 AsciiEncodingType	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	303;"	m	line:303
 AssertExternal	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	80;"	f	line:80	signature:(U16 u16Line, const char *File)
-AssertExternal	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.h	57;"	p	line:57	signature:(U16 u16Line, const char *File)
+AssertExternal	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.h	56;"	p	line:56	signature:(U16 u16Line, const char *File)
 B7	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	237;"	m	line:237
 B7	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	260;"	m	line:260
 B7	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	307;"	m	line:307
@@ -294,8 +301,8 @@ BYTE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3965;"	m	line:3965
 BYTE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4022;"	m	line:4022	struct:tagDMACH5BITS::<anonymous>::<anonymous>
 BYTE_BITS	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	371;"	t	line:371
 BYTE_VAL	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	371;"	t	line:371
-BeaconTypeSend	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	123;"	l	line:123
-BeaconTypeSend	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	119;"	l	line:119
+BeaconTypeSend	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	121;"	l	line:121
+BeaconTypeSend	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	120;"	l	line:120
 BusyUART1	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\vuart_mcp.h	408;"	p	line:408	signature:(void)
 BusyUART2	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\vuart_mcp.h	566;"	p	line:566	signature:(void)
 BusyUART3	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\vuart_mcp.h	725;"	p	line:725	signature:(void)
@@ -1479,25 +1486,25 @@ DataRdyUART3	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\vuart_mcp.h	71
 DataSec	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	1778;"	l	line:1778
 DateTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	89;"	m	line:89	struct:tsNMEA_GPS_Data
 DbgFileBuff	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	82;"	l	line:82
-Delay	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	155;"	l	line:155
-Delay	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	193;"	l	line:193
+Delay	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	154;"	l	line:154
+Delay	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	192;"	l	line:192
 Delayms	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	127;"	p	line:127	file:	signature:(BYTE milliseconds)
 Delayms	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	1842;"	f	line:1842	signature:(BYTE milliseconds)
 Devconfig_LoadConfig	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.c	75;"	f	line:75	signature:(void)
 Devconfig_LoadConfig	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	89;"	p	line:89	signature:(void)
 DeviceConfigParams	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.c	56;"	v	line:56
-DioFiltCounters	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	45;"	v	line:45	file:
-DioFilteredBuffer	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	62;"	v	line:62
-DioFilteringConstants	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	52;"	v	line:52	file:
-DioInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	82;"	f	line:82	signature:(void)
+DioFiltCounters	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	43;"	v	line:43	file:
+DioFilteredBuffer	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	60;"	v	line:60
+DioFilteringConstants	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	50;"	v	line:50	file:
+DioInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	80;"	f	line:80	signature:(void)
 DioInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	128;"	p	line:128	signature:(void)
-DioInputBuffer	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	46;"	v	line:46	file:
-DioTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	125;"	f	line:125	signature:(void)
+DioInputBuffer	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	44;"	v	line:44	file:
+DioTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	123;"	f	line:123	signature:(void)
 DioTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	129;"	p	line:129	signature:(void)
-DioTaskAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	44;"	v	line:44	file:
-Dio_ReadInputs	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	179;"	f	line:179	file:	signature:(void)
-Dio_ReadInputs	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	67;"	p	line:67	file:	signature:(void)
-DisableAllInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	307;"	f	line:307	signature:(U8 Level)
+DioTaskAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	42;"	v	line:42	file:
+Dio_ReadInputs	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	177;"	f	line:177	file:	signature:(void)
+Dio_ReadInputs	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	65;"	p	line:65	file:	signature:(void)
+DisableAllInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	308;"	f	line:308	signature:(U8 Level)
 DisableAllInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	59;"	p	line:59	signature:(U8 Level)
 DisableCN0::CNEN1bits.CN0IE=0	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\ports_mcp.h	1121;"	d	line:1121
 DisableCN0::CNEN1bits.CN0IE=0	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\ports_mcp.h	1154;"	d	line:1154
@@ -2972,7 +2979,7 @@ EXTR	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6469;"	m	line:6469
 EXTSAM	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3423;"	m	line:3423	struct:tagAD1CON3BITS::<anonymous>::<anonymous>
 E_FAIL::((HRESULT)0x03u)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	75;"	d	line:75
 E_INVALIDARG::((HRESULT)0x02u)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	74;"	d	line:74
-EnableAllInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	319;"	f	line:319	signature:(void)
+EnableAllInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	320;"	f	line:320	signature:(void)
 EnableAllInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	60;"	p	line:60	signature:(void)
 EnableCN0::CNEN1bits.CN0IE=1	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\ports_mcp.h	122;"	d	line:122
 EnableCN0::CNEN1bits.CN0IE=1	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\ports_mcp.h	158;"	d	line:158
@@ -4603,7 +4610,7 @@ GpsMain_RxCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	175;"	f	l
 GpsMain_RxCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	139;"	p	line:139	signature:(U8 u8Char)
 GpsStatLocal	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpgga.c	144;"	l	line:144
 GpsStatLocal	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gprmc.c	140;"	l	line:140
-GpsStatusLocal	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	70;"	v	line:70	file:
+GpsStatusLocal	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	68;"	v	line:68	file:
 HALFEN	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3762;"	m	line:3762	struct:tagDMAINT0BITS::<anonymous>::<anonymous>
 HALFEN	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3819;"	m	line:3819	struct:tagDMAINT1BITS::<anonymous>::<anonymous>
 HALFEN	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3876;"	m	line:3876	struct:tagDMAINT2BITS::<anonymous>::<anonymous>
@@ -4617,6 +4624,7 @@ HALFIF	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3936;"	m	line:39
 HALFIF	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3993;"	m	line:3993	struct:tagDMAINT4BITS::<anonymous>::<anonymous>
 HALFIF	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4050;"	m	line:4050	struct:tagDMAINT5BITS::<anonymous>::<anonymous>
 HALFSEC	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	5190;"	m	line:5190	struct:tagRCFGCALBITS::<anonymous>::<anonymous>
+HALT_TO_DEBUGGER	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	118;"	d	line:118
 HB	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	123;"	m	line:123	struct:<anonymous>::__PACKED
 HB	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	155;"	m	line:155	struct:<anonymous>::__PACKED
 HB	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	201;"	m	line:201	struct:<anonymous>::__PACKED
@@ -5690,9 +5698,9 @@ LW	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	476;"	m	line:47
 LastClusterLimit	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3057;"	l	line:3057
 LastClusterLimit	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	8147;"	l	line:8147
 LastClustervalue	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	1466;"	l	line:1466
-ListOfReadyTasks	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	70;"	v	line:70	file:
-ListOfSelectableTasks	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	71;"	v	line:71	file:
-LiveLedTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	47;"	v	line:47	file:
+ListOfReadyTasks	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	71;"	v	line:71	file:
+ListOfSelectableTasks	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	72;"	v	line:72	file:
+LiveLedTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	45;"	v	line:45	file:
 Lng	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	81;"	m	line:81
 LoadBootSector	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	1775;"	f	line:1775	signature:(DISK *dsk)
 LoadBootSector	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	389;"	p	line:389	file:	signature:(DISK *dsk)
@@ -5833,10 +5841,10 @@ Measure_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.h	51;"	p	line:51	s
 Measure_Task	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	95;"	f	line:95	signature:(void)
 Measure_Task	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.h	52;"	p	line:52	signature:(void)
 ModeC	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	5399;"	l	line:5399
-Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	153;"	l	line:153
+Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	246;"	l	line:246
 Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	97;"	l	line:97
-Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	119;"	l	line:119
-Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	171;"	l	line:171
+Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	117;"	l	line:117
+Msg	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	169;"	l	line:169
 N	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	43;"	m	line:43	struct:tagSRBITS::<anonymous>::<anonymous>
 NAC_TIMEOUT::(DWORD)0x40000	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	440;"	d	line:440
 NAME_8P3_ASCII_CAPS_TYPE	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	262;"	e	line:262	file:
@@ -5848,29 +5856,28 @@ NAME_8P3_UTF16_TYPE	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	264;"	e	l
 NAME_ERROR	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	269;"	e	line:269	file:
 NAME_LFN_TYPE	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	268;"	e	line:268	file:
 NCR_TIMEOUT::(WORD)20	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	439;"	d	line:439
-NMEADecodeCommTimeout	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	55;"	v	line:55	file:
-NMEADecodeTaskAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	54;"	v	line:54	file:
+NMEADecodeCommTimeout	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	54;"	v	line:54	file:
+NMEADecodeTaskAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	53;"	v	line:53	file:
 NMEAGga_Decoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpgga.c	142;"	f	line:142	signature:(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 NMEAGga_Decoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpgga.h	42;"	p	line:42	signature:(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
-NMEAMain_ChecksumCheck	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	212;"	f	line:212	file:	signature:(tMsg Msg)
-NMEAMain_ChecksumCheck	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	80;"	p	line:80	file:	signature:(tMsg Msg)
-NMEAMain_DecodeTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	116;"	f	line:116	signature:(void)
+NMEAMain_ChecksumCheck	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	210;"	f	line:210	file:	signature:(tMsg Msg)
+NMEAMain_ChecksumCheck	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	78;"	p	line:78	file:	signature:(tMsg Msg)
+NMEAMain_DecodeTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	114;"	f	line:114	signature:(void)
 NMEAMain_DecodeTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.h	78;"	p	line:78	signature:(void)
-NMEAMain_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	96;"	f	line:96	signature:(void)
-NMEAMain_MessageTrim	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	255;"	f	line:255	file:	signature:(tMsg Msg)
-NMEAMain_MessageTrim	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	81;"	p	line:81	file:	signature:(tMsg Msg)
-NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	129;"	p	line:129	file:
-NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	166;"	f	line:166	file:	signature:(U8 u8MsgIndex)
-NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	79;"	p	line:79	file:	signature:(U8 u8MsgIndex)
-NMEAProc_AprsProcessingTransmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	116;"	f	line:116	signature:(tNMEA_GPS_Data *GpsData)
+NMEAMain_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	94;"	f	line:94	signature:(void)
+NMEAMain_MessageTrim	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	253;"	f	line:253	file:	signature:(tMsg Msg)
+NMEAMain_MessageTrim	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	79;"	p	line:79	file:	signature:(tMsg Msg)
+NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	127;"	p	line:127	file:
+NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	164;"	f	line:164	file:	signature:(U8 u8MsgIndex)
+NMEAMain_MsgDecode	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	77;"	p	line:77	file:	signature:(U8 u8MsgIndex)
+NMEAProc_AprsProcessingTransmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	117;"	f	line:117	signature:(tNMEA_GPS_Data *GpsData)
 NMEAProc_AprsProcessingTransmit	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.h	46;"	p	line:46	signature:(tNMEA_GPS_Data *GpsData)
-NMEAProc_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	98;"	f	line:98	signature:(void)
-NMEAProcessingTimeout	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	56;"	v	line:56	file:
+NMEAProc_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	99;"	f	line:99	signature:(void)
 NMEARmc_Decoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gprmc.c	138;"	f	line:138	signature:(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 NMEARmc_Decoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gprmc.h	42;"	p	line:42	signature:(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 NMEAVtg_Decoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpvtg.c	107;"	f	line:107	signature:(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 NMEAVtg_Decoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpvtg.h	42;"	p	line:42	signature:(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
-NMEA_GPS_Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	74;"	v	line:74
+NMEA_GPS_Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	72;"	v	line:72
 NODATA::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	105;"	d	line:105
 NOSC	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6493;"	m	line:6493	struct:tagOSCCONBITS::<anonymous>::<anonymous>
 NOSC0	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6499;"	m	line:6499	struct:tagOSCCONBITS::<anonymous>::<anonymous>
@@ -5879,7 +5886,7 @@ NOSC2	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6501;"	m	line:650
 NOT_FOUND::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSDefs.h	87;"	d	line:87
 NOT_USED	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	342;"	m	line:342
 NOT_USED	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	406;"	m	line:406
-NO_DYNAMIC_DATA	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	88;"	d	line:88
+NO_DYNAMIC_DATA	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	84;"	d	line:84
 NO_MORE::2	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSDefs.h	91;"	d	line:91
 NSAC	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	379;"	m	line:379
 NSTDIS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	384;"	m	line:384	struct:tagINTCON1BITS
@@ -5898,14 +5905,14 @@ NVMOP0	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6639;"	m	line:66
 NVMOP1	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6640;"	m	line:6640	struct:tagNVMCONBITS::<anonymous>::<anonymous>
 NVMOP2	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6641;"	m	line:6641	struct:tagNVMCONBITS::<anonymous>::<anonymous>
 NVMOP3	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6642;"	m	line:6642	struct:tagNVMCONBITS::<anonymous>::<anonymous>
-NmeaDecodeState	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	57;"	v	line:57	file:
+NmeaDecodeState	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	55;"	v	line:55	file:
 NmeaDecoder	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	111;"	m	line:111	struct:tsNmeaDecoders
 NmeaDecoderFct	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	107;"	t	line:107
-NmeaDecoders	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	73;"	v	line:73
+NmeaDecoders	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	71;"	v	line:71
 NmeaMain_RxCharCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	24;"	p	line:24	signature:(void)
-NmeaMain_RxCharCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	149;"	f	line:149	signature:(void)
-NmeaProc_SmartBeaconing	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	168;"	f	line:168	file:	signature:(tNMEA_GPS_Data *GpsData)
-NmeaProc_SmartBeaconing	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	84;"	p	line:84	file:	signature:(tNMEA_GPS_Data *GpsData)
+NmeaMain_RxCharCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	147;"	f	line:147	signature:(void)
+NmeaProc_SmartBeaconing	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	179;"	f	line:179	file:	signature:(tNMEA_GPS_Data *GpsData)
+NmeaProc_SmartBeaconing	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	85;"	p	line:85	file:	signature:(tNMEA_GPS_Data *GpsData)
 Nop::__builtin_nop	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\Compiler.h	106;"	d	line:106
 Nop::__builtin_nop	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10891;"	d	line:10891
 Nop::asm("NOP");	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\Compiler.h	174;"	d	line:174
@@ -6603,41 +6610,41 @@ OERR	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2679;"	m	line:2679
 OERR	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2836;"	m	line:2836	struct:tagU4STABITS::<anonymous>::<anonymous>
 OFFCAL	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3397;"	m	line:3397	struct:tagAD1CON2BITS::<anonymous>::<anonymous>
 OID	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	412;"	m	line:412
-OSActivateTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	111;"	f	line:111	signature:(tOSTaskID TaskId)
+OSActivateTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	112;"	f	line:112	signature:(tOSTaskID TaskId)
 OSActivateTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	50;"	p	line:50	signature:(tOSTaskID TaskId)
 OSCCONBITS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6508;"	t	line:6508
 OSCFAIL	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	379;"	m	line:379	struct:tagINTCON1BITS
 OSCIOFCN_OFF::0xFFFF	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	11495;"	d	line:11495
 OSCIOFCN_ON::0xFFDF	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	11494;"	d	line:11494
 OSCTUNBITS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6552;"	t	line:6552
-OSClock	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	65;"	v	line:65
-OSDisableTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	258;"	f	line:258	signature:( void )
+OSClock	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	64;"	v	line:64
+OSDisableTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	257;"	f	line:257	signature:( void )
 OSDisableTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	55;"	p	line:55	signature:(void)
-OSEnableTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	241;"	f	line:241	signature:(U16 Period)
+OSEnableTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	240;"	f	line:240	signature:(U16 Period)
 OSEnableTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	54;"	p	line:54	signature:(U16 Period)
-OSGetTimerElapsedTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	191;"	f	line:191	signature:(tOSTimer *pTimer)
+OSGetTimerElapsedTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	190;"	f	line:190	signature:(tOSTimer *pTimer)
 OSGetTimerElapsedTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	52;"	p	line:52	signature:(tOSTimer *pTimer)
-OSHalt	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	258;"	f	line:258	signature:(void)
+OSHalt	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	259;"	f	line:259	signature:(void)
 OSHalt	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	56;"	p	line:56	signature:(void)
-OSIsTimerElapsed	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	153;"	f	line:153	signature:(tOSTimer *pTimer, tOSTimer Timeout)
+OSIsTimerElapsed	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	152;"	f	line:152	signature:(tOSTimer *pTimer, tOSTimer Timeout)
 OSIsTimerElapsed	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	51;"	p	line:51	signature:(tOSTimer *pTimer, tOSTimer Timeout)
-OSIsTimerStarted	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	135;"	f	line:135	signature:(tOSTimer *pTimer)
+OSIsTimerStarted	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	134;"	f	line:134	signature:(tOSTimer *pTimer)
 OSIsTimerStarted	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	50;"	p	line:50	signature:(tOSTimer *pTimer)
-OSSchedule	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	190;"	f	line:190	signature:(void)
+OSSchedule	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	191;"	f	line:191	signature:(void)
 OSSchedule	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	54;"	p	line:54	signature:(void)
-OSShutdown	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	137;"	f	line:137	signature:(void)
+OSShutdown	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	138;"	f	line:138	signature:(void)
 OSShutdown	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	52;"	p	line:52	signature:(void)
-OSStartTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	111;"	f	line:111	signature:(tOSTimer *pTimer)
+OSStartTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	110;"	f	line:110	signature:(tOSTimer *pTimer)
 OSStartTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	48;"	p	line:48	signature:(tOSTimer *pTimer)
-OSStopTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	123;"	f	line:123	signature:(tOSTimer *pTimer)
+OSStopTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	122;"	f	line:122	signature:(tOSTimer *pTimer)
 OSStopTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	49;"	p	line:49	signature:(tOSTimer *pTimer)
-OSSuspendTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	125;"	f	line:125	signature:(tOSTaskID TaskId)
+OSSuspendTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	126;"	f	line:126	signature:(tOSTaskID TaskId)
 OSSuspendTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	51;"	p	line:51	signature:(tOSTaskID TaskId)
-OSTaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	199;"	l	line:199
-OSTaskList	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	84;"	v	line:84	file:
-OSTaskListInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	77;"	d	line:77
+OSTaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	200;"	l	line:200
+OSTaskList	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	85;"	v	line:85	file:
+OSTaskListInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	74;"	d	line:74
 OSWEN	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6485;"	m	line:6485	struct:tagOSCCONBITS::<anonymous>::<anonymous>
-OS_AlarmGetSlotOptimization::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	108;"	d	line:108
+OS_AlarmGetSlotOptimization::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	104;"	d	line:104
 OUTPUT::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	425;"	d	line:425
 OUTRANGE_CSD_OVERWRITE	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	268;"	m	line:268
 OUT_FN_PPS_C1OUT::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\pps_mcp.h	482;"	d	line:482
@@ -6939,16 +6946,16 @@ OsAlarmTickCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	188;"	f	lin
 OsAlarmTickCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.h	51;"	p	line:51	signature:(void)
 OsCancelAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	159;"	f	line:159	signature:(tOSAlarm * pAlarm)
 OsCancelAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.h	50;"	p	line:50	signature:(tOSAlarm * pAlarm)
-OsIdleTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	246;"	f	line:246	signature:(void)
+OsIdleTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	247;"	f	line:247	signature:(void)
 OsIdleTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	55;"	p	line:55	signature:(void)
-OsItState	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	78;"	v	line:78	file:
+OsItState	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	79;"	v	line:79	file:
 OsSetAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	129;"	f	line:129	signature:(tOSAlarm *pAlarm, tOSAlarmTick Cycle)
 OsSetAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.h	49;"	p	line:49	signature:(tOSAlarm *pAlarm, tOSAlarmTick Cycle)
-OsStartup	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	152;"	f	line:152	signature:(void)
+OsStartup	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	153;"	f	line:153	signature:(void)
 OsStartup	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	53;"	p	line:53	signature:(void)
-OsTimerInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	84;"	f	line:84	signature:(void)
+OsTimerInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	83;"	f	line:83	signature:(void)
 OsTimerInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	47;"	p	line:47	signature:(void)
-OsTimerTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	223;"	f	line:223	signature:(void)
+OsTimerTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	222;"	f	line:222	signature:(void)
 OsTimerTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	53;"	p	line:53	signature:(void)
 P	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2282;"	m	line:2282	struct:tagI2C1STATBITS::<anonymous>::<anonymous>
 P	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2337;"	m	line:2337	struct:tagI2C2STATBITS::<anonymous>::<anonymous>
@@ -7108,10 +7115,10 @@ PWCPRE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	5220;"	m	line:52
 PWSPRE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	5219;"	m	line:5219	struct:tagRTCPWCBITS::<anonymous>::<anonymous>
 Partition	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	1627;"	l	line:1627
 Partition	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	2104;"	l	line:2104
-Period	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	46;"	m	line:46
+Period	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	47;"	m	line:47
 PopulateEntries	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	347;"	p	line:347	file:	signature:(FILEOBJ fo, WORD *fHandle, BYTE mode)
 PopulateEntries	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3605;"	f	line:3605	signature:(FILEOBJ fo, WORD *fHandle, BYTE mode)
-PreviousListOfSelectableTasks	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	198;"	l	line:198
+PreviousListOfSelectableTasks	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	199;"	l	line:199
 Q15	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	61;"	t	line:61
 QUOTE_DEQUOTE	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	93;"	e	line:93	enum:quote_option	file:
 QUOTE_ENQUOTE	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	92;"	e	line:92	enum:quote_option	file:
@@ -7584,7 +7591,7 @@ ReservedSectorCount	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	1782;"	l	
 Reset::SoftReset	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\Compiler.h	205;"	d	line:205
 Reset::asm("RESET");	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\Compiler.h	180;"	d	line:180
 Reset::asm("reset")	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\Compiler.h	194;"	d	line:194
-ResumeOsInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	295;"	f	line:295	signature:(void)
+ResumeOsInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	296;"	f	line:296	signature:(void)
 ResumeOsInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	58;"	p	line:58	signature:(void)
 RootDirSectors	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	1777;"	l	line:1777
 RootDirSectors	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	2234;"	l	line:2234
@@ -8018,8 +8025,8 @@ SAMODE1	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3923;"	m	line:3
 SAMODE1	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3980;"	m	line:3980	struct:tagDMACH4BITS::<anonymous>::<anonymous>
 SAMODE1	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4037;"	m	line:4037	struct:tagDMACH5BITS::<anonymous>::<anonymous>
 SAMP	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3361;"	m	line:3361	struct:tagAD1CON1BITS::<anonymous>::<anonymous>
-SCHEDULER_DATA_TYPE	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	37;"	d	line:37	file:
-SCHEDULER_DATA_TYPE::static	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	39;"	d	line:39	file:
+SCHEDULER_DATA_TYPE	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	38;"	d	line:38	file:
+SCHEDULER_DATA_TYPE::static	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	40;"	d	line:40	file:
 SCK1R	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	5863;"	m	line:5863	struct:tagRPINR20BITS::<anonymous>::<anonymous>
 SCK1R0	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	5873;"	m	line:5873	struct:tagRPINR20BITS::<anonymous>::<anonymous>
 SCK1R1	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	5874;"	m	line:5874	struct:tagRPINR20BITS::<anonymous>::<anonymous>
@@ -8397,7 +8404,7 @@ SYNC_MODE_SLOW::0x3C	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System
 S_FALSE::((HRESULT)0x01u)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	73;"	d	line:73
 S_NOK::((HRESULT)0x04u)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	76;"	d	line:76
 S_OK::((HRESULT)0x00u)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	72;"	d	line:72
-SchedulerStack	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	75;"	v	line:75	file:
+SchedulerStack	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	76;"	v	line:76	file:
 SearchRec	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	312;"	t	line:312
 SecPerClus	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSDefs.h	279;"	m	line:279
 SectorAddress	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	6233;"	l	line:6233
@@ -8475,7 +8482,7 @@ SlotID	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	161;"	l	line:161
 SlotID	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	194;"	l	line:194
 SoftTimerList	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.c	165;"	v	line:165
 SoftTimersInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	125;"	p	line:125	signature:(void)
-SuspendOsInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	283;"	f	line:283	signature:(U8 Level)
+SuspendOsInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	284;"	f	line:284	signature:(U8 Level)
 SuspendOsInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	57;"	p	line:57	signature:(U8 Level)
 SystemInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\system.c	106;"	f	line:106	signature:(void)
 SystemInit	D:\Projects\GPSTRK\01_Firmware\trunk\src\system.h	66;"	p	line:66	signature:(void)
@@ -9061,7 +9068,7 @@ TON	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	1323;"	m	line:1323	
 TON	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	1346;"	m	line:1346	struct:tagT3CONBITS::<anonymous>::<anonymous>
 TON	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	1375;"	m	line:1375	struct:tagT4CONBITS::<anonymous>::<anonymous>
 TON	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	1398;"	m	line:1398	struct:tagT5CONBITS::<anonymous>::<anonymous>
-TOSAlarmTPO	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	50;"	v	line:50	file:
+TOSAlarmTPO	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	49;"	v	line:49	file:
 TOTAL_FILE_SIZE::TOTAL_FILE_SIZE_8P3	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	190;"	d	line:190
 TOTAL_FILE_SIZE_8P3::(8+3+1)	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	189;"	d	line:189
 TRANSMIT_BIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	216;"	m	line:216
@@ -9202,14 +9209,14 @@ TUN3	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6547;"	m	line:6547
 TUN4	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6548;"	m	line:6548	struct:tagOSCTUNBITS::<anonymous>::<anonymous>
 TUN5	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6549;"	m	line:6549	struct:tagOSCTUNBITS::<anonymous>::<anonymous>
 TXMMD	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6718;"	m	line:6718	struct:tagPMD3BITS::<anonymous>::<anonymous>
-TaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	45;"	m	line:45
+TaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	46;"	m	line:46
 TasksList	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	48;"	v	line:48	file:
 TempClusterCalc	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	181;"	v	line:181
 TempFullClusterCalc	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	2049;"	l	line:2049
 TempMsbCluster	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3414;"	l	line:3414
 TempMsbCluster	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	5151;"	l	line:5151
-TimeTickAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	46;"	v	line:46	file:
-TimeTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	47;"	v	line:47	file:
+TimeTickAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	44;"	v	line:44	file:
+TimeTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	45;"	v	line:45	file:
 Timer1Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.c	185;"	f	line:185	signature:(void)
 Timer1Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	124;"	p	line:124	signature:(void)
 TotSec	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	1778;"	l	line:1778
@@ -9743,15 +9750,15 @@ VLCD2PE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4167;"	m	line:4
 VLCD3PE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4168;"	m	line:4168	struct:tagLCDREFBITS::<anonymous>::<anonymous>
 VOID	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	340;"	t	line:340
 VREGS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6470;"	m	line:6470	struct:tagRCONBITS
-VTime_GetSystemTick	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	111;"	f	line:111	signature:(void)
+VTime_GetSystemTick	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	109;"	f	line:109	signature:(void)
 VTime_GetSystemTick	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.h	45;"	p	line:45	signature:(void)
-VTime_GpsSet_ddmmyy	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	123;"	f	line:123	signature:(U8 *pu8ddmmyy, tNMEA_GPS_Data *GpsData)
+VTime_GpsSet_ddmmyy	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	121;"	f	line:121	signature:(U8 *pu8ddmmyy, tNMEA_GPS_Data *GpsData)
 VTime_GpsSet_ddmmyy	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.h	43;"	p	line:43	signature:(U8 *pu8ddmmyy, tNMEA_GPS_Data *GpsData)
-VTime_GpsSet_hhmmss	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	145;"	f	line:145	signature:(U8 *pu8hhmmss, tNMEA_GPS_Data *GpsData)
+VTime_GpsSet_hhmmss	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	143;"	f	line:143	signature:(U8 *pu8hhmmss, tNMEA_GPS_Data *GpsData)
 VTime_GpsSet_hhmmss	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.h	44;"	p	line:44	signature:(U8 *pu8hhmmss, tNMEA_GPS_Data *GpsData)
-VTime_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	79;"	f	line:79	signature:(void)
+VTime_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	77;"	f	line:77	signature:(void)
 VTime_Init	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.h	41;"	p	line:41	signature:(void)
-VTime_Task	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	95;"	f	line:95	signature:(void)
+VTime_Task	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	93;"	f	line:93	signature:(void)
 VTime_Task	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.h	42;"	p	line:42	signature:(void)
 VWORD	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	5433;"	m	line:5433	struct:tagCRCCON1BITS::<anonymous>::<anonymous>
 VWORD0	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	5440;"	m	line:5440	struct:tagCRCCON1BITS::<anonymous>::<anonymous>
@@ -9957,7 +9964,7 @@ WRITE_SINGLE_BLOCK	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\S
 WRITE_TIMEOUT::(DWORD)0xA0000	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	441;"	d	line:441
 WRSP	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	4991;"	m	line:4991	struct:tagPMCS1CFBITS::<anonymous>::<anonymous>
 WRSP	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	5064;"	m	line:5064	struct:tagPMCS2CFBITS::<anonymous>::<anonymous>
-WaitTimeTicks	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	68;"	v	line:68	file:
+WaitTimeTicks	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	66;"	v	line:66	file:
 WriteFAT	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	351;"	p	line:351	file:	signature:(DISK *dsk, DWORD ccls, DWORD value, BYTE forceWrite)
 WriteFAT	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	8315;"	f	line:8315	signature:(DISK *dsk, DWORD ccls, DWORD value, BYTE forceWrite)
 WriteSPIM	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	135;"	p	line:135	file:	signature:( unsigned char data_out )
@@ -10097,18 +10104,19 @@ _Adc_ClearIsrFlag::(IFS0bits.AD1IF=0)	D:\Projects\GPSTRK\01_Firmware\trunk\src\v
 _Adc_GetIsrFlag::(IFS0bits.AD1IF)	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	40;"	d	line:40	file:
 _Adc_StartSampling::(AD1CON1bits.ASAM=1)	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	37;"	d	line:37	file:
 _Adc_StopSampling::(AD1CON1bits.ASAM=0)	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	38;"	d	line:38	file:
-_AddressError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	136;"	f	line:136	signature:(void)
+_AddressError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	138;"	f	line:138	signature:(void)
 _AddressError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	59;"	p	line:59	file:	signature:(void)
-_AltAddressError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	219;"	f	line:219	signature:(void)
+_AltAddressError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	221;"	f	line:221	signature:(void)
 _AltAddressError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	64;"	p	line:64	file:	signature:(void)
-_AltMathError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	247;"	f	line:247	signature:(void)
+_AltMathError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	249;"	f	line:249	signature:(void)
 _AltMathError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	66;"	p	line:66	file:	signature:(void)
-_AltOscillatorFail	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	205;"	f	line:205	signature:(void)
+_AltOscillatorFail	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	207;"	f	line:207	signature:(void)
 _AltOscillatorFail	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	63;"	p	line:63	file:	signature:(void)
-_AltStackError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	233;"	f	line:233	signature:(void)
+_AltStackError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	235;"	f	line:235	signature:(void)
 _AltStackError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	65;"	p	line:65	file:	signature:(void)
-_AprsGetChar::(ch)(((ch)<<1)&0xFE)	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	52;"	d	line:52	file:
-_AprsTerminateField::(ch)((ch)=((ch)+1))	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	53;"	d	line:53	file:
+_AprsGetChar::(ch)(((ch)<<0)&0xFF)	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	58;"	d	line:58	file:
+_AprsGetChar::(ch)(((ch)<<1)&0xFE)	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	56;"	d	line:56	file:
+_AprsTerminateField::(ch)((ch)=((ch)+1))	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	60;"	d	line:60	file:
 _BCL::I2C1STATbits.BCL	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8054;"	d	line:8054
 _BGREQ::AD1CON5bits.BGREQ	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8864;"	d	line:8864
 _BGVST::HLVDCONbits.BGVST	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10788;"	d	line:10788
@@ -10546,10 +10554,10 @@ _ClearIntT2::_T2IF=0	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	101;"	d	li
 _ClearIntT3::_T3IF=0	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	107;"	d	line:107
 _ClearIntT4::_T4IF=0	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	113;"	d	line:113
 _ClearIntT5::_T5IF=0	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	119;"	d	line:119
-_ClearSchedulerStack::(s16SchedulerStackLevel=((S16)	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	42;"	d	line:42	file:
+_ClearSchedulerStack::(s16SchedulerStackLevel=((S16)	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	43;"	d	line:43	file:
 _DATA::(N)__attribute__((aligned(N)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10913;"	d	line:10913
 _DC::SRbits.DC	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6771;"	d	line:6771
-_DECLARE_ISR	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	293;"	f	line:293
+_DECLARE_ISR	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	294;"	f	line:294
 _DECLARE_ISR	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.c	247;"	f	line:247
 _DECLARE_ISR	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	234;"	f	line:234
 _DECLARE_ISR	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	272;"	f	line:272
@@ -10627,7 +10635,7 @@ _DWIDTH::CRCCON2bits.DWIDTH	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA3
 _D_A::I2C1STATbits.D_A	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8058;"	d	line:8058
 _D_NOT_A::I2C1STATbits.D_NOT_A	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8049;"	d	line:8049
 _DeclarePin::(port,pin)port##pin	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	118;"	d	line:118
-_DefaultInterrupt	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	102;"	f	line:102	signature:(void)
+_DefaultInterrupt	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	104;"	f	line:104	signature:(void)
 _DefaultInterrupt	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	57;"	p	line:57	file:	signature:(void)
 _DioAnalogConfig::(pin,mode)_DioAnalogPin(pin)=(	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	105;"	d	line:105
 _DioAnalogPin::(pin)_ANS##pin	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	120;"	d	line:120
@@ -10641,7 +10649,7 @@ _DioReadPinFiltered::(pin)((BOOL)(DioFilteredBuffer	D:\Projects\GPSTRK\01_Firmwa
 _DioReadPinImmediate::(pin)_DioInputPin(pin)	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	111;"	d	line:111
 _DioTogglePin::(pin)_DioOutputPin(pin)=(~(_Di	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	114;"	d	line:114
 _DioWritePin::(pin,val)_DioOutputPin(pin)=(v	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	113;"	d	line:113
-_DisableAllInterrupts::DisableAllInterrupts(7)	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	133;"	d	line:133
+_DisableAllInterrupts::DisableAllInterrupts(7)	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	129;"	d	line:129
 _DisableIntT1::_T1IE=0	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	94;"	d	line:94
 _DisableIntT2::_T2IE=0	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	100;"	d	line:100
 _DisableIntT3::_T3IE=0	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	106;"	d	line:106
@@ -10674,7 +10682,7 @@ _ERASE::NVMCONbits.ERASE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.
 _ERROR::PMCON2bits.ERROR	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	9805;"	d	line:9805
 _EXTR::RCONbits.EXTR	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10728;"	d	line:10728
 _EXTSAM::AD1CON3bits.EXTSAM	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8781;"	d	line:8781
-_EnableAllInterrupts::EnableAllInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	134;"	d	line:134
+_EnableAllInterrupts::EnableAllInterrupts	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	130;"	d	line:130
 _EnableIntT1::_T1IE=1	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	93;"	d	line:93
 _EnableIntT2::_T2IE=1	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	99;"	d	line:99
 _EnableIntT3::_T3IE=1	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	105;"	d	line:105
@@ -11111,7 +11119,7 @@ _MS2::MDSRCbits.MS2	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	100
 _MS3::MDSRCbits.MS3	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10021;"	d	line:10021
 _MS::MDSRCbits.MS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10016;"	d	line:10016
 _MSTEN::SPI1CON1bits.MSTEN	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8230;"	d	line:8230
-_MathError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	182;"	f	line:182	signature:(void)
+_MathError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	184;"	f	line:184	signature:(void)
 _MathError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	61;"	p	line:61	file:	signature:(void)
 _MulFracBy2::(x,y)((((S32)(x)*(y))<<1)>>16)	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	105;"	d	line:105
 _MulFracBy2L::(x,y)(((x)*(y))>>15)	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	106;"	d	line:106
@@ -11121,7 +11129,7 @@ _NOSC0::OSCCONbits.NOSC0	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.
 _NOSC1::OSCCONbits.NOSC1	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10747;"	d	line:10747
 _NOSC2::OSCCONbits.NOSC2	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10748;"	d	line:10748
 _NOSC::OSCCONbits.NOSC	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10744;"	d	line:10744
-_NRZI_AtZeroCode::(bit,out_lev)	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	118;"	d	line:118	file:
+_NRZI_AtZeroCode::(bit,out_lev)	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	117;"	d	line:117	file:
 _NSTDIS::INTCON1bits.NSTDIS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	7024;"	d	line:7024
 _NVCFG0::AD1CON2bits.NVCFG0	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8767;"	d	line:8767
 _NVMOP0::NVMCONbits.NVMOP0	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10815;"	d	line:10815
@@ -11283,19 +11291,19 @@ _OSAddTaskToList::(pTaskList,TaskId)((*(pTaskLis	D:\Projects\GPSTRK\01_Firmware\
 _OSCFAIL::INTCON1bits.OSCFAIL	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	7020;"	d	line:7020
 _OSClearTaskList::(pTaskList)(*(pTaskList)=0)	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	42;"	d	line:42
 _OSRemoveTaskFromList::(pTaskList,TaskId)((*(pTaskLis	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.h	45;"	d	line:45
-_OSToggleOSInterrupts::	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	144;"	d	line:144
+_OSToggleOSInterrupts::	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	140;"	d	line:140
 _OSWEN::OSCCONbits.OSWEN	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10737;"	d	line:10737
 _OUT_	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	104;"	d	line:104
 _OV::SRbits.OV	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	6767;"	d	line:6767
-_OsHaltCpu::Idle	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	159;"	d	line:159
-_OsIdleTaskExternal::IdleTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	170;"	d	line:170
-_OsResetCpu::asm("goto__resetPRI")	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	154;"	d	line:154
-_OsResumeOsInterrupts::RESTORE_CPU_IPL(CPUItState);}	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	128;"	d	line:128
-_OsStartHardwareTimer::_StartSoftTimer(cSchedulerTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	149;"	d	line:149
-_OsStartupHook::	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	165;"	d	line:165
-_OsStopHardwareTimer::_StopSoftTimer(cSchedulerTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	148;"	d	line:148
-_OsSuspendOsInterrupts::{tCPUItStateCPUItState;SET_AND	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	127;"	d	line:127
-_OscillatorFail	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	122;"	f	line:122	signature:(void)
+_OsHaltCpu::Idle	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	155;"	d	line:155
+_OsIdleTaskExternal::IdleTask	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	166;"	d	line:166
+_OsResetCpu::asm("goto__resetPRI")	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	150;"	d	line:150
+_OsResumeOsInterrupts::RESTORE_CPU_IPL(CPUItState);}	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	124;"	d	line:124
+_OsStartHardwareTimer::_StartSoftTimer(cSchedulerTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	145;"	d	line:145
+_OsStartupHook::	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	161;"	d	line:161
+_OsStopHardwareTimer::_StopSoftTimer(cSchedulerTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	144;"	d	line:144
+_OsSuspendOsInterrupts::{tCPUItStateCPUItState;SET_AND	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	123;"	d	line:123
+_OscillatorFail	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	124;"	f	line:124	signature:(void)
 _OscillatorFail	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	58;"	p	line:58	file:	signature:(void)
 _P::I2C1STATbits.P	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8048;"	d	line:8048
 _PCVFG0::AD1CON2bits.PCVFG0	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8774;"	d	line:8774
@@ -11362,9 +11370,9 @@ _PWCEN::RTCPWCbits.PWCEN	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.
 _PWCPOL::RTCPWCbits.PWCPOL	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	10000;"	d	line:10000
 _PWCPRE::RTCPWCbits.PWCPRE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	9999;"	d	line:9999
 _PWSPRE::RTCPWCbits.PWSPRE	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	9998;"	d	line:9998
-_PopFromSchedulerStack::(Type,Data)	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	58;"	d	line:58	file:
+_PopFromSchedulerStack::(Type,Data)	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	59;"	d	line:59	file:
 _ProtectCriticalSectionLevel6::(Cycles)_DisableInterruptsLeve	D:\Projects\GPSTRK\01_Firmware\trunk\src\system.h	49;"	d	line:49
-_PushToSchedulerStack::(Type,Data)	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	51;"	d	line:51	file:
+_PushToSchedulerStack::(Type,Data)	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	52;"	d	line:52	file:
 _Q15_Conv::(x)((S32)(_mulsu((Q15)(x),3276	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	110;"	d	line:110
 _RA10::PORTAbits.RA10	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8416;"	d	line:8416
 _RA14::PORTAbits.RA14	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	8417;"	d	line:8417
@@ -12306,7 +12314,7 @@ _SetPriorityIntT2::(priority)_T2IP=priority	D:\Projects\GPSTRK\01_Firmware\trunk
 _SetPriorityIntT3::(priority)_T3IP=priority	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	108;"	d	line:108
 _SetPriorityIntT4::(priority)_T4IP=priority	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	114;"	d	line:114
 _SetPriorityIntT5::(priority)_T5IP=priority	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	120;"	d	line:120
-_StackError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	168;"	f	line:168	signature:(void)
+_StackError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	170;"	f	line:170	signature:(void)
 _StackError	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	60;"	p	line:60	file:	signature:(void)
 _StartAprsBitTimer::(T3CONbits.TON=1U)	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	76;"	d	line:76	file:
 _StartAprsTriggerTimer::(T2CONbits.TON=1U)	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	62;"	d	line:62	file:
@@ -12737,6 +12745,7 @@ __FreeBSD__	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	71;"	d	line:71
 __GENERIC_TYPE_DEFS_H_	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	49;"	d	line:49
 __GPS_MAIN_C	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	17;"	d	line:17	file:
 __GPS_MAIN_H	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	11;"	d	line:11
+__KERNELINCLUDE_H	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelinclude.h	11;"	d	line:11
 __KERNELPARAM_H	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	11;"	d	line:11
 __KERNELTIMER	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.h	16;"	d	line:16
 __KERNELTIMER_C	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	17;"	d	line:17	file:
@@ -12824,8 +12833,8 @@ __VUART_C	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	17;"	d	line:17	file:
 __VUART_H	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.h	11;"	d	line:11
 __attribute__::(a)	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\Compiler.h	160;"	d	line:160
 _absi::(x)((x)>=0?(x):-(x))	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	98;"	d	line:98
-_assert::(Cond)	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.h	50;"	d	line:50
-_assert::(Cond)	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.h	52;"	d	line:52
+_assert::(Cond)if(!(Cond)){_dbgassert}	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.h	43;"	d	line:43
+_assert::(Cond){}	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.h	45;"	d	line:45
 _boolean::(x)((x)==0?0:1)	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	104;"	d	line:104
 _byte	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	226;"	m	line:226
 _byte	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	278;"	m	line:278
@@ -12837,6 +12846,8 @@ _byte1	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	249;
 _byte1	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	289;"	m	line:289
 _byte2	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	290;"	m	line:290
 _byte3	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	291;"	m	line:291
+_dbgassert::{AssertExternal(__LINE__,__FIL	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.h	51;"	d	line:51
+_dbgassert::{__asm__volatile(".pword0xDA40	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.h	49;"	d	line:49
 _div_mod2::(x,n)(((x)+(1<<((n)-1)))>>(n))	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	107;"	d	line:107
 _divsd::(s32Num,s16Den)__builtin_divsd	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	138;"	d	line:138
 _divud::(u32Num,u16Den)__builtin_divud	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	139;"	d	line:139
@@ -12909,9 +12920,9 @@ assert::(e)	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	35;"	d	line:35
 attrib	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	510;"	l	line:510
 attributes	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	244;"	m	line:244
 attributes	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	299;"	m	line:299
-au8AprsAltitudeHeader	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	76;"	v	line:76	file:
-au8AprsBuff	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	68;"	v	line:68	file:
-au8AprsWidePath	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	75;"	v	line:75	file:
+au8AprsAltitudeHeader	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	87;"	v	line:87	file:
+au8AprsBuff	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	76;"	v	line:76	file:
+au8AprsWidePath	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	86;"	v	line:86	file:
 au8NMEA_GGA_Buff	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	56;"	v	line:56	file:
 au8NMEA_RMC_Buff	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	57;"	v	line:57	file:
 au8NMEA_VTG_Buff	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	58;"	v	line:58	file:
@@ -13181,17 +13192,18 @@ b9	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	278;"	m	line:27
 b9	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	393;"	m	line:393	struct:<anonymous>::__PACKED
 b9	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	436;"	m	line:436	struct:<anonymous>::__PACKED
 b9	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	492;"	m	line:492	struct:<anonymous>::__PACKED
-bAX25_OutputLevel	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	160;"	v	line:160	file:
-bAprsMsgTxOk	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	71;"	v	line:71	file:
-bBeaconSend	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	172;"	l	line:172
+bAX25_OutputLevel	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	159;"	v	line:159	file:
+bAprsMsgTxOk	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	69;"	v	line:69	file:
+bAprsTxType	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	81;"	v	line:81	file:
+bBeaconSend	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	183;"	l	line:183
 bData	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	1659;"	l	line:1659	file:
 bData	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	918;"	l	line:918
-bDioInitBuff	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	53;"	v	line:53	file:
-bGpsMsgReceived	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	69;"	v	line:69	file:
+bDioInitBuff	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	51;"	v	line:51	file:
+bGpsMsgReceived	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	67;"	v	line:67	file:
 bHandle	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3481;"	l	line:3481
-bInputValue	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	128;"	l	line:128
+bInputValue	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	126;"	l	line:126
 bStateVariable	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	484;"	m	line:484
-bTxBit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	295;"	l	line:295
+bTxBit	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	296;"	l	line:296
 bits	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	113;"	m	line:113
 bits	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	143;"	m	line:143
 bits	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	184;"	m	line:184
@@ -13240,14 +13252,16 @@ c30filler	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	1
 c32filler	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	200;"	m	line:200
 cADC_ClockPeriod_us::75000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	30;"	d	line:30	file:
 cAPRS_BeaconTextLen::16	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	22;"	d	line:22
-cAPRS_BufferSize::128UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	35;"	d	line:35	file:
+cAPRS_BufferSize::128UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	36;"	d	line:36	file:
 cAPRS_PrimarySimbolTable::(U8)'/'	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	23;"	d	line:23
 cAPRS_SimbolTableCar::(U8)'>'	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	24;"	d	line:24
-cAPRS_TransmitData::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.h	22;"	d	line:22
-cAPRS_TransmitTrackerInfo::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.h	21;"	d	line:21
+cAPRS_TransmitData::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	34;"	d	line:34
+cAPRS_TransmitTrackerInfo::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	33;"	d	line:33
 cAPRS_VersionInfoLength::55	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	21;"	d	line:21
-cAX25InitAndStartTransmit::	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	140;"	d	line:140	file:
-cAX25SetIdle::	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	128;"	d	line:128	file:
+cAX25CtrlStartTrmt::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	30;"	d	line:30
+cAX25CtrlStop::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	31;"	d	line:31
+cAX25InitAndStartTransmit::	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	139;"	d	line:139	file:
+cAX25SetIdle::	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	127;"	d	line:127	file:
 cAX25_1200Hz::1200UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	35;"	d	line:35	file:
 cAX25_CRC_POLY::0x8408u	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	29;"	d	line:29	file:
 cAX25_Level_MARK::1UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	50;"	d	line:50	file:
@@ -13258,34 +13272,36 @@ cAdc_ConvClockSelect::((cADC_ClockPeriod_us)/(100000	D:\Projects\GPSTRK\01_Firmw
 cAdc_Required_Tad::12UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	31;"	d	line:31	file:
 cAdc_TempChIndex::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.h	26;"	d	line:26
 cAdc_VoltRef_mV::3300UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	33;"	d	line:33	file:
-cAppStateMachineTaskPeriodUs::40E3	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	37;"	d	line:37	file:
-cAppStatemachineTaskId::((tOSTaskID)(1UL<<(6UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	45;"	d	line:45
+cAppStateMachineTaskPeriodUs::40E3	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	35;"	d	line:35	file:
+cAppStatemachineTaskId::((tOSTaskID)(1UL<<(7UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	42;"	d	line:42
 cAprsBitTime_us::(1000000.0/(F32)cAX25_1200Hz)	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	39;"	d	line:39	file:
 cAprsBitTimerPrescaller::1UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	43;"	d	line:43	file:
-cAprsCallbackCtrlError::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	34;"	d	line:34
-cAprsCallbackCtrlOK::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	33;"	d	line:33
-cAprsCtrlStartTrmt::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	30;"	d	line:30
-cAprsCtrlStop::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	31;"	d	line:31
+cAprsCallbackCtrlError::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	37;"	d	line:37
+cAprsCallbackCtrlOK::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h	36;"	d	line:36
+cAprsDataTransmitTimeshift_sec::cMinDecayInSeconds/2u	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	36;"	d	line:36	file:
 cAprsProcNotSend::((tAprsTrmtCmd)(0u))	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.h	22;"	d	line:22
 cAprsProcSendData::((tAprsTrmtCmd)(1u))	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.h	23;"	d	line:23
 cAprsProcSendTrackerInfo::((tAprsTrmtCmd)(2u))	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.h	24;"	d	line:24
+cAprsTaskId::((tOSTaskID)(1UL<<(2UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	37;"	d	line:37
+cAprsTaskPeriod_us::40E3	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	49;"	d	line:49	file:
 cAprsTriggerTimerPrescaller::1UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	42;"	d	line:42	file:
 cAprs_CRC_Init::0xFFFFU	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	56;"	d	line:56	file:
 cAprs_CRC_Poly::0x8408U	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	57;"	d	line:57	file:
-cAprs_ControlField_UI::0x03	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	39;"	d	line:39	file:
-cAprs_Flag::0x7E	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	38;"	d	line:38	file:
+cAprs_ControlField_UI::0x03	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	40;"	d	line:40	file:
+cAprs_Flag::0x7E	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	39;"	d	line:39	file:
 cAprs_Flag::0x7E	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	55;"	d	line:55	file:
-cAprs_PID_Message::':'	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	44;"	d	line:44	file:
-cAprs_PID_Pos_with_timestamp_aprs::'@'	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	46;"	d	line:46	file:
-cAprs_PID_Pos_wo_timestamp_aprs::'='	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	45;"	d	line:45	file:
-cAprs_PID_Pos_wo_timestamp_no_aprs::'!'	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	42;"	d	line:42	file:
-cAprs_PID_Status::'>'	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	43;"	d	line:43	file:
-cAprs_Protocol_ID::0xF0	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	40;"	d	line:40	file:
+cAprs_PID_Message::':'	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	45;"	d	line:45	file:
+cAprs_PID_Pos_with_timestamp_aprs::'@'	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	47;"	d	line:47	file:
+cAprs_PID_Pos_wo_timestamp_aprs::'='	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	46;"	d	line:46	file:
+cAprs_PID_Pos_wo_timestamp_no_aprs::'!'	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	43;"	d	line:43	file:
+cAprs_PID_Status::'>'	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	44;"	d	line:44	file:
+cAprs_Protocol_ID::0xF0	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	41;"	d	line:41	file:
+cAprs_PttActivePeriod_ms::40UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	50;"	d	line:50	file:
 cAx25_2200Hz::2200UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	36;"	d	line:36	file:
 cBattVoltageFilt_ms::2000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	102;"	d	line:102	file:
 cBatteryVoltageMax_mV::28685UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.h	29;"	d	line:29
 cCardGetState	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	50;"	e	line:50	enum:teCardState	file:
-cClockCycleInAlarmTick::(cOsTimerTickUs/cOsAlarmTickUs	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	30;"	d	line:30	file:
+cClockCycleInAlarmTick::(cOsTimerTickUs/cOsAlarmTickUs	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	29;"	d	line:29	file:
 cDeviceConfigParamsInit::	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	47;"	d	line:47
 cDioBuffLen::((U16)(cDioPin_Number/sizeof(t	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	27;"	d	line:27
 cDioCardInsertsed::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	37;"	d	line:37	file:
@@ -13308,11 +13324,11 @@ cDioPin_SPI_SDO::_DeclarePin(G,7)	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h
 cDioPin_Sd_CardInit::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	64;"	d	line:64
 cDioPin_Temperature::_DeclarePin(B,9)	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	40;"	d	line:40
 cDioPinsInit::	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	82;"	d	line:82
-cDioTaskId::((tOSTaskID)(1UL<<(4UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	43;"	d	line:43
+cDioTaskId::((tOSTaskID)(1UL<<(5UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	40;"	d	line:40
 cDioTaskPeriodUs::10000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	26;"	d	line:26
 cFCY_Hz::(cSYS_CLK_Hz/2UL)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	22;"	d	line:22
 cFCY_MHz::(16UL)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	23;"	d	line:23
-cFSIOTaskId::((tOSTaskID)(1UL<<(3UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	42;"	d	line:42
+cFSIOTaskId::((tOSTaskID)(1UL<<(4UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	39;"	d	line:39
 cFSIO_DioInitTime_ms::300UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	36;"	d	line:36	file:
 cFSIO_PollingTask_us::40E3	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	35;"	d	line:35	file:
 cFalse::((BOOL)(0))	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	69;"	d	line:69
@@ -13329,7 +13345,7 @@ cGPS_MODE_MODE_NOT_SEEN::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	9
 cGPS_MODE_NO_FIX::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	99;"	d	line:99
 cGPS_NMEA_GGA_BuffIndex::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	34;"	d	line:34
 cGPS_NMEA_GGA_BufferLen::(cGPS_NMEA_GGA_MsgLen+1UL)	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	44;"	d	line:44
-cGPS_NMEA_GGA_MsgLen::71UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	39;"	d	line:39
+cGPS_NMEA_GGA_MsgLen::80UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	39;"	d	line:39
 cGPS_NMEA_RMC_BuffIndex::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	35;"	d	line:35
 cGPS_NMEA_RMC_MsgLen::70UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	40;"	d	line:40
 cGPS_NMEA_VTG_BuffIndex::2	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	36;"	d	line:36
@@ -13359,36 +13375,36 @@ cGPS_StopBits::UART_1STOPBIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h
 cGPS_UART::UART1	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	26;"	d	line:26
 cGPS_UartRxIntPriority::3	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	30;"	d	line:30
 cGPS_UartTxIntPriority::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	31;"	d	line:31
-cIdleTaskId::((tOSTaskID)(0x00000000))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	38;"	d	line:38
+cIdleTaskId::((tOSTaskID)(0x00000000))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	34;"	d	line:34
 cInitState	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	48;"	e	line:48	enum:teCardState	file:
 cMTK_HeaderSize::cTempBufferSize-1	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	32;"	d	line:32	file:
 cMaxInfoBeaconIntervalSec::1800u	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	34;"	d	line:34	file:
-cMeasureTaskId::((tOSTaskID)(1UL<<(2UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	41;"	d	line:41
+cMeasureTaskId::((tOSTaskID)(1UL<<(3UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	38;"	d	line:38
 cMeasureTaskPeriod_us::80E3	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	32;"	d	line:32	file:
 cMinDecayInSeconds::8u	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	32;"	d	line:32	file:
-cMinMultiplicationValue	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	243;"	l	line:243
-cMinMultiplicationValue::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	31;"	d	line:31	file:
-cNMEACommTimeoutUs::100000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	35;"	d	line:35	file:
+cMinMultiplicationValue	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	242;"	l	line:242
+cMinMultiplicationValue::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	30;"	d	line:30	file:
+cNMEACommTimeoutUs::100000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	34;"	d	line:34	file:
 cNMEADecodersInit::	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.h	56;"	d	line:56
 cNMEAHeaserStart::'$'	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	23;"	d	line:23
-cNMEAMainDecodeTaskID::((tOSTaskID)(1UL<<(5UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	44;"	d	line:44
-cNMEAMainTaskPeruidUs::10000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	34;"	d	line:34	file:
+cNMEAMainDecodeTaskID::((tOSTaskID)(1UL<<(6UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	41;"	d	line:41
+cNMEAMainTaskPeruidUs::10000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	33;"	d	line:33	file:
 cNMEAMaxFieldLen::cGPS_NMEA_GGA_BufferLen	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.h	26;"	d	line:26
-cNMEAProcessingTimeoutUs::700000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	36;"	d	line:36	file:
+cNMEAProcessingTimeoutUs::700000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	35;"	d	line:35	file:
 cNMEATempBufferSize::cGPS_NMEA_GGA_BufferLen	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.h	25;"	d	line:25
 cNMEA_HeaderSize::cTempBufferSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	31;"	d	line:31	file:
 cNumberSoftTimers::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	38;"	d	line:38
 cOC_PwmFrequencyHz::60000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	44;"	d	line:44	file:
-cOSSchedulerStackSize::(cOsTaskNumber+cOsSchedulerSta	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	60;"	d	line:60	file:
-cOsAlarmTickUs::5000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	100;"	d	line:100
-cOsHardwareTimerTickUs::2500UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	95;"	d	line:95
-cOsInterruptLevel::4	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	83;"	d	line:83
-cOsSchedulerStackMargin::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	89;"	d	line:89
-cOsTaskNumber::9	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	55;"	d	line:55
+cOSSchedulerStackSize::(cOsTaskNumber+cOsSchedulerSta	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	61;"	d	line:61	file:
+cOsAlarmTickUs::5000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	96;"	d	line:96
+cOsHardwareTimerTickUs::2500UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	91;"	d	line:91
+cOsInterruptLevel::4	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	79;"	d	line:79
+cOsSchedulerStackMargin::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	85;"	d	line:85
+cOsTaskNumber::10UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	51;"	d	line:51
 cOsTimerPeriodUs::(((U32)cOsAlarmTickUs)/((U32)c	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	33;"	d	line:33	file:
-cOsTimerTaskId::((tOSTaskID)(1UL<<(7UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	46;"	d	line:46
-cOsTimerTickUs::10000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	104;"	d	line:104
-cOsTimerTick_ms::(cOsTimerTickUs/1000UL)	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	38;"	d	line:38	file:
+cOsTimerTaskId::((tOSTaskID)(1UL<<(8UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	43;"	d	line:43
+cOsTimerTickUs::10000UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	100;"	d	line:100
+cOsTimerTick_ms::(cOsTimerTickUs/1000UL)	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	36;"	d	line:36	file:
 cPinModeAnalog::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	30;"	d	line:30
 cPinModeDigital::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	29;"	d	line:29
 cPinModeInput::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h	31;"	d	line:31
@@ -13406,11 +13422,11 @@ cRMC_LongitudeIndex::5	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gprmc.
 cRMC_SpeedIndex::7	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gprmc.c	69;"	d	line:69	file:
 cRMC_TimeIndex::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gprmc.c	65;"	d	line:65	file:
 cRefreshWatchDogPeriodUs::80E3	D:\Projects\GPSTRK\01_Firmware\trunk\src\system.c	32;"	d	line:32	file:
-cRefreshWatchDogTaskId::((tOSTaskID)(1UL<<(0UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	39;"	d	line:39
+cRefreshWatchDogTaskId::((tOSTaskID)(1UL<<(0UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	35;"	d	line:35
 cSYS_CLK_Hz::(32000000UL)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	21;"	d	line:21
-cSbTurnMinimum_deg::20u	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	40;"	d	line:40	file:
-cSbTurnSlope::25u	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	42;"	d	line:42	file:
-cSbTurnTime_sec::5u	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	46;"	d	line:46	file:
+cSbTurnMinimum_deg::20u	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	41;"	d	line:41	file:
+cSbTurnSlope::25u	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	43;"	d	line:43	file:
+cSbTurnTime_sec::5u	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	47;"	d	line:47	file:
 cSchedulerTimerId::0	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	37;"	d	line:37
 cSinTabDiv::5	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	59;"	d	line:59
 cSinTabLen::32	D:\Projects\GPSTRK\01_Firmware\trunk\src\tools.h	58;"	d	line:58
@@ -13418,14 +13434,14 @@ cSinTabLength::16UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	38;"	d	line:
 cSlotNumber::16	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	31;"	d	line:31	file:
 cSoftTimerTick_us::((U32)cTimer1Ticks_us)	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	32;"	d	line:32
 cSoftwareTimerList	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	60;"	d	line:60
-cSysTimeTaskId::((tOSTaskID)(1UL<<(1UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	40;"	d	line:40
-cTASK_MSB_ID::(((tOSTaskID)1)<<(cOsTaskNumbe	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	31;"	d	line:31	file:
+cSysTimeTaskId::((tOSTaskID)(1UL<<(1UL)))	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelparam.h	36;"	d	line:36
+cTASK_MSB_ID::(((tOSTaskID)1UL)<<(cOsTaskNum	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	32;"	d	line:32	file:
 cTIMER1_ISR_Priority::(4U)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	37;"	d	line:37
 cTIMER3_ISR_Priority::(5U)	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	36;"	d	line:36
 cTempBufferSize::6	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	30;"	d	line:30	file:
 cTempSensorOffsetVoltagemV::500UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.h	25;"	d	line:25
 cTempSensorTemperatureCoeff::10UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.h	26;"	d	line:26
-cTimeTickPeriodUs::40E3	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	32;"	d	line:32	file:
+cTimeTickPeriodUs::40E3	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	30;"	d	line:30	file:
 cTimer1Prescaler::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	29;"	d	line:29
 cTimer1Ticks_us::(cOsHardwareTimerTickUs/2UL)	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	28;"	d	line:28
 cTrigTimerPeriodReloadMargin::10UL	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	53;"	d	line:53	file:
@@ -13588,23 +13604,24 @@ dwAddress	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	4
 dwBytesRemaining	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\SD-SPI.h	481;"	m	line:481
 dword	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	259;"	m	line:259
 dword	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	473;"	m	line:473
-eAPP_APRS_TRANSMIT_DATA	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	55;"	e	line:55	enum:teAppState	file:
-eAPP_APRS_TRANSMIT_INFO	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	56;"	e	line:56	enum:teAppState	file:
-eAPP_ARRS_WAIT_TRANSMIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	57;"	e	line:57	enum:teAppState	file:
-eAPP_NMEA_MSG_POOL	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	53;"	e	line:53	enum:teAppState	file:
-eAPP_SD_CARD_WRITE_POSITION	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	54;"	e	line:54	enum:teAppState	file:
-eAPP_STATE_INIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	50;"	e	line:50	enum:teAppState	file:
-eAPP_STATE_WAIT_GPS	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	51;"	e	line:51	enum:teAppState	file:
-eAPP_STATE_WAIT_TIME_SYNC	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	52;"	e	line:52	enum:teAppState	file:
-eAPP_WAIT_STATE	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	58;"	e	line:58	enum:teAppState	file:
-eAPRS_IDLE	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	62;"	e	line:62	enum:teAprsTrmtState	file:
-eAPRS_TRMT_IN_PROGRESS	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	61;"	e	line:61	enum:teAprsTrmtState	file:
-eAPRS_TRMT_UNINIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	60;"	e	line:60	enum:teAprsTrmtState	file:
-eAX25_IDLE	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	150;"	e	line:150	enum:teAX25TrmtState	file:
-eAX25_SEND_DATA	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	148;"	e	line:148	enum:teAX25TrmtState	file:
-eAX25_SEND_FLAG	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	147;"	e	line:147	enum:teAX25TrmtState	file:
-eAX25_TERMINATE	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	149;"	e	line:149	enum:teAX25TrmtState	file:
-eAX25_TX_DELAY	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	146;"	e	line:146	enum:teAX25TrmtState	file:
+eAPP_APRS_TRANSMIT_DATA	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	53;"	e	line:53	enum:teAppState	file:
+eAPP_APRS_TRANSMIT_INFO	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	54;"	e	line:54	enum:teAppState	file:
+eAPP_ARRS_WAIT_TRANSMIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	55;"	e	line:55	enum:teAppState	file:
+eAPP_NMEA_MSG_POOL	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	51;"	e	line:51	enum:teAppState	file:
+eAPP_SD_CARD_WRITE_POSITION	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	52;"	e	line:52	enum:teAppState	file:
+eAPP_STATE_INIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	48;"	e	line:48	enum:teAppState	file:
+eAPP_STATE_WAIT_GPS	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	49;"	e	line:49	enum:teAppState	file:
+eAPP_STATE_WAIT_TIME_SYNC	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	50;"	e	line:50	enum:teAppState	file:
+eAPP_WAIT_STATE	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	56;"	e	line:56	enum:teAppState	file:
+eAPRS_IDLE	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	70;"	e	line:70	enum:teAprsTrmtState	file:
+eAPRS_TRMT_WAIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	69;"	e	line:69	enum:teAprsTrmtState	file:
+eAX25_IDLE	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	149;"	e	line:149	enum:teAX25TrmtState	file:
+eAX25_SEND_DATA	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	147;"	e	line:147	enum:teAX25TrmtState	file:
+eAX25_SEND_FLAG	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	146;"	e	line:146	enum:teAX25TrmtState	file:
+eAX25_TERMINATE	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	148;"	e	line:148	enum:teAX25TrmtState	file:
+eAX25_TX_DELAY	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	145;"	e	line:145	enum:teAX25TrmtState	file:
+eAprs_TRMT_SET_PTT	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	67;"	e	line:67	enum:teAprsTrmtState	file:
+eAprs_TRMT_TRANSMIT	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	68;"	e	line:68	enum:teAprsTrmtState	file:
 eCardInitialize	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	49;"	e	line:49	enum:teCardState	file:
 eCardInserted	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	51;"	e	line:51	enum:teCardState	file:
 eCardNotPresent	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	52;"	e	line:52	enum:teCardState	file:
@@ -13612,9 +13629,9 @@ eCardWaitState	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	53;"	e	li
 eGpsDispatchState	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	45;"	t	line:45	file:
 eIdentMessage	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	43;"	e	line:43	enum:teGpsDispatchState	file:
 eNMEAMsgCollect	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	44;"	e	line:44	enum:teGpsDispatchState	file:
-eNMEA_DECODE_PROCESSING	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	49;"	e	line:49	enum:teNmeaDecodeState	file:
-eNMEA_DECODE_WAIT_DATA	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	48;"	e	line:48	enum:teNmeaDecodeState	file:
-eNmeaDecodeState	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	50;"	t	line:50	file:
+eNMEA_DECODE_PROCESSING	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	48;"	e	line:48	enum:teNmeaDecodeState	file:
+eNMEA_DECODE_WAIT_DATA	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	47;"	e	line:47	enum:teNmeaDecodeState	file:
+eNmeaDecodeState	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	49;"	t	line:49	file:
 ecrc_v1_1	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\periph_features_mcp.h	98;"	d	line:98
 entry	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	11191;"	l	line:11191
 entry	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	11475;"	l	line:11475
@@ -13643,7 +13660,7 @@ error	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	6536;"	l	line:6536
 error	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	6822;"	l	line:6822
 f	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	12175;"	l	line:12175
 f	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	12347;"	l	line:12347
-f32Tmp	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	155;"	l	line:155
+f32Tmp	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	248;"	l	line:248
 fHandle	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	12177;"	l	line:12177
 fHandle	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3415;"	l	line:3415
 fHandle	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	4493;"	l	line:4493
@@ -13874,9 +13891,9 @@ longTimeout	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	517;"	l	line:51
 longTimeoutCounter	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	921;"	l	line:921	file:
 low	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	207;"	m	line:207	struct:<anonymous>::__PACKED
 low	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\GenericTypeDefs.h	422;"	m	line:422	struct:<anonymous>::__PACKED
-mDD::(s)((U16)(((s)[0]-'0')*10)+((U	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	37;"	d	line:37	file:
-mGetMultiplier::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	39;"	d	line:39	file:
-mGetMultiplier::u8OSMultiplicationFactor	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	37;"	d	line:37	file:
+mDD::(s)((U16)(((s)[0]-'0')*10)+((U	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	35;"	d	line:35	file:
+mGetMultiplier::1	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	38;"	d	line:38	file:
+mGetMultiplier::u8OSMultiplicationFactor	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	36;"	d	line:36	file:
 mPORTAClearBits::(_bits){LATA&=~(unsignedint)_b	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\ports_mcp.h	3196;"	d	line:3196
 mPORTACloseAll::{TRISA=0xFFFF;LATA=0;}	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\ports_mcp.h	3198;"	d	line:3198
 mPORTACloseBits::(_bits){TRISA|=(unsignedint)_b	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\ports_mcp.h	3199;"	d	line:3199
@@ -14061,12 +14078,12 @@ ptr	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	115;"	l	line:115
 ptr0	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3953;"	l	line:3953
 ptr1	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3953;"	l	line:3953
 pu16AdcBasePtr	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	153;"	l	line:153
-pu8Buff	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	257;"	l	line:257
-pu8BuffPtrL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	215;"	l	line:215
+pu8Buff	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	255;"	l	line:255
+pu8BuffPtrL	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	213;"	l	line:213
 pu8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpvtg.c	110;"	l	line:110
-pu8NmeaFields	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	60;"	v	line:60	file:
-pu8ddmmyyL	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	125;"	l	line:125
-pu8hhmmssL	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	147;"	l	line:147
+pu8NmeaFields	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	58;"	v	line:58	file:
+pu8ddmmyyL	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	123;"	l	line:123
+pu8hhmmssL	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	145;"	l	line:145
 put	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.h	123;"	f	line:123	class:minIni	signature:(const std::string& Section, const std::string& Key, long Value) const
 put	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.h	126;"	f	line:126	class:minIni	signature:(const std::string& Section, const std::string& Key, int Value) const
 put	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.h	129;"	f	line:129	class:minIni	signature:(const std::string& Section, const std::string& Key, bool Value) const
@@ -14108,8 +14125,8 @@ recordSearchLength	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	153;"	v	li
 recordSearchName	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	151;"	v	line:151
 reminder	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3220;"	l	line:3220
 reminder	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	523;"	l	line:523
-res	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	149;"	l	line:149
-res	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	268;"	l	line:268
+res	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	242;"	l	line:242
+res	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	267;"	l	line:267
 res	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	6313;"	l	line:6313
 res	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	192;"	l	line:192
 response	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	1360;"	l	line:1360
@@ -14137,8 +14154,8 @@ result	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	8609;"	l	line:8609
 result	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	9870;"	l	line:9870
 result	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\SD-SPI.c	2118;"	l	line:2118
 result	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	141;"	l	line:141
-result	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	168;"	l	line:168
-result	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	214;"	l	line:214
+result	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	166;"	l	line:166
+result	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	212;"	l	line:212
 results	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	278;"	m	line:278
 ret	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	353;"	l	line:353
 returnPointer	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	9390;"	l	line:9390
@@ -14150,10 +14167,10 @@ romstring	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	12690;"	l	line:1269
 root	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSDefs.h	272;"	m	line:272
 rtcc_v1_1	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\periph_features_mcp.h	101;"	d	line:101
 s	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	123;"	l	line:123
-s16CourseChangeSinceBeacon	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	64;"	v	line:64	file:
-s16CurrentCourse	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	174;"	l	line:174
-s16LastCourse	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	66;"	v	line:66	file:
-s16SchedulerStackLevel	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	74;"	v	line:74	file:
+s16CourseChangeSinceBeacon	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	65;"	v	line:65	file:
+s16CurrentCourse	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	185;"	l	line:185
+s16LastCourse	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	67;"	v	line:67	file:
+s16SchedulerStackLevel	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	75;"	v	line:75	file:
 s16res	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	191;"	l	line:191
 sDeviceConfigParams	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	52;"	s	line:52
 sUartDrv	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.h	72;"	t	line:72
@@ -14199,7 +14216,7 @@ spixbuf	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2565;"	m	line:2
 spixcon1	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2562;"	m	line:2562	struct:tagSPI
 spixcon2	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2563;"	m	line:2563	struct:tagSPI
 spixstat	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2561;"	m	line:2561	struct:tagSPI
-sprintf	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	236;"	p	line:236	file:	signature:(char *)u8CalcChecksumString, Ó, u8CalculatedChecksum
+sprintf	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	234;"	p	line:234	file:	signature:(char *)u8CalcChecksumString, Ó, u8CalculatedChecksum
 sram_v1_1	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\periph_features_mcp.h	110;"	d	line:110
 src	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3222;"	l	line:3222
 src	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	4862;"	l	line:4862
@@ -14236,12 +14253,12 @@ supportLFN	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	7254;"	l	line:7254
 t	D:\Projects\GPSTRK\01_Firmware\trunk\src\ini\minIni.c	753;"	l	line:753
 t0	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3930;"	l	line:3930
 t1	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	3930;"	l	line:3930
-tAX25TrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	151;"	t	line:151	file:
+tAX25TrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	150;"	t	line:150	file:
 tAX25_GPS_Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	78;"	t	line:78
 tAddress	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	66;"	t	line:66
-tAppState	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	59;"	t	line:59	file:
+tAppState	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	57;"	t	line:57	file:
 tAprsTrmtCmd	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.h	29;"	t	line:29
-tAprsTrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	63;"	t	line:63	file:
+tAprsTrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	71;"	t	line:71	file:
 tCPUItState	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	56;"	t	line:56
 tCallback	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	88;"	t	line:88
 tCallbackCtrl	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	89;"	t	line:89
@@ -14262,13 +14279,13 @@ tGpsMaskLocal	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpvtg.c	109;"	l
 tMsg	D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h	82;"	t	line:82
 tNMEA_GPS_Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	104;"	t	line:104
 tNmeaDecoders	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	115;"	t	line:115
-tOSAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	47;"	t	line:47
-tOSAlarmTick	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	40;"	t	line:40
-tOSClock	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	50;"	t	line:50
-tOSTaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	28;"	t	line:28
-tOSTaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	30;"	t	line:30
-tOSTaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	32;"	t	line:32
-tOSTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	51;"	t	line:51
+tOSAlarm	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	48;"	t	line:48
+tOSAlarmTick	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	41;"	t	line:41
+tOSClock	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	51;"	t	line:51
+tOSTaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	29;"	t	line:29
+tOSTaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	31;"	t	line:31
+tOSTaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	33;"	t	line:33
+tOSTimer	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	52;"	t	line:52
 tagAD1CHITLBITS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3591;"	s	line:3591
 tagAD1CHS0BITS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3477;"	s	line:3477
 tagAD1CHSBITS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	3446;"	s	line:3446
@@ -14574,12 +14591,12 @@ tagU4RXREGBITS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2875;"	s
 tagU4STABITS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2832;"	s	line:2832
 tagU4TXREGBITS	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2861;"	s	line:2861
 tagUART	D:\Projects\GPSTRK\01_Firmware\trunk\src\p24FJ128GA308.h	2362;"	s	line:2362
-teAX25TrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	144;"	g	line:144	file:
-teAppState	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	48;"	g	line:48	file:
-teAprsTrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	58;"	g	line:58	file:
+teAX25TrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	143;"	g	line:143	file:
+teAppState	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	46;"	g	line:46	file:
+teAprsTrmtState	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	65;"	g	line:65	file:
 teCardState	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\fsio_main.c	46;"	g	line:46	file:
 teGpsDispatchState	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	41;"	g	line:41	file:
-teNmeaDecodeState	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	46;"	g	line:46	file:
+teNmeaDecodeState	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	45;"	g	line:45	file:
 temp	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	6953;"	l	line:6953
 temp	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	7253;"	l	line:7253
 temp	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	7778;"	l	line:7778
@@ -14645,7 +14662,7 @@ timestamp	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	301
 tmr_v1_4	D:\Projects\GPSTRK\01_Firmware\trunk\src\peripherial\periph_features_mcp.h	86;"	d	line:86
 total_clusters	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\MDD File System\FSIO.h	276;"	m	line:276
 totalchars	D:\Projects\GPSTRK\01_Firmware\trunk\src\fs\FSIO.c	9389;"	l	line:9389
-tpOSTaskFct	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	37;"	t	line:37
+tpOSTaskFct	D:\Projects\GPSTRK\01_Firmware\trunk\src\kernel.h	38;"	t	line:38
 tsAX25_GPS_Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	71;"	s	line:71
 tsNMEA_GPS_Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	80;"	s	line:80
 tsNmeaDecoders	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	109;"	s	line:109
@@ -14659,66 +14676,66 @@ u16AdcIdx	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	152;"	l	line:152
 u16Altitude	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	88;"	m	line:88	struct:tsNMEA_GPS_Data
 u16AnaBuff	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	47;"	v	line:47	file:
 u16BatteryVoltage_mv	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	61;"	v	line:61
-u16BeaconDecay	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	62;"	v	line:62	file:
-u16BeaconingDownCounter	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	63;"	v	line:63	file:
+u16BeaconDecay	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	63;"	v	line:63	file:
+u16BeaconingDownCounter	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	64;"	v	line:64	file:
 u16BitIdx	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	112;"	l	line:112
-u16BitStuffCnt	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	159;"	v	line:159	file:
-u16BitTxCnt	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	158;"	v	line:158	file:
+u16BitStuffCnt	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	158;"	v	line:158	file:
+u16BitTxCnt	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	157;"	v	line:157	file:
 u16ByteIdx	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	111;"	l	line:111
 u16ByteIdx	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	146;"	l	line:146
-u16Checksum	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	154;"	l	line:154
+u16Checksum	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	247;"	l	line:247
 u16ConfAprsSbInterval_sec	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	63;"	m	line:63	struct:sDeviceConfigParams
-u16Count	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	258;"	l	line:258
-u16Crc	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	164;"	v	line:164	file:
+u16Count	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	256;"	l	line:256
+u16Crc	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	163;"	v	line:163	file:
 u16Crc	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	113;"	l	line:113
 u16Crc	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	147;"	l	line:147
 u16Crc16Table	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c	47;"	v	line:47	file:
-u16CrcXor	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	297;"	l	line:297
-u16DataIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	151;"	l	line:151
-u16DataIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	157;"	v	line:157	file:
-u16Degrees	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	201;"	l	line:201
+u16CrcXor	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	298;"	l	line:298
+u16DataIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	244;"	l	line:244
+u16DataIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	156;"	v	line:156	file:
+u16Degrees	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	200;"	l	line:200
 u16GpsCouse	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	87;"	m	line:87	struct:tsNMEA_GPS_Data
 u16GpsSpeed	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	86;"	m	line:86	struct:tsNMEA_GPS_Data
-u16Idx	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	150;"	l	line:150
-u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	200;"	l	line:200
-u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	127;"	l	line:127
-u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	84;"	l	line:84
-u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	118;"	l	line:118
+u16Idx	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	243;"	l	line:243
+u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	199;"	l	line:199
+u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	125;"	l	line:125
+u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.c	82;"	l	line:82
+u16Index	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	116;"	l	line:116
 u16LineL	D:\Projects\GPSTRK\01_Firmware\trunk\src\traps.c	83;"	l	line:83
-u16MsgFieldsCount	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	172;"	l	line:172
+u16MsgFieldsCount	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	170;"	l	line:170
 u16NbSlot	D:\Projects\GPSTRK\01_Firmware\trunk\src\alarm.c	81;"	l	line:81
-u16OldHour	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	148;"	l	line:148
-u16SYSTEM_FLAGS	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	85;"	v	line:85
-u16Seconds	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	171;"	l	line:171
-u16SinTab	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	156;"	v	line:156	file:
-u16SmartBeaconingRateSec	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	65;"	v	line:65	file:
+u16OldHour	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	146;"	l	line:146
+u16SYSTEM_FLAGS	D:\Projects\GPSTRK\01_Firmware\trunk\src\app_statemachine.c	83;"	v	line:83
+u16Seconds	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	182;"	l	line:182
+u16SinTab	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	155;"	v	line:155	file:
+u16SmartBeaconingRateSec	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	66;"	v	line:66	file:
 u16SoftTimerCounter	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.c	163;"	v	line:163
 u16SoftTimerIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.c	250;"	l	line:250
 u16SoftTimerListTicks	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.c	164;"	v	line:164
-u16Speed	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	173;"	l	line:173
-u16TaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	200;"	l	line:200
+u16Speed	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	184;"	l	line:184
+u16TaskID	D:\Projects\GPSTRK\01_Firmware\trunk\src\scheduler.c	201;"	l	line:201
 u16Timeout	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	155;"	l	line:155
 u16Timeout	D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c	157;"	l	line:157
 u16TimerTimeout	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.h	67;"	m	line:67
 u16Tmp	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.c	78;"	l	line:78
 u16Tmperature_x10	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	62;"	v	line:62
-u32BeaconTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	61;"	v	line:61	file:
-u32BeaconTimeStamp	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	170;"	l	line:170
-u32CurrentSystemTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	118;"	l	line:118
-u32SystemTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	60;"	v	line:60	file:
-u32SystemTimeSec	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	48;"	v	line:48	file:
-u32TimerTicks	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	450;"	l	line:450
+u32BeaconTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	62;"	v	line:62	file:
+u32BeaconTimeStamp	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	181;"	l	line:181
+u32CurrentSystemTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	119;"	l	line:119
+u32SystemTime	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	61;"	v	line:61	file:
+u32SystemTimeSec	D:\Projects\GPSTRK\01_Firmware\trunk\src\vtime.c	46;"	v	line:46	file:
+u32TimerTicks	D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c	456;"	l	line:456
 u32TimerTicks	D:\Projects\GPSTRK\01_Firmware\trunk\src\timer.c	187;"	l	line:187
 u32Vbatt_filt	D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c	48;"	v	line:48	file:
 u8Altitude	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	75;"	m	line:75	struct:tsAX25_GPS_Data
 u8BuffCounter	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	52;"	v	line:52	file:
 u8BufferIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	113;"	m	line:113	struct:tsNmeaDecoders
 u8BufferSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	114;"	m	line:114	struct:tsNmeaDecoders
-u8CalcChecksumString	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	218;"	l	line:218
-u8CalculatedChecksum	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	216;"	l	line:216
+u8CalcChecksumString	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	216;"	l	line:216
+u8CalculatedChecksum	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	214;"	l	line:214
 u8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gpgga.c	145;"	l	line:145
 u8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_gprmc.c	141;"	l	line:141
-u8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	217;"	l	line:217
+u8Char	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	215;"	l	line:215
 u8ConfAprsPropath	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	55;"	m	line:55	struct:sDeviceConfigParams
 u8ConfAprsSbHighSpeedLimit_kmh	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	67;"	m	line:67	struct:sDeviceConfigParams
 u8ConfAprsSbLowSpeedLimit_kmh	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	66;"	m	line:66	struct:sDeviceConfigParams
@@ -14734,9 +14751,9 @@ u8ConfigBeaonText	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	70;"	m	li
 u8ConfigTrackerVersion	D:\Projects\GPSTRK\01_Firmware\trunk\src\devconfig.h	69;"	m	line:69	struct:sDeviceConfigParams
 u8Course	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	76;"	m	line:76	struct:tsAX25_GPS_Data
 u8CurrentBuffIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	53;"	v	line:53	file:
-u8CurrentBuffIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	169;"	l	line:169
+u8CurrentBuffIndex	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	167;"	l	line:167
 u8CurrentBuffSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	54;"	v	line:54	file:
-u8CurrentBuffSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	170;"	l	line:170
+u8CurrentBuffSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	168;"	l	line:168
 u8Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	237;"	l	line:237
 u8Data	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	275;"	l	line:275
 u8DataCnt	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	236;"	l	line:236
@@ -14746,13 +14763,13 @@ u8GpsMode	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	102;"	m	line:102	s
 u8Latitude	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	73;"	m	line:73	struct:tsAX25_GPS_Data
 u8Longitude	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	74;"	m	line:74	struct:tsAX25_GPS_Data
 u8MsgSize	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.c	123;"	l	line:123
-u8NmeaDecMsgCounter	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	58;"	v	line:58	file:
-u8OSMultiplicationFactor	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	51;"	v	line:51	file:
-u8Propath	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	69;"	v	line:69	file:
-u8PropathStr	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	152;"	l	line:152
+u8NmeaDecMsgCounter	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	56;"	v	line:56	file:
+u8OSMultiplicationFactor	D:\Projects\GPSTRK\01_Firmware\trunk\src\kerneltimer.c	50;"	v	line:50	file:
+u8Propath	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	77;"	v	line:77	file:
+u8PropathStr	D:\Projects\GPSTRK\01_Firmware\trunk\src\aprs.c	245;"	l	line:245
 u8Speed	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	77;"	m	line:77	struct:tsAX25_GPS_Data
-u8TempBuffer	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	59;"	v	line:59	file:
-u8TurnThreshold	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	67;"	v	line:67	file:
+u8TempBuffer	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_main.c	57;"	v	line:57	file:
+u8TurnThreshold	D:\Projects\GPSTRK\01_Firmware\trunk\src\nmea\nmea_process.c	68;"	v	line:68	file:
 u8TxBytes	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	187;"	l	line:187
 u8TxBytes	D:\Projects\GPSTRK\01_Firmware\trunk\src\vuart.c	211;"	l	line:211
 uMsgFieldsNumber	D:\Projects\GPSTRK\01_Firmware\trunk\src\gps_main.h	112;"	m	line:112	struct:tsNmeaDecoders

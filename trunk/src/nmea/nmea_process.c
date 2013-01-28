@@ -29,10 +29,11 @@
 /*=====================================================================================================================
  * Local constants
  *===================================================================================================================*/
-#define cMinDecayInSeconds          8u
-#define cFirstBeaconTimeInSeconds   5u
-#define cMaxInfoBeaconIntervalSec   1800u
-#define cTurnThresholdMaxDeg        80u
+#define cMinDecayInSeconds                  8u
+#define cFirstBeaconTimeInSeconds           5u
+#define cMaxInfoBeaconIntervalSec           1800u
+#define cTurnThresholdMaxDeg                80u
+#define cAprsDataTransmitTimeshift_sec      cMinDecayInSeconds/2u
 
 /*
 * smart beaconing params
@@ -145,9 +146,21 @@ tAprsTrmtCmd NMEAProc_AprsProcessingTransmit(tNMEA_GPS_Data *GpsData)
     }
     else
     {
-        // send data. smart beaconing will produce transmission
-        if(cFalse != NmeaProc_SmartBeaconing(GpsData))
+        
+        if((u16BeaconingDownCounter + cAprsDataTransmitTimeshift_sec) < (U16)(u32CurrentSystemTime - u32SystemTime))
+        {
+            // send data with period = info period + ime shift
+            // this is by default to set first location even if you are not moving
             BeaconTypeSend = cAprsProcSendData;
+            // reset beacon time rate
+            u32BeaconTime = u32CurrentSystemTime;
+        }
+        else
+        {
+            // smart beaconing will produce transmission
+            if(cFalse != NmeaProc_SmartBeaconing(GpsData))
+                BeaconTypeSend = cAprsProcSendData;
+        }
     }
 
     return BeaconTypeSend;

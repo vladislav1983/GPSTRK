@@ -123,7 +123,7 @@ void __attribute__((user_init)) Arps_Init(void)
     OsSetAlarm(&AprsTaskAlarm, (cAprsTaskPeriod_us/cOsAlarmTickUs));
 
     // Config PTT pin as open drain
-    _DioWritePin(cDioPin_PTT, 0);
+    _DioWritePin(cDioPin_PTT, 1);
     _DioPinOpenDrainConfig(cDioPin_PTT, cPinOpenDrainMode);
     _DioPinConfig(cDioPin_PTT, cPinModeOutput);
 }
@@ -145,7 +145,7 @@ void Aprs_Task(void)
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAprs_TRMT_SET_PTT:
-        _DioWritePin(cDioPin_PTT, 1);
+        _DioWritePin(cDioPin_PTT, 0);
 
         OSStartTimer(&AprsTimer);
 
@@ -190,7 +190,7 @@ void Aprs_TransmitCallback(tCtrl Ctrl)
     {
         App_Statemachine_AprsMsgTxOkCallback();
         // immediately clear PTT pin
-        _DioWritePin(cDioPin_PTT, 0);
+        _DioWritePin(cDioPin_PTT, 1);
 
         AprsTrmtState = eAPRS_IDLE;
     }
