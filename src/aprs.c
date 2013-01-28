@@ -35,7 +35,7 @@
  *===================================================================================================================*/
 #define cAPRS_BufferSize                        128UL
 
-// Reffer the APRS specification "aprs101.pdf" http://www.aprs.org => ax25 externsion
+// Refer the APRS specification "aprs101.pdf" http://www.aprs.org => ax25 externsion
 #define cAprs_Flag                              0x7E    // The flag field at each end of the frame is the bit sequence 0x7e that separates each frame.
 #define cAprs_ControlField_UI                   0x03    // This field is set to 0x03 (UI-frame).
 #define cAprs_Protocol_ID                       0xF0    // This field is set to 0xf0 (no layer 3 protocol).
@@ -186,18 +186,22 @@ void Aprs_Task(void)
  *===================================================================================================================*/
 void Aprs_TransmitCallback(tCtrl Ctrl)
 {
-    if(Ctrl == cAprsCallbackCtrlOK)
+    if(Ctrl == cCallbackCtrlOK)
     {
-        App_Statemachine_AprsMsgTxOkCallback();
-        // immediately clear PTT pin
-        _DioWritePin(cDioPin_PTT, 1);
-
-        AprsTrmtState = eAPRS_IDLE;
+        App_Statemachine_AprsMsgTxCallback(cCallbackCtrlOK);
+    }
+    else if(Ctrl == cCallbackCtrlError)
+    {
+        App_Statemachine_AprsMsgTxCallback(cCallbackCtrlError);
     }
     else
     {
         _assert(cFalse);
     }
+
+    // immediately clear PTT pin in any case
+    _DioWritePin(cDioPin_PTT, 1);
+    AprsTrmtState = eAPRS_IDLE;
 }
 
 /*=====================================================================================================================
@@ -263,13 +267,13 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
 
     AX25_Control(cAX25CtrlStop);
 
-//  AX.25 UI-FRAME FORMAT
-//      ___________________________________________________________________________________________________________
-//     |       | Flag | Destination  | Source  | Digipeater | Control | Protocol |  INFORMATION FIELD | FCS | Flag |
-//     |       |      |   Address    | Address | Addresses  |  Field  |    ID    |                    |     |      |
-//     |       |      |              |         |    (0-8)   |   (UI)  |          |                    |     |      |
-//     |Bytes: |  1   |      7       |    7    |    0–56    |    1    |     1    |       1–256        |  2  |   1  |
-//     |___________________________________________________________________________________________________________|
+    //  AX.25 UI-FRAME FORMAT
+    //      ___________________________________________________________________________________________________________
+    //     |       | Flag | Destination  | Source  | Digipeater | Control | Protocol |  INFORMATION FIELD | FCS | Flag |
+    //     |       |      |   Address    | Address | Addresses  |  Field  |    ID    |                    |     |      |
+    //     |       |      |              |         |    (0-8)   |   (UI)  |          |                    |     |      |
+    //     |Bytes: |  1   |      7       |    7    |    0–56    |    1    |     1    |       1–256        |  2  |   1  |
+    //     |___________________________________________________________________________________________________________|
 
     // destination
     for(u16Idx = 0; u16Idx < (sizeof(DeviceConfigParams.u8ConfigAprsDestAddr)-1); u16Idx++)
@@ -299,7 +303,7 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
         }
     }
     // terminate first digipeater if proportional path = 1 => repeating with one hop
-    if(u8Propath == 1)
+    if(u8Propath >= 1)
     {
         _AprsTerminateField(au8AprsBuff[u16DataIndex-1]);
     }
@@ -320,9 +324,9 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
         au8AprsBuff[u16DataIndex] = _AprsGetChar(' ');
         u16DataIndex++;
         au8AprsBuff[u16DataIndex] = _AprsGetChar(u8PropathStr[0]);
-        u16DataIndex++;
         // terminate digipeater field
-        _AprsTerminateField(au8AprsBuff[u16DataIndex-1]);
+        _AprsTerminateField(au8AprsBuff[u16DataIndex]);
+        u16DataIndex++;
     }
     
     // control field

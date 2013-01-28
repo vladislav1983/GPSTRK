@@ -256,8 +256,21 @@ void AppStatemachine_GpsMsgReceivedCallback(tMsg Msg)
  *
  * Description: 
  *===================================================================================================================*/
-void App_Statemachine_AprsMsgTxOkCallback(void)
+void App_Statemachine_AprsMsgTxCallback(tCtrl Control)
 {
+    if(Control == cCallbackCtrlOK)
+    {
+        
+    }
+    else if(Control == cCallbackCtrlError)
+    {
+
+    }
+    else
+    {
+        _assert(cFalse);
+    }
+
     bAprsMsgTxOk = cTrue;
 }
 

@@ -275,6 +275,12 @@ HRESULT AX25_SendData(tMsg Msg)
 
         res = S_OK;
     }
+    else
+    {
+        cAX25SetIdle();
+        Aprs_TransmitCallback(cCallbackCtrlError);
+        AX25TrmtState = eAX25_IDLE;
+    }
 
     return res;
 }
@@ -421,7 +427,7 @@ _DECLARE_ISR(_T3Interrupt)
         if(u16DataIndex >= 1)
         {
             cAX25SetIdle();
-            Aprs_TransmitCallback(cAprsCallbackCtrlOK);
+            Aprs_TransmitCallback(cCallbackCtrlOK);
 
             AX25TrmtState = eAX25_IDLE;
         }
