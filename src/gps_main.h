@@ -70,8 +70,8 @@ typedef U16 tGpsMask;
 
 typedef struct tsAX25_GPS_Data
 {
-    U8 u8Latitude[10];
-    U8 u8Longitude[11];
+    U8 u8Latitude[8];
+    U8 u8Longitude[9];
     U8 u8Altitude[4];
     U8 u8Course[3];
     U8 u8Speed[3];
