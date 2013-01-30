@@ -30,7 +30,6 @@
  * Local constants
  *===================================================================================================================*/
 #define cMinDecayInSeconds                  8u
-#define cFirstBeaconTimeInSeconds           5u
 #define cMaxInfoBeaconIntervalSec           1800u
 #define cTurnThresholdMaxDeg                80u
 #define cAprsDataTransmitTimeshift_sec      cMinDecayInSeconds/2u
@@ -58,8 +57,8 @@
 /*=====================================================================================================================
  * Local data
  *===================================================================================================================*/
-static U32 u32SystemTime;
-static U32 u32BeaconTime;
+static U16 u16SystemTime;
+static U16 u16BeaconTime;
 static U16 u16BeaconDecay;
 static U16 u16BeaconingDownCounter;
 static S16 s16CourseChangeSinceBeacon;
@@ -98,10 +97,10 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData);
  *===================================================================================================================*/
 void __attribute__((user_init)) NMEAProc_Init(void)
 {
-    u32SystemTime = 0;
-    u32BeaconTime = 0;
+    u16SystemTime = 0;
+    u16BeaconTime = 0;
     u16BeaconDecay = cMinDecayInSeconds;
-    u16BeaconingDownCounter = cFirstBeaconTimeInSeconds;
+    u16BeaconingDownCounter = cMinDecayInSeconds;
     s16LastCourse = -1;
     s16CourseChangeSinceBeacon = 0;
     u16SmartBeaconingRateSec = 0;
@@ -116,7 +115,7 @@ void __attribute__((user_init)) NMEAProc_Init(void)
  *===================================================================================================================*/
 tAprsTrmtCmd NMEAProc_AprsProcessingTransmit(tNMEA_GPS_Data *GpsData)
 {
-    U32 u32CurrentSystemTime;
+    U16 u16CurrentSystemTimeL;
     tAprsTrmtCmd BeaconTypeSend = cAprsProcNotSend;
 
     /* status packets are transmitted by the tracker using the STANDARD APRS
@@ -127,33 +126,31 @@ tAprsTrmtCmd NMEAProc_AprsProcessingTransmit(tNMEA_GPS_Data *GpsData)
 	 * redundancy in case of collisions. */
 
     // get system time in seconds
-    u32CurrentSystemTime = VTime_GetSystemTick();
+    u16CurrentSystemTimeL = VTime_GetSystemTick();
 
-    if(u16BeaconingDownCounter < (U16)(u32CurrentSystemTime - u32SystemTime))
+    if(u16BeaconingDownCounter < (U16)(u16CurrentSystemTimeL - u16SystemTime))
     {
         // send tracker info
         BeaconTypeSend = cAprsProcSendTrackerInfo;
-
-        u16BeaconingDownCounter = u16BeaconDecay;
 
         // beacon decay multiplier ^2
         u16BeaconDecay *= 2u;
         if(u16BeaconDecay >= cMaxInfoBeaconIntervalSec)
             u16BeaconDecay = cMaxInfoBeaconIntervalSec;
 
+        u16BeaconingDownCounter = u16BeaconDecay;
         // update system time
-        u32SystemTime = u32CurrentSystemTime;
+        u16SystemTime = u16CurrentSystemTimeL;
     }
     else
     {
-        
-        if((u16BeaconingDownCounter + cAprsDataTransmitTimeshift_sec) < (U16)(u32CurrentSystemTime - u32SystemTime))
+        if((u16SystemTime != 0ul) && ((u16SystemTime + cAprsDataTransmitTimeshift_sec) == u16CurrentSystemTimeL))
         {
             // send data with period = info period + ime shift
             // this is by default to set first location even if you are not moving
             BeaconTypeSend = cAprsProcSendData;
             // reset beacon time rate
-            u32BeaconTime = u32CurrentSystemTime;
+            u16BeaconTime = u16CurrentSystemTimeL;
         }
         else
         {
@@ -180,7 +177,7 @@ tAprsTrmtCmd NMEAProc_AprsProcessingTransmit(tNMEA_GPS_Data *GpsData)
  *===================================================================================================================*/
 static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData)
 {
-    U32  u32BeaconTimeStamp;
+    U16  u16BeaconTimeStampL;
     U16  u16Seconds;
     BOOL bBeaconSend      = cFalse;
     U16  u16Speed         = GpsData->u16GpsSpeed;
@@ -220,15 +217,15 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData)
 	 * u8ConfAprsSbHighSpeedLimit_kmh   High speed limit, units are in knots.
 	 */
 
-    u32BeaconTimeStamp = VTime_GetSystemTick();
+    u16BeaconTimeStampL = VTime_GetSystemTick();
 
     // do smart beaconing if beacon interval = 0 sec
     if (DeviceConfigParams.u16ConfAprsSbInterval_sec != 0)
     {
-        if(DeviceConfigParams.u16ConfAprsSbInterval_sec < (U16)(u32BeaconTimeStamp - u32BeaconTime))
+        if(DeviceConfigParams.u16ConfAprsSbInterval_sec < (U16)(u16BeaconTimeStampL - u16BeaconTime))
         {
             bBeaconSend = cTrue;
-            u32BeaconTime = u32BeaconTimeStamp;
+            u16BeaconTime = u16BeaconTimeStampL;
         }
     }
     else
@@ -281,7 +278,7 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData)
             if(s16CourseChangeSinceBeacon > 180u)
                 s16CourseChangeSinceBeacon = 360u - s16CourseChangeSinceBeacon;
 
-            u16Seconds = u32BeaconTimeStamp - u32BeaconTime;
+            u16Seconds = u16BeaconTimeStampL - u16BeaconTime;
 
             if( (      (s16CourseChangeSinceBeacon > u8TurnThreshold) 
                     && (u16Seconds                 > cSbTurnTime_sec)
@@ -291,7 +288,7 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData)
             {
                 bBeaconSend = cTrue;
                 s16LastCourse = s16CurrentCourse;
-                u32BeaconTime = u32BeaconTimeStamp;
+                u16BeaconTime = u16BeaconTimeStampL;
             }
         }
     }
