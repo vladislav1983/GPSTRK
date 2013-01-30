@@ -43,7 +43,7 @@
  *===================================================================================================================*/
 static tOSAlarm TimeTickAlarm;
 static tOSTimer TimeTimer;
-static U32 u32SystemTimeSec;
+static U16 u16SystemTimeSec;
 
 /*=====================================================================================================================
  * Constant Local Data
@@ -79,7 +79,7 @@ void __attribute__((user_init)) VTime_Init(void)
     TimeTickAlarm.TaskID = cSysTimeTaskId;
     OsSetAlarm(&TimeTickAlarm, (cTimeTickPeriodUs/cOsAlarmTickUs));
 
-    u32SystemTimeSec = 0;
+    u16SystemTimeSec = 0;
     OSStartTimer(&TimeTimer);
 }
 
@@ -94,7 +94,7 @@ void VTime_Task(void)
 {
     if(cFalse != OSIsTimerElapsed(&TimeTimer, (1000UL/(cOsTimerTickUs/1000UL))-1UL))
     {
-        ++u32SystemTimeSec;
+        ++u16SystemTimeSec;
         OSStartTimer(&TimeTimer);
     }
 }
@@ -106,9 +106,9 @@ void VTime_Task(void)
  *
  * Description: 
  *===================================================================================================================*/
-U32 VTime_GetSystemTick(void)
+U16 VTime_GetSystemTick(void)
 {
-    return u32SystemTimeSec;
+    return u16SystemTimeSec;
 }
 
 /*=====================================================================================================================

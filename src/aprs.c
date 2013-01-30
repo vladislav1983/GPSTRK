@@ -246,11 +246,9 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
     HRESULT res = S_NOK;
     U16 u16Idx;
     U16 u16DataIndex = 0;
-    U8 u8PropathStr[2];   // propath string
     tMsg Msg;
     U16 u16Checksum;
     F32 f32Tmp;
-    U8 u8Char;
 
     // Don't do proportional pathing if 255
     if(DeviceConfigParams.u8ConfAprsPropath == 0xFFu)
@@ -279,13 +277,17 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
     //     |___________________________________________________________________________________________________________|
 
     // destination
-    for(u16Idx = 0; u16Idx < (sizeof(DeviceConfigParams.u8ConfigAprsDestAddr)-1); u16Idx++)
+    for (u16Idx = 0; 
+        (u16Idx < (sizeof(DeviceConfigParams.u8ConfigAprsDestAddr)-1)) && (DeviceConfigParams.u8ConfigAprsDestAddr[u16Idx] != '\0'); 
+         u16Idx++)
     {
         au8AprsBuff[u16DataIndex] = _AprsGetChar(DeviceConfigParams.u8ConfigAprsDestAddr[u16Idx]);
         u16DataIndex++;
     }
     // source
-    for(u16Idx = 0; u16Idx < (sizeof(DeviceConfigParams.u8ConfigAprsSourceAddr)-1); u16Idx++)
+    for( u16Idx = 0; 
+        (u16Idx < (sizeof(DeviceConfigParams.u8ConfigAprsSourceAddr)-1)) && (DeviceConfigParams.u8ConfigAprsSourceAddr[u16Idx] != '\0');
+         u16Idx++)
     {
         au8AprsBuff[u16DataIndex] = _AprsGetChar(DeviceConfigParams.u8ConfigAprsSourceAddr[u16Idx]);
         u16DataIndex++;
@@ -299,18 +301,12 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
     // first digipeater
     if(u8Propath >= 1)
     {
-        if(DeviceConfigParams.u8ConfigAprsDigipeater[0] != '\0')
+        for( u16Idx = 0;
+            (u16Idx < (sizeof(DeviceConfigParams.u8ConfigAprsDigipeater)-1)) && (DeviceConfigParams.u8ConfigAprsDigipeater[u16Idx] != '\0');
+             u16Idx++)
         {
-
-            u8Char = DeviceConfigParams.u8ConfigAprsDigipeater[0];
-
-            for( u16Idx = 0;
-                (u16Idx < (sizeof(DeviceConfigParams.u8ConfigAprsDigipeater)-1)) && (u8Char != '\0');
-                 u16Idx++, u8Char = DeviceConfigParams.u8ConfigAprsDigipeater[u16Idx])
-            {
-                au8AprsBuff[u16DataIndex] = _AprsGetChar(u8Char);
-                u16DataIndex++;
-            }
+            au8AprsBuff[u16DataIndex] = _AprsGetChar(DeviceConfigParams.u8ConfigAprsDigipeater[u16Idx]);
+            u16DataIndex++;
         }
     }
 
@@ -353,7 +349,7 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
         u16DataIndex += sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Latitude);
 
         // symbol table => primary/secondary
-        au8AprsBuff[u16DataIndex] = '/';   //DeviceConfigParams.u8ConfAprsSymbolTable;
+        au8AprsBuff[u16DataIndex] = DeviceConfigParams.u8ConfAprsSymbolTable;   //'/';
         u16DataIndex++;
 
         // copy longitude
@@ -390,7 +386,6 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
         u16DataIndex +=sprintf((char*)&au8AprsBuff[u16DataIndex], " %2.1fC", f32Tmp);
 
         // TODO: beacon text
-
     } 
     else if(bTrmtStatus == cAPRS_TransmitTrackerInfo)
     {
@@ -398,9 +393,13 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
         u16DataIndex++;
 
         // copy tracker version. note that it is null terminated string
-        memcpy((U8*)&au8AprsBuff[u16DataIndex], DeviceConfigParams.u8ConfigTrackerVersion, (sizeof(DeviceConfigParams.u8ConfigTrackerVersion)-1));
-        u16DataIndex += sizeof(DeviceConfigParams.u8ConfigTrackerVersion);
-        u16DataIndex--;  // discard null termination
+        for( u16Idx = 0;
+            (u16Idx < (sizeof(DeviceConfigParams.u8ConfigTrackerVersion)-1u)) && (DeviceConfigParams.u8ConfigTrackerVersion[u16Idx] != '\0');
+             u16Idx++)
+        {
+            au8AprsBuff[u16DataIndex] = (_AprsGetChar(DeviceConfigParams.u8ConfigTrackerVersion[u16Idx]) >> 1u);
+            u16DataIndex++;
+        }
     }
     else
     {

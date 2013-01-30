@@ -42,6 +42,6 @@ extern void __attribute__((user_init)) VTime_Init(void);
 extern void VTime_Task(void);
 extern void VTime_GpsSet_ddmmyy(U8 *pu8ddmmyy, tNMEA_GPS_Data *GpsData);
 extern void VTime_GpsSet_hhmmss(U8 *pu8hhmmss, tNMEA_GPS_Data *GpsData);
-extern U32 VTime_GetSystemTick(void);
+extern U16 VTime_GetSystemTick(void);
 
 #endif /* __VTIME_H */

@@ -43,7 +43,7 @@
     .u8ConfAprsSbHighSpeedLimit_kmh = 90u,                                                                              \
     /* NO user accessible configuration */                                                                              \
     .u8ConfigTrackerVersion     = "GPS tracker by _maker_ V1.01 <vladislav_1@abv.bg>",                                  \
-    .u8ConfigBeaonText          = "beacon text"                                                                         \
+    .u8ConfigBeaconText         = "beacon text"                                                                         \
 }
 
 /*=====================================================================================================================
@@ -67,7 +67,7 @@ struct sDeviceConfigParams
     U8  u8ConfAprsSbHighSpeedLimit_kmh;
     //--- NO user accessible configuration
     U8 u8ConfigTrackerVersion[cAPRS_VersionInfoLength+1];
-    U8 u8ConfigBeaonText[cAPRS_BeaconTextLen+1];
+    U8 u8ConfigBeaconText[cAPRS_BeaconTextLen+1];
 };
 
 /*=====================================================================================================================
