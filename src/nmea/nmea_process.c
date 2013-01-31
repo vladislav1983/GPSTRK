@@ -236,8 +236,7 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData)
             u16SmartBeaconingRateSec = (U16)DeviceConfigParams.u8ConfAprsSbPositSlow_min * 60u;
 
             // Reset s16CourseChangeSinceBeacon to avoid cyclic 
-			// triggering of beacon_now when we suddenly drop below
-			// the low speed limit.
+			// triggering of beacon_now when we suddenly drop below the low speed limit.
             s16CourseChangeSinceBeacon = 0;
         }
         else
@@ -280,10 +279,11 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData)
 
             u16Seconds = u16BeaconTimeStampL - u16BeaconTime;
 
-            if( (      (s16CourseChangeSinceBeacon > u8TurnThreshold) 
-                    && (u16Seconds                 > cSbTurnTime_sec)
+            // sneaky condition, but needed
+            if( (    (s16CourseChangeSinceBeacon > u8TurnThreshold) 
+                  && (u16Seconds                 > cSbTurnTime_sec)
                 )
-                    || (u16Seconds                 > u16SmartBeaconingRateSec)
+                  || (u16Seconds                 > u16SmartBeaconingRateSec)
               )
             {
                 bBeaconSend = cTrue;
