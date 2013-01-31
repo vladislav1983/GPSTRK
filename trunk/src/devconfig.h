@@ -42,7 +42,7 @@
     .u8ConfAprsSbLowSpeedLimit_kmh  = 6u,                                                                               \
     .u8ConfAprsSbHighSpeedLimit_kmh = 90u,                                                                              \
     /* NO user accessible configuration */                                                                              \
-    .u8ConfigTrackerVersion     = "GPS tracker by _maker_ V1.01 <vladislav_1@abv.bg>",                                  \
+    .u8ConfigTrackerVersion     = "GPS tracker by _maker_ V1.02 <vladislav_1@abv.bg>",                                  \
     .u8ConfigBeaconText         = "beacon text"                                                                         \
 }
 
