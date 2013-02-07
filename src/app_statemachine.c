@@ -27,6 +27,7 @@
 #include "nmea_process.h"
 #include "fsio_main.h"
 #include "aprs.h"
+#include "hd44780.h"
 
 
 /*=====================================================================================================================
@@ -99,7 +100,7 @@ U16 u16SYSTEM_FLAGS;
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) App_Init(void)
+void App_Init(void)
 {
     AppState = eAPP_STATE_INIT;
     AppStateAlarm.TaskID = cAppStatemachineTaskId;
@@ -130,7 +131,7 @@ void App_StatemachineTask(void)
         WaitTimeTicks = 2000UL/cOsTimerTick_ms;
         AppState = eAPP_WAIT_STATE;
         AppNextState = eAPP_STATE_WAIT_GPS;
-
+        
         break;
         //------------------------------------------------------------------------------------------------------------------
     case eAPP_STATE_WAIT_GPS:
@@ -138,6 +139,9 @@ void App_StatemachineTask(void)
         if((GpsStatusLocal & cGPS_STAT_ONLINE_SET) && (GpsStatusLocal & cGPS_STAT_MODE_SET))
         {
             AppState = eAPP_STATE_WAIT_TIME_SYNC;
+            //HD44780_Putc('\f');
+            _lcdprintf(5, 1, "%s", "test");
+            //_lcdprintf(0, 0, "%s", "test");
         }
 
         break;
@@ -169,6 +173,8 @@ void App_StatemachineTask(void)
             }
 
             bGpsMsgReceived = cFalse;
+
+            _lcdprintf(1, 2, "%04d", VTime_GetSystemTick());
         }
 
         break;

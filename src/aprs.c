@@ -112,7 +112,7 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus);
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) Arps_Init(void)
+void Arps_Init(void)
 {
     memset(&au8AprsBuff[0], 0, sizeof(au8AprsBuff));
     u8Propath = 0;

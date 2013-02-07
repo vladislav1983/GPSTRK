@@ -100,7 +100,7 @@ tGpsMask GPS_STSTUS_FLAGS;
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) GPSMain_Init(void)
+void GPSMain_Init(void)
 {
     GpsDispatchState = eIdentMessage;
     // Init UART module

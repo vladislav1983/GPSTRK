@@ -91,7 +91,7 @@ static U16     NMEAMain_MessageTrim(tMsg Msg);
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) NMEAMain_Init(void)
+void NMEAMain_Init(void)
 {
 
     NMEADecodeTaskAlarm.TaskID = cNMEAMainDecodeTaskID;

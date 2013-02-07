@@ -93,7 +93,7 @@ static tOSTimer CardInitTimer;
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) FsioMain_Init(void)
+void FsioMain_Init(void)
 {
     FSIO_Alarm.TaskID = cFSIOTaskId;
     OsSetAlarm(&FSIO_Alarm, cFSIO_PollingTask_us/cOsAlarmTickUs);

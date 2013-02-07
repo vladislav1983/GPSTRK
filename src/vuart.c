@@ -79,6 +79,19 @@ sUartDrv UartDrv[cUartModulesUsedCnt] = cUART_DrvInit();
  *
  * Return: void
  *
+ * Description: module initialization
+ *===================================================================================================================*/
+void Uart_Init(void)
+{
+    U1MODE &= UART_DIS;
+    U2MODE &= UART_DIS;
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
  * Description: UART1 module initialization
  *===================================================================================================================*/
 void Uart1_Init(U32 u32Baudrate, U16 u16DataBitsAndParity, U16 u16StopBits, U8 u8RxPriority, U8 u8TxPriority)

@@ -78,7 +78,7 @@
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) Adc_Init(void)
+void Adc_Init(void)
 {
     DisableIntADC1;
     ADC1_Clear_Intr_Status_Bit;

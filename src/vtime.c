@@ -74,7 +74,7 @@ static U16 u16SystemTimeSec;
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) VTime_Init(void)
+void VTime_Init(void)
 {
     TimeTickAlarm.TaskID = cSysTimeTaskId;
     OsSetAlarm(&TimeTickAlarm, (cTimeTickPeriodUs/cOsAlarmTickUs));

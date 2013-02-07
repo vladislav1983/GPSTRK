@@ -58,13 +58,18 @@
 */
 #define _DisableInterruptsLevel6(Cycles)            __builtin_disi(Cycles)
 
-
+#define _System_WDT_Init()                          System_WDT_Init()
+#define _System_StreamsInit()                       System_StreamsInit()
 /*=====================================================================================================================
  * Exported functions                     				                        
  *===================================================================================================================*/
-extern void                            _system_lowlevel_init(void);
-extern void __attribute__((user_init)) SystemInit(void);
-extern void                            IdleTask(void);
-extern void                            RefreshWatchDogTask(void);
+extern void System_Init(void);
+extern void _system_lowlevel_init(void);
+extern void System_WDT_Init(void);
+extern void IdleTask(void);
+extern void RefreshWatchDogTask(void);
+extern void System_EnterSleep(void);
+extern void System_LeaveSleep(void);
+extern void System_StreamsInit(void);
 
 #endif /* __SYSTEM_H */

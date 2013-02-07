@@ -52,6 +52,16 @@
 #define cDioPin_GpsUartTx                   _DeclarePin(B, 7)
 #define cDioPin_GpsLed                      _DeclarePin(F, 1)
 #define cDioPin_AssertLed                   _DeclarePin(F, 0)
+// LCD pins
+#define cDioPin_LcdBacklight                _DeclarePin(D, 10)
+#define cDioPin_Lcd_RS                      _DeclarePin(D, 11)
+#define cDioPin_Lcd_RW                      _DeclarePin(C, 12)
+#define cDioPin_LcdEnable                   _DeclarePin(C, 15)
+#define cDioPin_Lcd_DB4                     _DeclarePin(A, 14)
+#define cDioPin_Lcd_DB5                     _DeclarePin(A, 15)
+#define cDioPin_Lcd_DB6                     _DeclarePin(D, 8)
+#define cDioPin_Lcd_DB7                     _DeclarePin(D, 9)
+
 
 /*
 ** Define input pins assigned to filtration -> consider the following syntax
@@ -122,10 +132,12 @@ extern U16 DioFilteredBuffer[cDioBuffLen];
 #define _DioDirectionPin(pin)               _TRIS##pin
 #define _DioOpenDrainPin(pin)               _OD##pin
 
+#define _DioInit()                          DioInit()
+
 /*=====================================================================================================================
  * Exported functions                     				                        
  *===================================================================================================================*/
-extern void __attribute__((user_init)) DioInit(void);
+extern void DioInit(void);
 extern void DioTask(void);
 
 #endif /* __DIO_H */

@@ -78,7 +78,7 @@ U16 u16Tmperature_x10;
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) Measure_Init(void)
+void Measure_Init(void)
 {
     MeasureTaskAlarm.TaskID = cMeasureTaskId;
     OsSetAlarm(&MeasureTaskAlarm, (cMeasureTaskPeriod_us/cOsAlarmTickUs));

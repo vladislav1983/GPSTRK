@@ -28,11 +28,11 @@
 */
 #define cDeviceConfigParamsInit()                   	                                                                \
 {                                                   	                                                                \
-    .u8ConfAprsTxDelay          = 60,                                                                                   \
-    .u8ConfAprsPropath          = 0,                                                                                    \
+    .u8ConfAprsTxDelay          = 28,                                                                                   \
+    .u8ConfAprsPropath          = 2,                                                                                    \
     .u8ConfigAprsSourceAddr     = "NOCALL0",          	                                                                \
     .u8ConfigAprsDestAddr       = "APERXQ0",         	                                                                \
-    .u8ConfigAprsDigipeater     = "RELAY 0",                                                                            \
+    .u8ConfigAprsDigipeater     = "WIDE1 1",                                                                            \
     .u8ConfAprsSymbolTable      = cAPRS_PrimarySimbolTable,                                                             \
     .u8ConfAprsSymbol           = cAPRS_SimbolTableCar,                                                                 \
     /* smart beaconing settings */                                                                                      \

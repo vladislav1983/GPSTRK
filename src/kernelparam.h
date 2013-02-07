@@ -158,7 +158,7 @@
 ** Define here OS startup hook function
 ** System init sequence - HAL_Init -> APPL_Init
 */
-#define _OsStartupHook()                
+#define _OsStartupHook()                System_Init()
 
 /*
 ** Define here external idle task

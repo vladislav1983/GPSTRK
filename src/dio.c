@@ -77,7 +77,7 @@ static void Dio_ReadInputs(void);
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) DioInit(void)
+void DioInit(void)
 {
     U16 u16Index;
 
