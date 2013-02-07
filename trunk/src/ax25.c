@@ -194,7 +194,7 @@ static void AX25_DmaInit(void);
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) AX25_Init(void)
+void AX25_Init(void)
 {
     U16 u16Index;
     U16 u16Degrees = 0;

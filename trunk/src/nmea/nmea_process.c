@@ -95,7 +95,7 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData);
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) NMEAProc_Init(void)
+void NMEAProc_Init(void)
 {
     u16SystemTime = 0;
     u16BeaconTime = 0;

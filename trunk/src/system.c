@@ -25,6 +25,21 @@
 #include "kernelparam.h"
 #include "nmea_main.h"
 #include "pps_mcp.h"
+#include "fsio_main.h"
+#include "nmea_main.h"
+#include "nmea_process.h"
+#include "app_statemachine.h"
+#include "aprs.h"
+#include "ax25.h"
+#include "dio.h"
+#include "gps_main.h"
+#include "hd44780.h"
+#include "measure.h"
+#include "timer.h"
+#include "vadc.h"
+#include "vtime.h"
+#include "vuart.h"
+
 
 /*=====================================================================================================================
  * Local constants
@@ -80,6 +95,109 @@ static void ClockInit(void);
  *
  * Description: 
  *===================================================================================================================*/
+void System_Init(void)
+{
+// drivers initialization
+#ifdef _Timer1Init
+    _Timer1Init();
+#endif
+#ifdef _SoftTimersInit
+    _SoftTimersInit();
+#endif
+#ifdef _Adc_Init
+    _Adc_Init();
+#endif
+#ifdef _Uart_Init
+    _Uart_Init();
+#endif
+#ifdef _AX25_Init
+    _AX25_Init();
+#endif
+#ifdef _HD44780_Init
+    _HD44780_Init();
+#endif
+// application initialization
+#ifdef _System_WDT_Init
+    _System_WDT_Init();
+#endif
+#ifdef _FsioMain_Init
+    _FsioMain_Init();
+#endif
+#ifdef _NMEAMain_Init
+    _NMEAMain_Init();
+#endif
+#ifdef _NMEAProc_Init
+    _NMEAProc_Init();
+#endif
+#ifdef _Arps_Init
+    _Arps_Init();
+#endif
+#ifdef _DioInit
+    _DioInit();
+#endif
+#ifdef _GPSMain_Init
+    _GPSMain_Init();
+#endif
+
+#ifdef _Measure_Init
+    _Measure_Init();
+#endif
+#ifdef _VTime_Init
+    _VTime_Init();
+#endif
+#ifdef _System_StreamsInit
+    _System_StreamsInit();
+#endif
+// application initialization
+#ifdef _App_Init
+    _App_Init();
+#endif
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+void System_StreamsInit(void)
+{
+    //out=fopen("l","w");
+    //fprintf(out,"testo");
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+void System_EnterSleep(void)
+{
+
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+void System_LeaveSleep(void)
+{
+
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
 void _system_lowlevel_init(void)
 {   
     _WatchDOgDisable();
@@ -103,7 +221,7 @@ void _system_lowlevel_init(void)
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) SystemInit(void)
+void System_WDT_Init(void)
 {
     /* Init refresh watchdog task */
     RefreshWatchDogAlarm.TaskID = cRefreshWatchDogTaskId;
@@ -153,9 +271,9 @@ static void SetupPeripheralPinSelect(void)
     /*
     ** This is hardware specific pin remapping
     */
-    // RP30 -> U1RX
+    // RP23 -> U1RX
     iPPSInput(IN_FN_PPS_U1RX, IN_PIN_PPS_RP23);
-    // U1TX -> RP16
+    // U1TX -> RP24
     iPPSOutput(OUT_PIN_PPS_RP24, OUT_FN_PPS_U1TX);
     // RP21 -> SCK1
     iPPSOutput(OUT_PIN_PPS_RP21, OUT_FN_PPS_SCK1OUT);

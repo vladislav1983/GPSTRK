@@ -83,10 +83,12 @@ extern sUartDrv UartDrv[];
 /*=====================================================================================================================
  * Exported Macros                                                            
  *===================================================================================================================*/
+#define _Uart_Init()            Uart_Init()
 
 /*=====================================================================================================================
  * Exported functions                     				                        
  *===================================================================================================================*/
+extern void Uart_Init(void);
 extern void Uart1_Init(U32 u32Baudrate, U16 u16DataBitsAndParity, U16 u16StopBits, U8 u8RxPriority, U8 u8TxPriority);
 extern void Uart2_Init(U32 u32Baudrate, U16 u16DataBitsAndParity, U16 u16StopBits, U8 u8RxPriority, U8 u8TxPriority);
 extern U8   Uart1_TxByte(U8 u8Byte);

@@ -182,7 +182,7 @@ void __attribute__((__interrupt__,no_auto_psv)) _T1Interrupt();
  *
  * Description: Hardware timer 1 Init
  *===================================================================================================================*/
-void __attribute__((user_init)) Timer1Init(void)
+void Timer1Init(void)
 {
     U32 u32TimerTicks;
 
@@ -225,7 +225,7 @@ void __attribute__((user_init)) Timer1Init(void)
  *
  * Description: 
  *===================================================================================================================*/
-void __attribute__((user_init)) SoftTimersInit(void)
+void SoftTimersInit(void)
 {
     _assert(cNumberSoftTimers > 0);
     u16SoftTimerCounter = 0;

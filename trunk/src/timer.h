@@ -118,10 +118,13 @@ extern volatile tsSoftTimerList SoftTimerList[];
 #define _DisableIntT5()                     _T5IE = 0
 #define _ClearIntT5()                       _T5IF = 0
 #define _SetPriorityIntT5(priority)         _T5IP = priority
+
+#define _Timer1Init()                       Timer1Init()
+#define _SoftTimersInit()                   SoftTimersInit()
 /*=====================================================================================================================
  * Exported functions                     				                        
  *===================================================================================================================*/
-extern void __attribute__((user_init)) Timer1Init(void);
-extern void __attribute__((user_init)) SoftTimersInit(void);
+extern void Timer1Init(void);
+extern void SoftTimersInit(void);
 
 #endif /* __TIMER_H */

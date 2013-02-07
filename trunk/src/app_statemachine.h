@@ -42,12 +42,12 @@ extern U16 u16SYSTEM_FLAGS;
 // #define _set_devconfig_ok(x)                        (_putbit((x), u16SYSTEM_FLAGS, 1))      /* bit 1 */
 
 
-
+#define _App_Init()                                 App_Init()
 
 /*=====================================================================================================================
  * Exported functions                     				                        
  *===================================================================================================================*/
-extern void __attribute__((user_init)) App_Init(void);
+extern void App_Init(void);
 extern void App_StatemachineTask(void);
 
 #endif /* __APP_STATEMACHINE_H */

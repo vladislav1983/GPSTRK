@@ -285,6 +285,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\hd44780.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\hd44780.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\main.c"
 				>
 			</File>

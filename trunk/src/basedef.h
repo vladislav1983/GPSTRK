@@ -21,6 +21,7 @@
 #define cSYS_CLK_Hz     (32000000UL)
 #define cFCY_Hz         (cSYS_CLK_Hz/2UL)
 #define cFCY_MHz        (16UL)
+#define cTcy_Ns         (1000UL/cFCY_MHz)
 
 /* FCY is used by library to calculate delay functions */
 #ifndef FCY
