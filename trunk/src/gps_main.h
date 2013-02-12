@@ -86,6 +86,7 @@ typedef struct tsNMEA_GPS_Data
     U16 u16GpsSpeed;
     U16 u16GpsCouse;
     U16 u16Altitude;
+    U16 u16SatNumber;
     struct tm DateTime;
 
     // Status of GPS. Get from GGA message

@@ -66,6 +66,7 @@
 #define cGGA_LatitudeIndex              2
 #define cGGA_LongitudeIndex             4
 #define cGGA_FixQualityIndex            6
+#define cGGA_NumberOfSatIndex           7
 #define cGGA_AltitudeIndex              9
 
 
@@ -180,6 +181,9 @@ tGpsMask NMEAGga_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask Gp
 
             GpsStatLocal |= cGPS_STAT_ALTITUDE_SET;
         }
+
+        // get number of satellites
+        GpsData->u16SatNumber = atoi((const char*)pu8GpsField[cGGA_NumberOfSatIndex]);
     }
 
     return GpsStatLocal;

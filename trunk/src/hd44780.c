@@ -283,7 +283,7 @@ void HD44780_Putc(U8 u8CharToLcd)
 static void HD44780_SendByte(U8 u8ByteToLcd, U8 u8Address)
 {
     _DioWritePin(cDioPin_Lcd_RS, 0);
-    HD44780_DelayUs(2);
+    HD44780_DelayUs(20);
     _DioWritePin(cDioPin_Lcd_RS, (u8Address & 0x01));
     Nop();
     Nop();
@@ -307,9 +307,8 @@ static void HD44780_SendNibble(U8 u8Nibble)
     Nop();
     Nop();
     _DioWritePin(cDioPin_LcdEnable, 1);
-    HD44780_DelayUs(1);
+    HD44780_DelayUs(10);
     _DioWritePin(cDioPin_LcdEnable, 0);
-    HD44780_DelayUs(1);
 }
 
 /*=====================================================================================================================
@@ -321,7 +320,12 @@ static void HD44780_SendNibble(U8 u8Nibble)
  *===================================================================================================================*/
 static void HD44780_DelayUs(U16 u16DelayUs)
 {
-    volatile U32 u32Time = (U16)((F32)1000ul/ (F32)cTcy_Ns);
+#define cWhileLoopOverhead      12ul
+#define cOneUsLoopScaled        (U32)((1000.0 * 1024.0) / (cTcy_Ns * (F32)cWhileLoopOverhead))
+
+    volatile U32 u32Time;
+
+    u32Time = (cOneUsLoopScaled * (U32)u16DelayUs) >> 10;
     while(u32Time--);
 }
 
