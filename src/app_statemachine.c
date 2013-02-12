@@ -35,6 +35,7 @@
  *===================================================================================================================*/
 #define cAppStateMachineTaskPeriodUs            40E3
 #define cOsTimerTick_ms                         (cOsTimerTickUs/1000UL)
+#define cLcdUpdateTime_ms                       500ul
 
 
 /*=====================================================================================================================
@@ -68,6 +69,7 @@ static tOSTimer  WaitTimeTicks;
 static BOOL bGpsMsgReceived;
 static tGpsMask GpsStatusLocal;
 static BOOL bAprsMsgTxOk;
+static tOSTimer AppLcdUpdateTimer;
 
 
 /*=====================================================================================================================
@@ -86,6 +88,7 @@ U16 u16SYSTEM_FLAGS;
 /*=====================================================================================================================
  * Local Functions Prototypes
  *===================================================================================================================*/
+static void App_Statemachine_LCD(void);
 
 
 /*=====================================================================================================================
@@ -127,6 +130,7 @@ void App_StatemachineTask(void)
     case eAPP_STATE_INIT:
 
         OSStartTimer(&AppStateTimer);
+        OSStartTimer(&AppLcdUpdateTimer);
         // wait 2s before configuration load
         WaitTimeTicks = 2000UL/cOsTimerTick_ms;
         AppState = eAPP_WAIT_STATE;
@@ -139,9 +143,6 @@ void App_StatemachineTask(void)
         if((GpsStatusLocal & cGPS_STAT_ONLINE_SET) && (GpsStatusLocal & cGPS_STAT_MODE_SET))
         {
             AppState = eAPP_STATE_WAIT_TIME_SYNC;
-            //HD44780_Putc('\f');
-            _lcdprintf(5, 1, "%s", "test");
-            //_lcdprintf(0, 0, "%s", "test");
         }
 
         break;
@@ -173,8 +174,6 @@ void App_StatemachineTask(void)
             }
 
             bGpsMsgReceived = cFalse;
-
-            _lcdprintf(1, 2, "%04d", VTime_GetSystemTick());
         }
 
         break;
@@ -224,12 +223,12 @@ void App_StatemachineTask(void)
         break;
     
     //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
     default:
         _assert(cFalse);
         break;
     }
+
+    App_Statemachine_LCD();
 }
 
 /*=====================================================================================================================
@@ -292,4 +291,60 @@ void App_Statemachine_AprsMsgTxCallback(tCtrl Control)
  *
  * Description: 
  *===================================================================================================================*/
+static void App_Statemachine_LCD(void)
+{
+    if(cFalse != OSIsTimerElapsed(&AppLcdUpdateTimer, (cLcdUpdateTime_ms/cOsTimerTick_ms)))
+    {
+        switch(AppState)
+        {
+            //------------------------------------------------------------------------------------------------------------------
+            case eAPP_STATE_INIT:
+                
+                _lcdprintf(1, 1, "%s", "Initializing ... ");
 
+
+                break;
+            //------------------------------------------------------------------------------------------------------------------
+            case eAPP_STATE_WAIT_GPS:
+
+                _lcdprintf(1, 1, "%s", "Waiting GPS ...");
+
+                break;
+            //------------------------------------------------------------------------------------------------------------------
+            case eAPP_STATE_WAIT_TIME_SYNC:
+
+                //_lcdprintf(1, 2, "Sat used = %02d", NMEA_GPS_Data.u16SatNumber);
+
+                break;
+            //------------------------------------------------------------------------------------------------------------------
+            case eAPP_NMEA_MSG_POOL:
+            case eAPP_APRS_TRANSMIT_DATA:
+            case eAPP_APRS_TRANSMIT_INFO:
+            case eAPP_ARRS_WAIT_TRANSMIT:
+            case eAPP_SD_CARD_WRITE_POSITION:
+
+                // print time
+                _lcdprintf(4, 1, "%02d-%02d-%04d",NMEA_GPS_Data.DateTime.tm_mday, 
+                                                  NMEA_GPS_Data.DateTime.tm_mon,
+                                                  NMEA_GPS_Data.DateTime.tm_year);
+
+                _lcdprintf(5, 2, "%02d:%02d:%02d", NMEA_GPS_Data.DateTime.tm_hour,
+                                                   NMEA_GPS_Data.DateTime.tm_min,
+                                                   NMEA_GPS_Data.DateTime.tm_sec);
+
+
+
+                break;
+            //------------------------------------------------------------------------------------------------------------------
+            case eAPP_WAIT_STATE:
+
+                break;
+            //------------------------------------------------------------------------------------------------------------------
+            default:
+            // Do nothing in default state
+                break;
+        }
+        // restart timer
+        OSStartTimer(&AppLcdUpdateTimer);
+    }
+}
