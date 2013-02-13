@@ -162,6 +162,21 @@ tAprsTrmtCmd NMEAProc_AprsProcessingTransmit(tNMEA_GPS_Data *GpsData)
 
     return BeaconTypeSend;
 }
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+BOOL NMEAProc_PositioningWriteProcess(tNMEA_GPS_Data *GpsData)
+{
+    BOOL bPosWrite = cFalse;
+
+
+
+    return bPosWrite;
+}
 
 /*=====================================================================================================================
  *                                                                            
