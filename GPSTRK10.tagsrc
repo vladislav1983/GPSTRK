@@ -27,6 +27,8 @@ D:\Projects\GPSTRK\01_Firmware\trunk\src\measure.c
 D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.c
 D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.c
 D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.c
+D:\Projects\GPSTRK\01_Firmware\trunk\src\hd44780.c
+D:\Projects\GPSTRK\01_Firmware\trunk\src\gpx.c
 D:\Projects\GPSTRK\01_Firmware\trunk\src\api.h
 D:\Projects\GPSTRK\01_Firmware\trunk\src\basedef.h
 D:\Projects\GPSTRK\01_Firmware\trunk\src\dio.h
@@ -75,3 +77,5 @@ D:\Projects\GPSTRK\01_Firmware\trunk\src\vadc.h
 D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25.h
 D:\Projects\GPSTRK\01_Firmware\trunk\src\ax25_crc.h
 D:\Projects\GPSTRK\01_Firmware\trunk\src\kernelinclude.h
+D:\Projects\GPSTRK\01_Firmware\trunk\src\hd44780.h
+D:\Projects\GPSTRK\01_Firmware\trunk\src\gpx.h
