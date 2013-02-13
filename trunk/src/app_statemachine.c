@@ -28,6 +28,7 @@
 #include "fsio_main.h"
 #include "aprs.h"
 #include "hd44780.h"
+#include "gpx.h"
 
 
 /*=====================================================================================================================
@@ -36,6 +37,8 @@
 #define cAppStateMachineTaskPeriodUs            40E3
 #define cOsTimerTick_ms                         (cOsTimerTickUs/1000UL)
 #define cLcdUpdateTime_ms                       500ul
+#define cSD_CardPositiongWriteTimeout_ms        1000UL
+#define cAprsTransmitTimeout_ms                 500UL
 
 
 /*=====================================================================================================================
@@ -55,6 +58,7 @@ typedef enum teAppState
     eAPP_APRS_TRANSMIT_DATA,
     eAPP_APRS_TRANSMIT_INFO,
     eAPP_ARRS_WAIT_TRANSMIT,
+    eAPP_ARRS_WAIT_POSITION_WRITE,
     eAPP_WAIT_STATE
 }tAppState;
 
@@ -69,6 +73,7 @@ static tOSTimer  WaitTimeTicks;
 static BOOL bGpsMsgReceived;
 static tGpsMask GpsStatusLocal;
 static BOOL bAprsMsgTxOk;
+static BOOL bPositionWriteOk;
 static tOSTimer AppLcdUpdateTimer;
 
 
@@ -111,6 +116,7 @@ void App_Init(void)
     u16SYSTEM_FLAGS = 0;
     bGpsMsgReceived = cFalse;
     bAprsMsgTxOk = cFalse;
+    bPositionWriteOk = cFalse;
 }
 
 /*=====================================================================================================================
@@ -164,13 +170,25 @@ void App_StatemachineTask(void)
                 BeaconTypeSend = NMEAProc_AprsProcessingTransmit(&NMEA_GPS_Data);
 
                 if(BeaconTypeSend == cAprsProcSendData)
+                {
                     AppState = eAPP_APRS_TRANSMIT_DATA;
+                }
                 else if(BeaconTypeSend == cAprsProcSendTrackerInfo)
+                {
                     AppState = eAPP_APRS_TRANSMIT_INFO;
+                }
                 else if(BeaconTypeSend == cAprsProcNotSend)
-                    AppState = eAPP_SD_CARD_WRITE_POSITION;
+                {
+                    // position write only when aprs message is not sent
+                    if(cFalse != NMEAProc_PositioningWriteProcess(&NMEA_GPS_Data))
+                    {
+                        AppState = eAPP_SD_CARD_WRITE_POSITION;
+                    }
+                }
                 else
+                {
                     _assert(cFalse);
+                }
             }
 
             bGpsMsgReceived = cFalse;
@@ -189,25 +207,45 @@ void App_StatemachineTask(void)
     case eAPP_APRS_TRANSMIT_INFO:
 
         Aprs_Control(cAPRS_TransmitTrackerInfo);
-
+        // set one timeout here ... just for any case
+        OSStartTimer(&AppStateTimer);
         AppState = eAPP_ARRS_WAIT_TRANSMIT;
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_ARRS_WAIT_TRANSMIT:
 
-        if(cFalse != bAprsMsgTxOk)
+        if((cFalse != bAprsMsgTxOk) || (cFalse != OSIsTimerElapsed(&AppStateTimer, (cAprsTransmitTimeout_ms/cOsTimerTick_ms))))
         {
             bAprsMsgTxOk = cFalse;
-            AppState = eAPP_SD_CARD_WRITE_POSITION;
+            AppState = eAPP_NMEA_MSG_POOL;
         }
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_SD_CARD_WRITE_POSITION:
 
-        // TODO: not implemented yet!
-        AppState = eAPP_NMEA_MSG_POOL;
+        if(S_OK == Gpx_WritePosition(&NMEA_GPS_Data))
+        {
+            // set one timeout here ... just for any case
+            OSStartTimer(&AppStateTimer);
+            // TODO: remove this :)
+            bPositionWriteOk = cTrue;
+            AppState = eAPP_ARRS_WAIT_POSITION_WRITE;
+        }
+        else
+        {
+            AppState = eAPP_NMEA_MSG_POOL;
+        }
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPP_ARRS_WAIT_POSITION_WRITE:
+
+        if((cFalse != bPositionWriteOk) || (cFalse != OSIsTimerElapsed(&AppStateTimer, (cSD_CardPositiongWriteTimeout_ms/cOsTimerTick_ms))))
+        {
+            bPositionWriteOk = cFalse;
+            AppState = eAPP_NMEA_MSG_POOL;
+        }
 
         break;
     //------------------------------------------------------------------------------------------------------------------

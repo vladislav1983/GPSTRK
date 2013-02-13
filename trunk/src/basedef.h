@@ -62,7 +62,7 @@ typedef signed long         S32;
 typedef S16                 Q15;
 
 typedef float               F32;
-typedef long double         F64;
+typedef double         F64;
 typedef U16                 tCtrl;
 typedef U16                 tAddress;
 
