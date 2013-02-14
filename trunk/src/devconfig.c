@@ -154,27 +154,50 @@ HRESULT Devconfig_LoadConfig(void)
     }
 
     //==================================================================================================================
-    // SMART_BEACONING_SETTINGS
+    // APRS_SB_SETTINGS
     //==================================================================================================================
-    u16Tmp= (U16)ini_getl("SMART_BEACONING_SETTINGS", "sb_interval_min", 5UL, inifile);
+    u16Tmp= (U16)ini_getl("APRS_SB_SETTINGS", "sb_interval_min", 5UL, inifile);
     DeviceConfigParams.u16ConfAprsSbInterval_sec  = u16Tmp * 60u;
 
-    DeviceConfigParams.u8ConfAprsSbPositFast_sec = (U8)ini_getl("SMART_BEACONING_SETTINGS",                 /* \param Section  */
-                                                                "sb_posit_fast_sec",                             /* \param Key      */
-                                                                 DeviceConfigParams.u8ConfAprsSbPositFast_sec, /* \param DefValue */
-                                                                 inifile);                                    /* \param Filename */
-    DeviceConfigParams.u8ConfAprsSbPositSlow_min = (U8)ini_getl("SMART_BEACONING_SETTINGS",                  /* \param Section  */
-                                                                "sb_posit_slow_min",                             /* \param Key      */
-                                                                 DeviceConfigParams.u8ConfAprsSbPositSlow_min, /* \param DefValue */
-                                                                 inifile);                                    /* \param Filename */
-    DeviceConfigParams.u8ConfAprsSbLowSpeedLimit_kmh = (U8)ini_getl("SMART_BEACONING_SETTINGS",                  /* \param Section  */
-                                                                    "sb_low_speed_limit_kmh",                             /* \param Key      */
-                                                                     DeviceConfigParams.u8ConfAprsSbLowSpeedLimit_kmh, /* \param DefValue */
-                                                                     inifile);                                         /* \param Filename */
-    DeviceConfigParams.u8ConfAprsSbHighSpeedLimit_kmh = (U8)ini_getl("SMART_BEACONING_SETTINGS",                        /* \param Section  */
-                                                                     "sb_high_speed_limit_kmh",                             /* \param Key      */
-                                                                      DeviceConfigParams.u8ConfAprsSbHighSpeedLimit_kmh, /* \param DefValue */
-                                                                      inifile);                                          /* \param Filename */
+    DeviceConfigParams.u8ConfAprsSbPositFast_sec = (U8)ini_getl("APRS_SB_SETTINGS",                                     /* \param Section  */
+                                                                "sb_posit_fast_sec",                                    /* \param Key      */
+                                                                 DeviceConfigParams.u8ConfAprsSbPositFast_sec,          /* \param DefValue */
+                                                                 inifile);                                              /* \param Filename */
+    DeviceConfigParams.u8ConfAprsSbPositSlow_min = (U8)ini_getl("APRS_SB_SETTINGS",                                     /* \param Section  */
+                                                                "sb_posit_slow_min",                                    /* \param Key      */
+                                                                 DeviceConfigParams.u8ConfAprsSbPositSlow_min,          /* \param DefValue */
+                                                                 inifile);                                              /* \param Filename */
+    DeviceConfigParams.u8ConfAprsSbLowSpeedLimit_kmh = (U8)ini_getl("APRS_SB_SETTINGS",                                 /* \param Section  */
+                                                                    "sb_low_speed_limit_kmh",                           /* \param Key      */
+                                                                     DeviceConfigParams.u8ConfAprsSbLowSpeedLimit_kmh,  /* \param DefValue */
+                                                                     inifile);                                          /* \param Filename */
+    DeviceConfigParams.u8ConfAprsSbHighSpeedLimit_kmh = (U8)ini_getl("APRS_SB_SETTINGS",                                /* \param Section  */
+                                                                     "sb_high_speed_limit_kmh",                         /* \param Key      */
+                                                                      DeviceConfigParams.u8ConfAprsSbHighSpeedLimit_kmh,/* \param DefValue */
+                                                                      inifile);                                         /* \param Filename */
+
+    //==================================================================================================================
+    // GPX_SB_SETTINGS
+    //==================================================================================================================
+    u16Tmp= (U16)ini_getl("GPX_SB_SETTINGS", "gpx_wr_interval_min", 5UL, inifile);
+    DeviceConfigParams.u16ConfGpxSbInterval_sec  = u16Tmp * 60u;
+
+    DeviceConfigParams.u8ConfGpxSbPositFast_sec = (U8)ini_getl("GPX_SB_SETTINGS",                                      /* \param Section  */
+                                                                "gpx_wr_posit_fast_sec",                                /* \param Key      */
+                                                                 DeviceConfigParams.u8ConfGpxSbPositFast_sec,           /* \param DefValue */
+                                                                 inifile);                                              /* \param Filename */
+    DeviceConfigParams.u8ConfGpxSbPositSlow_min = (U8)ini_getl("GPX_SB_SETTINGS",                                      /* \param Section  */
+                                                                "gpx_wr_posit_slow_min",                                /* \param Key      */
+                                                                 DeviceConfigParams.u8ConfGpxSbPositSlow_min,           /* \param DefValue */
+                                                                 inifile);                                              /* \param Filename */
+    DeviceConfigParams.u8ConfGpxSbLowSpeedLimit_kmh = (U8)ini_getl("GPX_SB_SETTINGS",                                  /* \param Section  */
+                                                                    "gpx_wr_low_speed_limit_kmh",                       /* \param Key      */
+                                                                     DeviceConfigParams.u8ConfGpxSbLowSpeedLimit_kmh,   /* \param DefValue */
+                                                                     inifile);                                          /* \param Filename */
+    DeviceConfigParams.u8ConfGpxSbHighSpeedLimit_kmh = (U8)ini_getl("GPX_SB_SETTINGS",                                 /* \param Section  */
+                                                                     "gpx_wr_high_speed_limit_kmh",                     /* \param Key      */
+                                                                      DeviceConfigParams.u8ConfGpxSbHighSpeedLimit_kmh, /* \param DefValue */
+                                                                      inifile);                                         /* \param Filename */
 
     result = S_OK;
 

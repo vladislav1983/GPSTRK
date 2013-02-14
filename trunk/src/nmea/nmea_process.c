@@ -57,18 +57,14 @@
 /*=====================================================================================================================
  * Local data
  *===================================================================================================================*/
-static U16 u16SystemTime;
-static U16 u16BeaconTime;
-static U16 u16BeaconDecay;
-static U16 u16BeaconingDownCounter;
-static S16 s16CourseChangeSinceBeacon;
-static U16 u16SmartBeaconingRateSec;
-static S16 s16LastCourse;
-static U8  u8TurnThreshold;
-
+static U16 u16AprsSystemTimeStamp;
+static U16 u16AprsBeaconDecay;
+static U16 u16AprsBeaconingDownCounter;
 /*=====================================================================================================================
  * Constant Local Data
  *===================================================================================================================*/
+static tSmartBeaconingRef AprsSmartBeaconingRef = cAprsSmartBeaconingRef();
+static tSmartBeaconingRef GpxSmartBeaconingRef = cGpxSmartBeaconingRef();
 
 /*=====================================================================================================================
  * Constant exported data                                                     
@@ -81,7 +77,7 @@ static U8  u8TurnThreshold;
 /*=====================================================================================================================
  * Local Functions Prototypes
  *===================================================================================================================*/
-static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData);
+static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData, tSmartBeaconingRef *SbRefData);
 
 /*=====================================================================================================================
  *
@@ -97,13 +93,9 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData);
  *===================================================================================================================*/
 void NMEAProc_Init(void)
 {
-    u16SystemTime = 0;
-    u16BeaconTime = 0;
-    u16BeaconDecay = cMinDecayInSeconds;
-    u16BeaconingDownCounter = cMinDecayInSeconds;
-    s16LastCourse = -1;
-    s16CourseChangeSinceBeacon = 0;
-    u16SmartBeaconingRateSec = 0;
+    u16AprsSystemTimeStamp = 0;
+    u16AprsBeaconDecay = cMinDecayInSeconds;
+    u16AprsBeaconingDownCounter = cMinDecayInSeconds;
 }
 
 /*=====================================================================================================================
@@ -128,34 +120,34 @@ tAprsTrmtCmd NMEAProc_AprsProcessingTransmit(tNMEA_GPS_Data *GpsData)
     // get system time in seconds
     u16CurrentSystemTimeL = VTime_GetSystemTick();
 
-    if(u16BeaconingDownCounter < (U16)(u16CurrentSystemTimeL - u16SystemTime))
+    if(u16AprsBeaconingDownCounter < (U16)(u16CurrentSystemTimeL - u16AprsSystemTimeStamp))
     {
         // send tracker info
         BeaconTypeSend = cAprsProcSendTrackerInfo;
 
         // beacon decay multiplier ^2
-        u16BeaconDecay *= 2u;
-        if(u16BeaconDecay >= cMaxInfoBeaconIntervalSec)
-            u16BeaconDecay = cMaxInfoBeaconIntervalSec;
+        u16AprsBeaconDecay *= 2u;
+        if(u16AprsBeaconDecay >= cMaxInfoBeaconIntervalSec)
+            u16AprsBeaconDecay = cMaxInfoBeaconIntervalSec;
 
-        u16BeaconingDownCounter = u16BeaconDecay;
+        u16AprsBeaconingDownCounter = u16AprsBeaconDecay;
         // update system time
-        u16SystemTime = u16CurrentSystemTimeL;
+        u16AprsSystemTimeStamp = u16CurrentSystemTimeL;
     }
     else
     {
-        if((u16SystemTime != 0ul) && ((u16SystemTime + cAprsDataTransmitTimeshift_sec) == u16CurrentSystemTimeL))
+        if((u16AprsSystemTimeStamp != 0ul) && ((u16AprsSystemTimeStamp + cAprsDataTransmitTimeshift_sec) == u16CurrentSystemTimeL))
         {
             // send data with period = info period + ime shift
             // this is by default to set first location even if you are not moving
             BeaconTypeSend = cAprsProcSendData;
             // reset beacon time rate
-            u16BeaconTime = u16CurrentSystemTimeL;
+            AprsSmartBeaconingRef.u16BeaconTimeStamp = u16CurrentSystemTimeL;
         }
         else
         {
             // smart beaconing will produce transmission
-            if(cFalse != NmeaProc_SmartBeaconing(GpsData))
+            if(cFalse != NmeaProc_SmartBeaconing(GpsData, &AprsSmartBeaconingRef))
                 BeaconTypeSend = cAprsProcSendData;
         }
     }
@@ -173,7 +165,7 @@ BOOL NMEAProc_PositioningWriteProcess(tNMEA_GPS_Data *GpsData)
 {
     BOOL bPosWrite = cFalse;
 
-
+    bPosWrite = NmeaProc_SmartBeaconing(GpsData, &GpxSmartBeaconingRef);
 
     return bPosWrite;
 }
@@ -190,14 +182,14 @@ BOOL NMEAProc_PositioningWriteProcess(tNMEA_GPS_Data *GpsData)
  *
  * Description: 
  *===================================================================================================================*/
-static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData)
+static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData, tSmartBeaconingRef *SbRefData)
 {
     U16  u16BeaconTimeStampL;
     U16  u16Seconds;
     BOOL bBeaconSend      = cFalse;
     U16  u16Speed         = GpsData->u16GpsSpeed;
     U16  s16CurrentCourse = GpsData->u16GpsCouse;
-
+    
     /* Code to compute SmartBeaconing(tm) rates. (borrowed from Xastir)
 	 *
 	 * SmartBeaconing(tm) was invented by Steve Bragg (KA9MVA) and
@@ -235,75 +227,75 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData)
     u16BeaconTimeStampL = VTime_GetSystemTick();
 
     // do smart beaconing if beacon interval = 0 sec
-    if (DeviceConfigParams.u16ConfAprsSbInterval_sec != 0)
+    if (*SbRefData->pu16SbInterval_sec != 0)
     {
-        if(DeviceConfigParams.u16ConfAprsSbInterval_sec < (U16)(u16BeaconTimeStampL - u16BeaconTime))
+        if(*SbRefData->pu16SbInterval_sec < (U16)(u16BeaconTimeStampL - SbRefData->u16BeaconTimeStamp))
         {
             bBeaconSend = cTrue;
-            u16BeaconTime = u16BeaconTimeStampL;
+            SbRefData->u16BeaconTimeStamp = u16BeaconTimeStampL;
         }
     }
     else
     {
-        if(u16Speed <= DeviceConfigParams.u8ConfAprsSbLowSpeedLimit_kmh)
+        if(u16Speed <= *SbRefData->pu8SbLowSpeedLimit_kmh)
         {
             // set slow position rate
-            u16SmartBeaconingRateSec = (U16)DeviceConfigParams.u8ConfAprsSbPositSlow_min * 60u;
+            SbRefData->u16SmartBeaconingRateSec = (U16)*SbRefData->pu8SbPositSlow_min * 60u;
 
             // Reset s16CourseChangeSinceBeacon to avoid cyclic 
 			// triggering of beacon_now when we suddenly drop below the low speed limit.
-            s16CourseChangeSinceBeacon = 0;
+            SbRefData->s16CourseChangeSinceBeacon = 0;
         }
         else
         {
             // We're moving faster than the low speed limit
             // Start with turn_min degrees as the threshold
-            u8TurnThreshold = cSbTurnMinimum_deg;
+            SbRefData->u8TurnThreshold = cSbTurnMinimum_deg;
 
             // Adjust rate according to speed
-            if(u16Speed > DeviceConfigParams.u8ConfAprsSbHighSpeedLimit_kmh)
+            if(u16Speed > *SbRefData->pu8SbHighSpeedLimit_kmh)
             {
                 // We're above the high limit
-                u16SmartBeaconingRateSec = DeviceConfigParams.u8ConfAprsSbPositFast_sec;
+                SbRefData->u16SmartBeaconingRateSec = *SbRefData->pu8SbPositFast_sec;
             } 
             else
             {
                 // We're between the high/low limits. Set a between rate
-                u16SmartBeaconingRateSec = ((U16)DeviceConfigParams.u8ConfAprsSbPositFast_sec * (U16)DeviceConfigParams.u8ConfAprsSbHighSpeedLimit_kmh) / u16Speed;
+                SbRefData->u16SmartBeaconingRateSec = ((U16)*SbRefData->pu8SbPositFast_sec * (U16)*SbRefData->pu8SbHighSpeedLimit_kmh) / u16Speed;
                 // Adjust turn threshold according to speed
-                u8TurnThreshold += (U8)(((U16)cSbTurnSlope * 10u) / u16Speed);
+                SbRefData->u8TurnThreshold += (U8)(((U16)cSbTurnSlope * 10u) / u16Speed);
             }
 
             // Force a maximum turn threshold of 80 degrees 
-            if(u8TurnThreshold > cTurnThresholdMaxDeg)
-                u8TurnThreshold = cTurnThresholdMaxDeg;
+            if(SbRefData->u8TurnThreshold > cTurnThresholdMaxDeg)
+                SbRefData->u8TurnThreshold = cTurnThresholdMaxDeg;
 
             // Check to see if we've written anything into sb_last_heading variable yet.  If not, write the current course into it.
-            if(s16LastCourse == -1)
-                s16LastCourse = s16CurrentCourse;
+            if(SbRefData->s16LastCourse == -1)
+                SbRefData->s16LastCourse = s16CurrentCourse;
 
             // Corner-pegging.  Note that we don't corner-peg if we're
             // below the low-speed threshold.
-            s16CourseChangeSinceBeacon = s16CurrentCourse - s16LastCourse;
+            SbRefData->s16CourseChangeSinceBeacon = s16CurrentCourse - SbRefData->s16LastCourse;
 
-            if(s16CourseChangeSinceBeacon < 0)
-                s16CourseChangeSinceBeacon = s16LastCourse - s16CurrentCourse;
+            if(SbRefData->s16CourseChangeSinceBeacon < 0)
+                SbRefData->s16CourseChangeSinceBeacon = SbRefData->s16LastCourse - s16CurrentCourse;
 
-            if(s16CourseChangeSinceBeacon > 180u)
-                s16CourseChangeSinceBeacon = 360u - s16CourseChangeSinceBeacon;
+            if(SbRefData->s16CourseChangeSinceBeacon > 180u)
+                SbRefData->s16CourseChangeSinceBeacon = 360u - SbRefData->s16CourseChangeSinceBeacon;
 
-            u16Seconds = u16BeaconTimeStampL - u16BeaconTime;
+            u16Seconds = u16BeaconTimeStampL - SbRefData->u16BeaconTimeStamp;
 
             // sneaky condition, but needed
-            if( (    (s16CourseChangeSinceBeacon > u8TurnThreshold) 
-                  && (u16Seconds                 > cSbTurnTime_sec)
+            if( (    (SbRefData->s16CourseChangeSinceBeacon > SbRefData->u8TurnThreshold) 
+                  && (u16Seconds > cSbTurnTime_sec)
                 )
-                  || (u16Seconds                 > u16SmartBeaconingRateSec)
+                  || (u16Seconds > SbRefData->u16SmartBeaconingRateSec)
               )
             {
                 bBeaconSend = cTrue;
-                s16LastCourse = s16CurrentCourse;
-                u16BeaconTime = u16BeaconTimeStampL;
+                SbRefData->s16LastCourse = s16CurrentCourse;
+                SbRefData->u16BeaconTimeStamp = u16BeaconTimeStampL;
             }
         }
     }
