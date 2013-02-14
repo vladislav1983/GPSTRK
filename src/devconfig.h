@@ -41,6 +41,12 @@
     .u8ConfAprsSbPositSlow_min      = 20u,                                                                              \
     .u8ConfAprsSbLowSpeedLimit_kmh  = 6u,                                                                               \
     .u8ConfAprsSbHighSpeedLimit_kmh = 90u,                                                                              \
+     /* gpx positioning write smart beaconing settings */                                                               \
+    .u16ConfGpxSbInterval_sec       = 0,                                                                                \
+    .u8ConfGpxSbPositFast_sec       = 15,                                                                               \
+    .u8ConfGpxSbPositSlow_min       = 1,                                                                                \
+    .u8ConfGpxSbLowSpeedLimit_kmh   = 3,                                                                                \
+    .u8ConfGpxSbHighSpeedLimit_kmh  = 10,                                                                               \
     /* NO user accessible configuration */                                                                              \
     .u8ConfigTrackerVersion     = "GPS tracker by _maker_ V1.02 <vladislav_1@abv.bg>",                                  \
     .u8ConfigBeaconText         = "beacon text"                                                                         \
@@ -65,6 +71,12 @@ struct sDeviceConfigParams
     U8  u8ConfAprsSbPositSlow_min;
     U8  u8ConfAprsSbLowSpeedLimit_kmh;
     U8  u8ConfAprsSbHighSpeedLimit_kmh;
+    // gpx positioning write smart beaconing settings
+    U16 u16ConfGpxSbInterval_sec;
+    U8  u8ConfGpxSbPositFast_sec;
+    U8  u8ConfGpxSbPositSlow_min;
+    U8  u8ConfGpxSbLowSpeedLimit_kmh;
+    U8  u8ConfGpxSbHighSpeedLimit_kmh;
     //--- NO user accessible configuration
     U8 u8ConfigTrackerVersion[cAPRS_VersionInfoLength+1];
     U8 u8ConfigBeaconText[cAPRS_BeaconTextLen+1];

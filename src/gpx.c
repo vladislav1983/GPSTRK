@@ -126,7 +126,7 @@ static void Gpx_PrepareGpsData(tNMEA_GPS_Data *GpsData)
  *
  * Return: void
  *
- * Description: This function should call "KillThePic", but wow ... observe the naming conventions!
+ * Description: This function should be called "KillThePic", but wow ... observe the naming conventions!
                 Conversion from DDMM.MM format to decimal degrees
                 some little example:
                            |NMEA          |  Decimal
@@ -163,7 +163,7 @@ static void Gpx_Lat_Lon_Conversion(tNMEA_GPS_Data *GpsData)
     (void)sscanf((char*)u8TmpBuff, "%lf", &f64LatF);
     // split double precision floating-point value into fractional and integer
     // DDMM.MM -> DD + (MM.MM/60)
-    f64Fract = 100.0 * modf((f64LatF / 100.0), &f64Integer);
+    f64Fract = 100.0 * modf((f64LatF / 100.0), (double*)&f64Integer);
     f64LatF = f64Integer + (f64Fract / 60.0);
 
     // check where latitude is north (N) or south (S)
@@ -184,7 +184,7 @@ static void Gpx_Lat_Lon_Conversion(tNMEA_GPS_Data *GpsData)
     sscanf((char*)u8TmpBuff, "%lf", &f64LonF);
     // split double precision floating-point value into fractional and integer
     // DDDMM.MM -> DDD + (MM.MM/60)
-    f64Fract = 100.0 * modf((f64LonF / 100.0), &f64Integer);
+    f64Fract = 100.0 * modf((f64LonF / 100.0), (double*)&f64Integer);
     f64LonF = f64Integer + (f64Fract / 60.0);
 
     // check where latitude is east (E) or west (W)
