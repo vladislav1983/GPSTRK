@@ -78,8 +78,8 @@ typedef U16          	    HRESULT;
 
 typedef struct
 {
-    void* pBuff;
-    U16   Lng;
+    void* pBuff __attribute__ ((aligned));
+    U16   Lng   __attribute__ ((aligned));
 }tMsg;
 
 typedef U8 tControl;

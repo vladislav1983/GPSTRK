@@ -185,7 +185,8 @@ void __attribute__((interrupt, no_auto_psv)) _MathError(void)
 {
     //PIN_CPU_TRAP_LED = 1;
     INTCON1bits.MATHERR = 0;        //Clear the trap flag
-    while (1);
+    _dbgassert();
+    //while (1);
 }
 
 

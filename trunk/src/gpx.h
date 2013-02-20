@@ -27,7 +27,6 @@ typedef struct tsGpsGpxData
     U8 GpxLatitudeDec[15];
     U8 GpxLongitudeDec[15];
     U8 GpxTime[20];       // ISO 8601 time format
-    U8 GpxAltitude[4];
 }tGpsGpxData;
 /*=====================================================================================================================
  * Exported data                                                              
