@@ -142,7 +142,7 @@ static HRESULT Gpx_WriteFileData(tNMEA_GPS_Data *GpsData)
 
         if(cTrue == bFileIsEmpty)
         {
-            // write file header
+            // Get the end of the positioning header and rewrite main header tags
             if(0 < FSfwrite(u8XmlHeader, 1, sizeof(u8XmlHeader), gpx_file))
                 res = S_OK;
             else
@@ -198,7 +198,7 @@ static HRESULT Gpx_WriteFileData(tNMEA_GPS_Data *GpsData)
 static BOOL Gpx_IsFileEmpty(U16 u16HederLength, FSFILE *file)
 {
     BOOL bRet = cTrue;
-    U16 u16CurrentPos;
+    U32 u32CurrentPos;
 
     if(file != NULL && u16HederLength != 0)
     {
@@ -206,9 +206,9 @@ static BOOL Gpx_IsFileEmpty(U16 u16HederLength, FSFILE *file)
         if( 0 == FSfseek(file, 0, SEEK_END))
         {
             // check that end of file location is bigger or equal than gpx header
-            u16CurrentPos = (U16)FSftell(file);
+            u32CurrentPos = FSftell(file);
 
-            if((u16HederLength) <= u16CurrentPos)
+            if(u16HederLength <= u32CurrentPos)
             {
                 // we are sure that file is not empty
                 bRet = cFalse;
