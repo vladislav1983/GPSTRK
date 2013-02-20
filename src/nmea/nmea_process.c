@@ -219,9 +219,9 @@ static BOOL NmeaProc_SmartBeaconing(tNMEA_GPS_Data *GpsData, tSmartBeaconingRef 
 	 * u8ConfAprsSbPositSlow_min         Slow posit rate, used if <= sb_low_speed_limit.
 	 *                                      Units are in minutes.
 	 *
-	 * u8ConfAprsSbLowSpeedLimit_kmh    Low speed limit, units are in knots.
+	 * u8ConfAprsSbLowSpeedLimit_kmh    Low speed limit
 	 *
-	 * u8ConfAprsSbHighSpeedLimit_kmh   High speed limit, units are in knots.
+	 * u8ConfAprsSbHighSpeedLimit_kmh   High speed limit
 	 */
 
     u16BeaconTimeStampL = VTime_GetSystemTick();

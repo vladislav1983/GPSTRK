@@ -42,5 +42,6 @@
 extern void FsioMain_Init(void);
 extern void FSIO_Task(void);
 extern HRESULT FSIOMain_SetTimeDate(tNMEA_GPS_Data *GpsData);
+extern HRESULT FSIOMain_WritePos(tNMEA_GPS_Data *GpsData, tMsg Msg);
 
 #endif /* __FSIO_MAIN_H */

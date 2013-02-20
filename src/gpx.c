@@ -22,7 +22,10 @@
 // let start with this funny component
 #include <math.h>
 #include <stdlib.h>
+#include "FSIO.h"
 #include "gpx.h"
+#include "gps_main.h"
+#include "fsio_main.h"
 #include "gps_main.h"
 
 
@@ -45,6 +48,30 @@
 /*=====================================================================================================================
  * Constant Local Data
  *===================================================================================================================*/
+static const char u8XmlHeader[] = "\
+<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\
+<gpx\r\n\
+  version=\"1.0\"\r\n\
+  creator=\"GPX embedded writer by _maker_ (vladislav_1@abv.bg)\"\r\n\
+  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\
+  xmlns=\"http://www.topografix.com/GPX/1/0\"\r\n\
+  xsi:schemaLocation=\"http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd\">\r\n\r\n\
+<trk>\r\n\
+  <name>ACTIVE LOG</name>\r\n\
+<trkseg>\r\n";
+
+static const char u8XmlPosHeader[] = \
+"<trkpt lat=\"%s\" lon=\"%s\">\r\n\
+  <ele>%d</ele>\r\n\
+  <time>%s</time>\r\n";
+
+
+static const char u8XmlPosCloseHeader[] = "</trkpt>\r\n";
+
+static const char u8XmlCloseHeader[] = \
+"</trkseg>\r\n\
+</trk>\r\n\
+</gpx>\r\n";
 
 /*=====================================================================================================================
  * Constant exported data                                                     
@@ -59,8 +86,10 @@ tGpsGpxData GpsGpxData;
 /*=====================================================================================================================
  * Local Functions Prototypes
  *===================================================================================================================*/
-static void Gpx_Lat_Lon_Conversion(tNMEA_GPS_Data *GpsData);
-static void Gpx_PrepareGpsData(tNMEA_GPS_Data *GpsData);
+static void    Gpx_Lat_Lon_Conversion(tNMEA_GPS_Data *GpsData                     );
+static void    Gpx_PrepareGpsData    (tNMEA_GPS_Data *GpsData                     );
+static BOOL    Gpx_IsFileEmpty       (U16             u16HederLength, FSFILE *file);
+static HRESULT Gpx_WriteFileData     (tNMEA_GPS_Data *GpsData                     );
 
 
 /*=====================================================================================================================
@@ -77,13 +106,11 @@ static void Gpx_PrepareGpsData(tNMEA_GPS_Data *GpsData);
  *===================================================================================================================*/
 HRESULT Gpx_WritePosition(tNMEA_GPS_Data *GpsData)
 {
-    HRESULT res = S_OK;
+    HRESULT res = S_NOK;
 
     Gpx_PrepareGpsData(GpsData);
 
-
-
-
+    res = Gpx_WriteFileData(GpsData);
 
     return res;
 }
@@ -93,6 +120,106 @@ HRESULT Gpx_WritePosition(tNMEA_GPS_Data *GpsData)
  *                                     L O C A L    F U N C T I O N S                   
  *                                                                            
  *===================================================================================================================*/
+static HRESULT Gpx_WriteFileData(tNMEA_GPS_Data *GpsData)
+{
+    HRESULT res = S_NOK;
+    FSFILE* gpx_file = NULL;
+    // filename example: 2013-02-18_log.gpx
+    U8 u8GpxFileName[19+1];
+    BOOL bFileIsEmpty = cTrue;
+    U8 u8OutBuff[200];
+    U16 u16Index;
+
+    // compose filename
+    sprintf((char*) u8GpxFileName, "%04d-%02d-%02d_log.gpx", GpsData->DateTime.tm_year, GpsData->DateTime.tm_mon, GpsData->DateTime.tm_mday);
+
+    gpx_file = FSfopen((const char*)u8GpxFileName, FS_APPEND);
+
+    if(NULL != gpx_file)
+    {
+        // check that file is empty or not
+        bFileIsEmpty = Gpx_IsFileEmpty(sizeof(u8XmlHeader), gpx_file);
+
+        if(cTrue == bFileIsEmpty)
+        {
+            // write file header
+            if(0 < FSfwrite(u8XmlHeader, 1, sizeof(u8XmlHeader), gpx_file))
+                res = S_OK;
+            else
+                res = S_NOK;
+        }
+
+        // write position data
+        if(res == S_OK || cFalse == bFileIsEmpty)
+        {
+
+            if (cFalse == bFileIsEmpty)
+            {
+                if(0 == FSfseek(gpx_file, (strlen(u8XmlCloseHeader)+1), SEEK_END))
+                    res = S_OK;
+                else
+                    res = S_NOK; 
+            }
+
+            if(res == S_OK)
+            {
+                u16Index = sprintf((char*)u8OutBuff, (const char*)u8XmlPosHeader, GpsGpxData.GpxLatitudeDec,
+                                                                                  GpsGpxData.GpxLongitudeDec,
+                                                                                  GpsData->u16Altitude,
+                                                                                  GpsGpxData.GpxTime);
+
+
+                u16Index += sprintf((char*)&u8OutBuff[u16Index], "%s", u8XmlPosCloseHeader);
+                u16Index += sprintf((char*)&u8OutBuff[u16Index], "%s", u8XmlCloseHeader);
+
+                if(0 < FSfwrite(u8OutBuff, 1, u16Index, gpx_file))
+                    res = S_OK;
+                else
+                    res = S_NOK;
+            }
+        }
+    }
+
+    if(0 == FSfclose(gpx_file))
+        res = S_OK;
+    else
+        res = S_NOK;
+
+    return res;
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+static BOOL Gpx_IsFileEmpty(U16 u16HederLength, FSFILE *file)
+{
+    BOOL bRet = cTrue;
+    U16 u16CurrentPos;
+
+    if(file != NULL && u16HederLength != 0)
+    {
+        // set position at end of file (think for EOF)
+        if( 0 == FSfseek(file, 0, SEEK_END))
+        {
+            // check that end of file location is bigger or equal than gpx header
+            u16CurrentPos = (U16)FSftell(file);
+
+            if((u16HederLength) <= u16CurrentPos)
+            {
+                // we are sure that file is not empty
+                bRet = cFalse;
+            }
+        }
+    }
+
+    return bRet;
+}
+
+
 /*=====================================================================================================================
  * Parameters: GpsData
  *
@@ -104,9 +231,6 @@ static void Gpx_PrepareGpsData(tNMEA_GPS_Data *GpsData)
 {
     // GPS data processing ... heavy computations are made there ... really
     Gpx_Lat_Lon_Conversion(GpsData);
-
-    // copy altitude -> in gpx format it meaning elevation
-    memcpy(GpsGpxData.GpxAltitude, GpsData->AX25_GPS_Data.u8Altitude, sizeof(GpsData->AX25_GPS_Data.u8Altitude));
 
     // compose time according to ISO 8601 time format (who knows this shit? i don't)
     // YYYY-MM-DDTHH:MM:SSZ -> 2010-03-26T11:25:31Z
@@ -129,7 +253,7 @@ static void Gpx_PrepareGpsData(tNMEA_GPS_Data *GpsData)
  * Description: This function should be called "KillThePic", but wow ... observe the naming conventions!
                 Conversion from DDMM.MM format to decimal degrees
                 some little example:
-                           |NMEA          |  Decimal
+                           |NMEA       |  Decimal
                 ---------------------------------------------------------
                 latitude   | 0302.78   | 03  + (02.78/60) = 3.046412
                 longitude  | 10141.82  | 101 + (41.82/60) = 101.6971
