@@ -44,6 +44,7 @@
 /*=====================================================================================================================
  * Local data
  *===================================================================================================================*/
+static BOOL bNewTrackRequest;
 
 /*=====================================================================================================================
  * Constant Local Data
@@ -55,23 +56,22 @@ static const char u8XmlHeader[] = "\
   creator=\"GPX embedded writer by _maker_ (vladislav_1@abv.bg)\"\r\n\
   xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\
   xmlns=\"http://www.topografix.com/GPX/1/0\"\r\n\
-  xsi:schemaLocation=\"http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd\">\r\n\r\n\
+  xsi:schemaLocation=\"http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd\">\r\n\r\n";
+
+
+static const char u8XmlTrackHeader[] = "\
 <trk>\r\n\
-  <name>ACTIVE LOG</name>\r\n\
+<name>ACTIVE LOG %02d-%02d-%04d %02d:%02d:%02d </name>\r\n\
 <trkseg>\r\n";
 
-static const char u8XmlPosHeader[] = \
-"<trkpt lat=\"%s\" lon=\"%s\">\r\n\
-  <ele>%d</ele>\r\n\
-  <time>%s</time>\r\n";
+static const char u8XmlPosHeader[] = "\
+<trkpt lat=\"%s\" lon=\"%s\">\r\n\
+<ele>%d</ele>\r\n\
+<time>%s</time>\r\n";
 
-
-static const char u8XmlPosCloseHeader[] = "</trkpt>\r\n";
-
-static const char u8XmlCloseHeader[] = \
-"</trkseg>\r\n\
-</trk>\r\n\
-</gpx>\r\n";
+static const char u8XmlPosCloseHeader[]   = "</trkpt>\r\n";
+static const char u8XmpTrackCloseHeader[] = "</trkseg>\r\n</trk>\r\n";
+static const char u8XmlCloseHeader[]      = "</gpx>\r\n";
 
 /*=====================================================================================================================
  * Constant exported data                                                     
@@ -104,6 +104,19 @@ static HRESULT Gpx_WriteFileData     (tNMEA_GPS_Data *GpsData                   
  *
  * Description: 
  *===================================================================================================================*/
+void Gpx_Init(void)
+{
+    // start by track default
+    bNewTrackRequest = cTrue;
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
 HRESULT Gpx_WritePosition(tNMEA_GPS_Data *GpsData)
 {
     HRESULT res = S_NOK;
@@ -128,7 +141,8 @@ static HRESULT Gpx_WriteFileData(tNMEA_GPS_Data *GpsData)
     U8 u8GpxFileName[19+1];
     BOOL bFileIsEmpty = cTrue;
     U8 u8OutBuff[200];
-    U16 u16Index;
+    U16 u16Index = 0;
+    U8 u8Size;
 
     // compose filename
     sprintf((char*) u8GpxFileName, "%04d-%02d-%02d_log.gpx", GpsData->DateTime.tm_year, GpsData->DateTime.tm_mon, GpsData->DateTime.tm_mday);
@@ -142,43 +156,49 @@ static HRESULT Gpx_WriteFileData(tNMEA_GPS_Data *GpsData)
 
         if(cTrue == bFileIsEmpty)
         {
-            // Get the end of the positioning header and rewrite main header tags
-            if(0 < FSfwrite(u8XmlHeader, 1, sizeof(u8XmlHeader), gpx_file))
+            // write header
+            if(0 < FSfwrite(u8XmlHeader, 1, (sizeof(u8XmlHeader)-1), gpx_file))
                 res = S_OK;
             else
                 res = S_NOK;
+
+            // start track by default
+             u16Index = sprintf((char*)&u8OutBuff[0], (const char*)u8XmlTrackHeader, GpsData->DateTime.tm_mday,
+                                                                                     GpsData->DateTime.tm_mon,
+                                                                                     GpsData->DateTime.tm_year,
+                                                                                     GpsData->DateTime.tm_hour,
+                                                                                     GpsData->DateTime.tm_min,
+                                                                                     GpsData->DateTime.tm_sec);
         }
 
-        // write position data
-        if(res == S_OK || cFalse == bFileIsEmpty)
+        if (cFalse == bFileIsEmpty)
         {
+            u8Size  = strlen(u8XmpTrackCloseHeader);
+            u8Size += strlen(u8XmlCloseHeader);
 
-            if (cFalse == bFileIsEmpty)
-            {
-                if(0 == FSfseek(gpx_file, (strlen(u8XmlCloseHeader)+1), SEEK_END))
-                    res = S_OK;
-                else
-                    res = S_NOK; 
-            }
-
-            if(res == S_OK)
-            {
-                u16Index = sprintf((char*)u8OutBuff, (const char*)u8XmlPosHeader, GpsGpxData.GpxLatitudeDec,
-                                                                                  GpsGpxData.GpxLongitudeDec,
-                                                                                  GpsData->u16Altitude,
-                                                                                  GpsGpxData.GpxTime);
-
-
-                u16Index += sprintf((char*)&u8OutBuff[u16Index], "%s", u8XmlPosCloseHeader);
-                u16Index += sprintf((char*)&u8OutBuff[u16Index], "%s", u8XmlCloseHeader);
-
-                if(0 < FSfwrite(u8OutBuff, 1, u16Index, gpx_file))
-                    res = S_OK;
-                else
-                    res = S_NOK;
-            }
+            if(0 == FSfseek(gpx_file, (u8Size+1), SEEK_END))
+                res = S_OK;
+            else
+                res = S_NOK; 
         }
+
+        u16Index += sprintf((char*)&u8OutBuff[u16Index], (const char*)u8XmlPosHeader, GpsGpxData.GpxLatitudeDec,
+                                                                                      GpsGpxData.GpxLongitudeDec,
+                                                                                      GpsData->u16Altitude,
+                                                                                      GpsGpxData.GpxTime);
+
+
+        u16Index += sprintf((char*)&u8OutBuff[u16Index], "%s", u8XmlPosCloseHeader);
+        u16Index += sprintf((char*)&u8OutBuff[u16Index], "%s", u8XmpTrackCloseHeader);
+        u16Index += sprintf((char*)&u8OutBuff[u16Index], "%s", u8XmlCloseHeader);
+
+        if(0 < FSfwrite(u8OutBuff, 1, u16Index, gpx_file))
+            res = S_OK;
+        else
+            res = S_NOK;
     }
+
+    _assert(u16Index < sizeof(u8OutBuff));
 
     if(0 == FSfclose(gpx_file))
         res = S_OK;
@@ -202,17 +222,13 @@ static BOOL Gpx_IsFileEmpty(U16 u16HederLength, FSFILE *file)
 
     if(file != NULL && u16HederLength != 0)
     {
-        // set position at end of file (think for EOF)
-        if( 0 == FSfseek(file, 0, SEEK_END))
-        {
-            // check that end of file location is bigger or equal than gpx header
-            u32CurrentPos = FSftell(file);
+        // check that end of file location is bigger or equal than gpx header
+        u32CurrentPos = FSftell(file);
 
-            if(u16HederLength <= u32CurrentPos)
-            {
-                // we are sure that file is not empty
-                bRet = cFalse;
-            }
+        if(u16HederLength <= u32CurrentPos)
+        {
+            // we are sure that file is not empty
+            bRet = cFalse;
         }
     }
 
@@ -296,7 +312,7 @@ static void Gpx_Lat_Lon_Conversion(tNMEA_GPS_Data *GpsData)
         f64LatF = -f64LatF;
     }
     // print to formatted string
-    sprintf((char*)GpsGpxData.GpxLatitudeDec, "%f", f64LatF);
+    sprintf((char*)GpsGpxData.GpxLatitudeDec, "%2.8f", f64LatF);
 
     //-------------------------------------------------------------------------------------------------------
     // copy only useful (numeric) information from longitude
@@ -317,7 +333,7 @@ static void Gpx_Lat_Lon_Conversion(tNMEA_GPS_Data *GpsData)
         f64LatF = -f64LatF;
     }
     // print to formatted string
-    sprintf((char*)GpsGpxData.GpxLongitudeDec, "%f", f64LonF);
+    sprintf((char*)GpsGpxData.GpxLongitudeDec, "%2.8f", f64LonF);
 }
 
 /*=====================================================================================================================

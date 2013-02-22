@@ -39,6 +39,7 @@
 #include "vadc.h"
 #include "vtime.h"
 #include "vuart.h"
+#include "gpx.h"
 
 
 /*=====================================================================================================================
@@ -147,6 +148,9 @@ void System_Init(void)
 #endif
 #ifdef _System_StreamsInit
     _System_StreamsInit();
+#endif
+#ifdef _Gpx_Init
+    _Gpx_Init();
 #endif
 // application initialization
 #ifdef _App_Init
