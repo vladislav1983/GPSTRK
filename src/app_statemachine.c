@@ -403,11 +403,11 @@ static void App_Statemachine_LCD(void)
             if(cFalse == OSIsTimerElapsed(&LcdShowTimer, (cLcdShowTime_ms/cOsTimerTick_ms)))
             {
                 memcpy(u8TmpBuff, NMEA_GPS_Data.AX25_GPS_Data.u8Latitude, sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Latitude));
-                u8TmpBuff[sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Latitude)+1] = '\0';
+                u8TmpBuff[sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Latitude)] = '\0';
                 _lcdprintf(1, 1, "Lat:%s", u8TmpBuff);
 
                 memcpy(u8TmpBuff, NMEA_GPS_Data.AX25_GPS_Data.u8Longitude, sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Longitude));
-                u8TmpBuff[sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Longitude)+1] = '\0';
+                u8TmpBuff[sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Longitude)] = '\0';
                 _lcdprintf(1, 2, "Lon:%s", u8TmpBuff);
             }
             else
