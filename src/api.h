@@ -20,7 +20,8 @@
  *===================================================================================================================*/
 // Generic callback controls
 #define cCallbackCtrlOK                     0
-#define cCallbackCtrlError                  1
+#define cCallbackCtrlNOK                    1
+#define cCallbackCtrlError                  2
 
 
 /*=====================================================================================================================
@@ -53,6 +54,7 @@ extern void Aprs_TransmitCallback(tCtrl Ctrl);
 ************************************************************************************************************************/
 extern void AppStatemachine_GpsMsgReceivedCallback(tMsg Msg);
 extern void  App_Statemachine_AprsMsgTxCallback(tCtrl Control);
+extern void App_Statemachine_SD_CardCallback(tCtrl Control);
 
 /*=====================================================================================================================
  * Exported functions                     				                        

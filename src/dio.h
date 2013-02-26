@@ -52,6 +52,7 @@
 #define cDioPin_GpsUartTx                   _DeclarePin(B, 7)
 #define cDioPin_GpsLed                      _DeclarePin(F, 1)
 #define cDioPin_AssertLed                   _DeclarePin(F, 0)
+#define cDioPin_SD_CardLed                  _DeclarePin(G, 0)
 // LCD pins
 #define cDioPin_LcdBacklight                _DeclarePin(D, 10)
 #define cDioPin_Lcd_RS                      _DeclarePin(D, 11)

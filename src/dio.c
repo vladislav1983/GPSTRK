@@ -98,6 +98,11 @@ void DioInit(void)
     _DioPinConfig(cDioPin_AssertLed, 1);
     _DioPinConfig(cDioPin_AssertLed, cPinModeOutput);
 
+    // sd card cfg
+    _DioPinConfig(cDioPin_SD_CardLed, 0);
+    _DioPinConfig(cDioPin_SD_CardLed, cPinModeOutput);
+
+
     memset(DioFiltCounters,   0, sizeof(DioFiltCounters));
     memset(DioInputBuffer,    0, sizeof(DioInputBuffer));
     memset(DioFilteredBuffer, 0, sizeof(DioFilteredBuffer));
@@ -157,7 +162,7 @@ void DioTask(void)
 
     if(cFalse != OSIsTimerElapsed(&LiveLedTimer, (1000UL/(cOsTimerTickUs/1000UL))))
     {
-        _DioTogglePin(cDioPin_GreenLed);
+        //_DioTogglePin(cDioPin_GreenLed);
         OSStartTimer(&LiveLedTimer);
     }
 }

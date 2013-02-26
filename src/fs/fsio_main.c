@@ -118,6 +118,7 @@ void FSIO_Task(void)
     case cInitState:
          OSStartTimer(&CardInitTimer);
          CardState = eCardWaitState;
+         _DioWritePin(cDioPin_SD_CardLed, 1);
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eCardInitialize:
@@ -128,14 +129,19 @@ void FSIO_Task(void)
             {
                 // init OK
                 _set_sd_card_present(1);
+                _DioWritePin(cDioPin_SD_CardLed, 0);
                 // load device configuration
                 Devconfig_LoadConfig();
+                App_Statemachine_SD_CardCallback(cCallbackCtrlOK);
+
                 CardState = eCardInserted;
             }
             else
             {
                 // init error
                 _set_sd_card_present(0);
+                _DioWritePin(cDioPin_SD_CardLed, 1);
+
                 CardState = eCardNotPresent;
             }
         }
@@ -150,6 +156,9 @@ void FSIO_Task(void)
         if(cDioCardInsertsed != _DioReadPinFiltered(cDioPin_SD_CardPresent))
         {
             _set_sd_card_present(0);
+            _DioWritePin(cDioPin_SD_CardLed, 1);
+            App_Statemachine_SD_CardCallback(cCallbackCtrlNOK);
+
             CardState = eCardNotPresent;
         }
         break;

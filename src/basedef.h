@@ -113,7 +113,7 @@ typedef void (*tFuncCallbackData)(U8);
 ** System debug definitions
 */
 #if defined(__DEBUG)
-    #define SMART_BEACONING_DEBUG
+    //#define SMART_BEACONING_DEBUG
     //#define APRS_MSG_DEBUG
     //#define APRS_DATA_DEBUG
     #define HALT_TO_DEBUGGER
