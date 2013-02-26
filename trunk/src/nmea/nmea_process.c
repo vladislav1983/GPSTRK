@@ -136,20 +136,20 @@ tAprsTrmtCmd NMEAProc_AprsProcessingTransmit(tNMEA_GPS_Data *GpsData)
     }
     else
     {
-        if((u16AprsSystemTimeStamp != 0ul) && ((u16AprsSystemTimeStamp + cAprsDataTransmitTimeshift_sec) == u16CurrentSystemTimeL))
-        {
-            // send data with period = info period + ime shift
-            // this is by default to set first location even if you are not moving
-            BeaconTypeSend = cAprsProcSendData;
-            // reset beacon time rate
-            AprsSmartBeaconingRef.u16BeaconTimeStamp = u16CurrentSystemTimeL;
-        }
-        else
-        {
+//         if((u16AprsSystemTimeStamp != 0ul) && ((u16AprsSystemTimeStamp + cAprsDataTransmitTimeshift_sec) == u16CurrentSystemTimeL))
+//         {
+//             // send data with period = info period + ime shift
+//             // this is by default to set first location even if you are not moving
+//             BeaconTypeSend = cAprsProcSendData;
+//             // reset beacon time rate
+//             AprsSmartBeaconingRef.u16BeaconTimeStamp = u16CurrentSystemTimeL;
+//         }
+//         else
+//         {
             // smart beaconing will produce transmission
             if(cFalse != NmeaProc_SmartBeaconing(GpsData, &AprsSmartBeaconingRef))
                 BeaconTypeSend = cAprsProcSendData;
-        }
+/*        }*/
     }
 
     return BeaconTypeSend;

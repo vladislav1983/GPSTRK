@@ -56,8 +56,9 @@
 /*=====================================================================================================================
  * Local constants
  *===================================================================================================================*/
-#define cVTG_FixStatusIndex     8    
-#define cVTG_SpeedIndex         6
+#define cVTG_FixStatusIndex         8  
+#define cVTG_SpeedKnotsIndex        4
+#define cVTG_SpeedKmhIndex          6
 
 
 
@@ -106,20 +107,33 @@
  *===================================================================================================================*/
 tGpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 {
-    tGpsMask tGpsMaskLocal = GpsStat;
+    tGpsMask GpsStatLocal = GpsStat;
     U8 *pu8Char;
+    U16 u16SpdKnots;
+    //U8 u8Char;
 
-    if(*pu8GpsField[cVTG_FixStatusIndex] == 'A')
+    if(*pu8GpsField[cVTG_FixStatusIndex] != 'N')
     {
-        // get speed in meters
-        pu8Char = (U8*)strchr((const char *)&pu8GpsField[cVTG_SpeedIndex], '.');
-        memcpy(GpsData->AX25_GPS_Data.u8Speed, pu8Char, sizeof(GpsData->AX25_GPS_Data.u8Speed));
+        // get speed
+        if(*pu8GpsField[cVTG_SpeedKmhIndex] != '\0')
+        {
+            // get speed in knots
+            pu8Char = (U8*)strchr((const char *)&pu8GpsField[cVTG_SpeedKnotsIndex], '.');
+            u16SpdKnots = atoi((const char*)pu8Char);
+            sprintf((char*)GpsData->AX25_GPS_Data.u8Speed, "%03d", u16SpdKnots);
+
+            // get speed in km/h
+            pu8Char = (U8*)strchr((const char *)&pu8GpsField[cVTG_SpeedKmhIndex], '.');
+
 #if !defined(SMART_BEACONING_DEBUG)
-        GpsData->u16GpsSpeed = atoi((const char*)pu8Char);
+            GpsData->u16GpsSpeed = atoi((const char*)pu8Char);
 #endif
+
+            GpsStatLocal |= cGPS_STAT_SPEED_SET;
+        }
     }
 
-    return tGpsMaskLocal;
+    return GpsStatLocal;
 }
 
 

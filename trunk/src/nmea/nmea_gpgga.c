@@ -69,6 +69,7 @@
 #define cGGA_NumberOfSatIndex           7
 #define cGGA_AltitudeIndex              9
 
+#define cFeetsInMeter                   (1024.0/ 0.3048)
 
 /*=====================================================================================================================
  * Local macros
@@ -143,7 +144,10 @@
 tGpsMask NMEAGga_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 {
     tGpsMask GpsStatLocal = GpsStat;
-    U8 u8Char;
+//    U8 u8Char;
+    U16 u16AltTmpL;
+    U32 u32AltFeetL;
+    U8 u8AltStr[10];
 
     GpsData->u8GpsFixStatus = atoi((const char*)pu8GpsField[cGGA_FixQualityIndex]);
     GpsStatLocal |= cGPS_STAT_ONLINE_SET;
@@ -167,17 +171,12 @@ tGpsMask NMEAGga_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask Gp
         // get altitude
         if(((GpsStatLocal & cGPS_STAT_ALTITUDE_SET) == 0) && (*pu8GpsField[cGGA_AltitudeIndex] != '\0'))
         {
-            GpsData->u16Altitude = atoi((const char*)pu8GpsField[cGGA_AltitudeIndex]);
+            u16AltTmpL= atoi((const char*)pu8GpsField[cGGA_AltitudeIndex]);
+            u32AltFeetL = ((U32)u16AltTmpL * (U32)(cFeetsInMeter)) >> 10;
 
-            memset(GpsData->AX25_GPS_Data.u8Altitude, '0', sizeof(GpsData->AX25_GPS_Data.u8Altitude));
-            // for ax25 it need a leading zeros.
-            while(((u8Char = *pu8GpsField[cGGA_AltitudeIndex]++) != '.') && (u8Char != '\0'))
-            {
-                GpsData->AX25_GPS_Data.u8Altitude[0] = GpsData->AX25_GPS_Data.u8Altitude[1];
-                GpsData->AX25_GPS_Data.u8Altitude[1] = GpsData->AX25_GPS_Data.u8Altitude[2];
-                GpsData->AX25_GPS_Data.u8Altitude[2] = GpsData->AX25_GPS_Data.u8Altitude[3];
-                GpsData->AX25_GPS_Data.u8Altitude[3] = u8Char;
-            }
+            sprintf((char*)u8AltStr, "%06ld", u32AltFeetL);
+            memcpy(GpsData->AX25_GPS_Data.u8Altitude, u8AltStr, sizeof(GpsData->AX25_GPS_Data.u8Altitude));
+            GpsData->u16Altitude = u16AltTmpL;
 
             GpsStatLocal |= cGPS_STAT_ALTITUDE_SET;
         }

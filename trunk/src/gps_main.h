@@ -72,7 +72,7 @@ typedef struct tsAX25_GPS_Data
 {
     U8 u8Latitude[8];
     U8 u8Longitude[9];
-    U8 u8Altitude[4];
+    U8 u8Altitude[6];
     U8 u8Course[3];
     U8 u8Speed[3];
 }tAX25_GPS_Data;
