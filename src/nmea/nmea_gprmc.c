@@ -138,7 +138,7 @@
 tGpsMask NMEARmc_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
 {
     tGpsMask GpsStatLocal = GpsStat;
-    U8 u8Char;
+ //   U8 u8Char;
 
     if(*pu8GpsField[cRMC_FixStatusIndex] == 'V') 
     {
@@ -172,40 +172,14 @@ tGpsMask NMEARmc_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask Gp
             GpsStatLocal |= cGPS_STAT_LATLON_SET;
         }
 
-        // get speed
-        if(((GpsStatLocal & cGPS_STAT_SPEED_SET) == 0) && (*pu8GpsField[cRMC_SpeedIndex] != '\0'))
-        {
-#if !defined(SMART_BEACONING_DEBUG)
-            GpsData->u16GpsSpeed = atoi((const char*)pu8GpsField[cRMC_SpeedIndex]);
-#endif
-            
-            memset(GpsData->AX25_GPS_Data.u8Speed, '0', sizeof(GpsData->AX25_GPS_Data.u8Speed));
-            // for ax15 it need a leading zeros.
-            while(((u8Char = *pu8GpsField[cRMC_SpeedIndex]++) != '.') && (u8Char != '\0'))
-            {
-                GpsData->AX25_GPS_Data.u8Speed[0] = GpsData->AX25_GPS_Data.u8Speed[1];
-                GpsData->AX25_GPS_Data.u8Speed[1] = GpsData->AX25_GPS_Data.u8Speed[2];
-                GpsData->AX25_GPS_Data.u8Speed[2] = u8Char;
-            }
-
-            GpsStatLocal |= cGPS_STAT_SPEED_SET;
-        }
-
         // get course
         if(((GpsStatLocal & cGPS_STAT_COURSE_SET) == 0) && (*pu8GpsField[cRMC_CourseIndex] != '\0'))
         {
 #if !defined(SMART_BEACONING_DEBUG)
             GpsData->u16GpsCouse = atoi((const char*)pu8GpsField[cRMC_CourseIndex]);
 #endif
-
-            memset(GpsData->AX25_GPS_Data.u8Course, '0', sizeof(GpsData->AX25_GPS_Data.u8Course));
             // for ax15 it need a leading zeros.
-            while(((u8Char = *pu8GpsField[cRMC_CourseIndex]++) != '.') && (u8Char != '\0'))
-            {
-                GpsData->AX25_GPS_Data.u8Course[0] = GpsData->AX25_GPS_Data.u8Course[1];
-                GpsData->AX25_GPS_Data.u8Course[1] = GpsData->AX25_GPS_Data.u8Course[2];
-                GpsData->AX25_GPS_Data.u8Course[2] = u8Char;
-            }
+            sprintf((char*)GpsData->AX25_GPS_Data.u8Course, "%03d", GpsData->u16GpsCouse);
 
             GpsStatLocal |= cGPS_STAT_COURSE_SET;
         }

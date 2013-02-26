@@ -397,7 +397,8 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
             (u16Idx < (sizeof(DeviceConfigParams.u8ConfigTrackerVersion)-1u)) && (DeviceConfigParams.u8ConfigTrackerVersion[u16Idx] != '\0');
              u16Idx++)
         {
-            au8AprsBuff[u16DataIndex] = (_AprsGetChar(DeviceConfigParams.u8ConfigTrackerVersion[u16Idx]) >> 1u);
+            au8AprsBuff[u16DataIndex] = DeviceConfigParams.u8ConfigTrackerVersion[u16Idx];
+            //(_AprsGetChar(DeviceConfigParams.u8ConfigTrackerVersion[u16Idx]) >> 1u);
             u16DataIndex++;
         }
     }
