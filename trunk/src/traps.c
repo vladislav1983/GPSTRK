@@ -137,27 +137,28 @@ void __attribute__((interrupt, no_auto_psv)) _OscillatorFail(void)
  *===================================================================================================================*/
 void __attribute__((interrupt, no_auto_psv)) _AddressError(void)
 {
-    volatile U32 AddrError;
-    register U16 w0_local asm( "w0");
-    register U16 w1_local asm( "w1");
-    
-    asm volatile (" sub  w15,#12,w2 ");  // twelve bytes pushed since last trap!
-    asm volatile (" mov  [w2++], w0 ");  // w0 = PC[15:0] - PC LSB
-    asm volatile (" mov  [w2]  , w1 ");  // w1 = PC[22:16] - PC MSB
-    asm volatile (" mov  #0x7f , w3 ");  // Mask off non-address bits
-    asm volatile (" and  w1, w3, w1 ");  // Clear non address bits
-    
-    // now w1-w0 contain last address before trap. to get actual address decrement address by 2!
-    asm volatile (" mov  #2    , w3 ");  // Decrement the address by 2
-    asm volatile (" sub  w0,w3 , w0 ");  // w0 = w0 - w3 = w0 - 2 
-    asm volatile (" clr  w3         ");  // w3 = 0
-    asm volatile (" subb w1,w3 , w1 ");  // w1 = w1 - w3 - !C = w1 - 0 - !C (!C - inverted carry flag)
-        
-    AddrError = (U32)((U32)w0_local | ((U32)w1_local << 16));
+//     volatile U32 AddrError;
+//     register U16 w0_local asm( "w0");
+//     register U16 w1_local asm( "w1");
+//     
+//     asm volatile (" sub  w15,#12,w2 ");  // twelve bytes pushed since last trap!
+//     asm volatile (" mov  [w2++], w0 ");  // w0 = PC[15:0] - PC LSB
+//     asm volatile (" mov  [w2]  , w1 ");  // w1 = PC[22:16] - PC MSB
+//     asm volatile (" mov  #0x7f , w3 ");  // Mask off non-address bits
+//     asm volatile (" and  w1, w3, w1 ");  // Clear non address bits
+//     
+//     // now w1-w0 contain last address before trap. to get actual address decrement address by 2!
+//     asm volatile (" mov  #2    , w3 ");  // Decrement the address by 2
+//     asm volatile (" sub  w0,w3 , w0 ");  // w0 = w0 - w3 = w0 - 2 
+//     asm volatile (" clr  w3         ");  // w3 = 0
+//     asm volatile (" subb w1,w3 , w1 ");  // w1 = w1 - w3 - !C = w1 - 0 - !C (!C - inverted carry flag)
+//         
+//     AddrError = (U32)((U32)w0_local | ((U32)w1_local << 16));
 
     //PIN_CPU_TRAP_LED = 1;
     INTCON1bits.ADDRERR = 0;        //Clear the trap flag
-    while (1);
+	_dbgassert();
+    //while (1);
 }
 
 /*=====================================================================================================================

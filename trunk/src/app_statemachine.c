@@ -160,6 +160,7 @@ void App_StatemachineTask(void)
         WaitTimeTicks = 2000UL/cOsTimerTick_ms;
         AppState = eAPP_WAIT_STATE;
         AppNextState = eAPP_STATE_WAIT_GPS;
+        _DioWritePin(cDioPin_GreenLed, 0);
         
         break;
         //------------------------------------------------------------------------------------------------------------------
@@ -210,6 +211,10 @@ void App_StatemachineTask(void)
     case eAPP_APRS_TRANSMIT_DATA:
         
         Aprs_Control(cAPRS_TransmitData);
+        _DioWritePin(cDioPin_GreenLed, 1);
+        // set one timeout here ... just for any case
+        OSStartTimer(&AppStateTimer);
+
         AppState = eAPP_ARRS_WAIT_TRANSMIT;
 
         break;
@@ -217,6 +222,7 @@ void App_StatemachineTask(void)
     case eAPP_APRS_TRANSMIT_INFO:
 
         Aprs_Control(cAPRS_TransmitTrackerInfo);
+        _DioWritePin(cDioPin_GreenLed, 1);
         // set one timeout here ... just for any case
         OSStartTimer(&AppStateTimer);
         AppState = eAPP_ARRS_WAIT_TRANSMIT;
@@ -228,12 +234,16 @@ void App_StatemachineTask(void)
         if((cFalse != bAprsMsgTxOk) || (cFalse != OSIsTimerElapsed(&AppStateTimer, (cAprsTransmitTimeout_ms/cOsTimerTick_ms))))
         {
             bAprsMsgTxOk = cFalse;
+            _DioWritePin(cDioPin_GreenLed, 0);
+
             AppState = eAPP_NMEA_MSG_POOL;
         }
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_SD_CARD_WRITE_POSITION:
+
+        _DioPinConfig(cDioPin_SD_CardLed, 1);
 
         if(S_OK == Gpx_WritePosition(&NMEA_GPS_Data))
         {
@@ -251,9 +261,12 @@ void App_StatemachineTask(void)
     //------------------------------------------------------------------------------------------------------------------
     case eAPP_ARRS_WAIT_POSITION_WRITE:
 
+        _DioPinConfig(cDioPin_SD_CardLed, 0);
+
         if((cFalse != bPositionWriteOk) || (cFalse != OSIsTimerElapsed(&AppStateTimer, (cSD_CardPositiongWriteTimeout_ms/cOsTimerTick_ms))))
         {
             bPositionWriteOk = cFalse;
+
             AppState = eAPP_NMEA_MSG_POOL;
         }
 
@@ -363,12 +376,17 @@ static void App_Statemachine_LCD(void)
             break;
         //--------------------------------------------------------------------------------------------------------------
         case eLCD_SHOW_INFO:
-    
+
+            _lcdprintf(5, 1, "%s", "SD CARD");
 
             if(_sd_card_present())
-                _lcdprintf(1, 1, "%s", "SD CARD PRESENT");
+            {
+                _lcdprintf(5, 2, "%s", "PRESENT");
+            }
             else
-                _lcdprintf(1, 1, "%s", "SD CARD NOT PRESENT");
+            {
+                _lcdprintf(3, 2, "%s", "NOT PRESENT");
+            }
 
             LcdWaitTicks = 3000UL/cOsTimerTick_ms;
             OSStartTimer(&LcdWaitTimer);
@@ -484,4 +502,14 @@ static void App_Statemachine_LCD(void)
         // restart timer
         OSStartTimer(&AppLcdUpdateTimer);
     }
+}
+
+
+
+void App_Statemachine_SD_CardCallback(tCtrl Control)
+{
+    Control = Control;
+
+    LcdState     = eLCD_CLEAR;
+    LcdNextState = eLCD_SHOW_INFO;
 }
