@@ -68,13 +68,12 @@ typedef enum teAppState
 typedef enum teLcdState
 {
     eLCD_STATE_INIT,
-    eLCD_SHOW_INFO,
-    eLCD_STATE_WAIT_GPS,
+    eLCD_SHOW_SD_CARD_INFO,
+    eLCD_CHECK_GPS,
     eLCD_STATE_SHOW_LATLON,
     eLCD_STATE_SHOW_SPEED,
     eLCD_SHOW_CLOCK,
-    eLCD_CLEAR,
-    eLCD_STATE_WAIT_STATE
+    eLCD_CLEAR
 }tLcdState;
 
 /*=====================================================================================================================
@@ -92,9 +91,8 @@ static BOOL      bPositionWriteOk;
 static tOSTimer  AppLcdUpdateTimer;
 static tLcdState LcdState;
 static tLcdState LcdNextState;
-static tOSTimer  LcdWaitTimer;
-static tOSTimer  LcdWaitTicks;
 static tOSTimer  LcdShowTimer;
+static tOSTimer  LcdUpdateTime;
 
 
 /*=====================================================================================================================
@@ -137,6 +135,7 @@ void App_Init(void)
     bGpsMsgReceived = cFalse;
     bAprsMsgTxOk = cFalse;
     bPositionWriteOk = cFalse;
+    LcdUpdateTime = cLcdUpdateTime_ms/cOsTimerTick_ms;
 }
 
 /*=====================================================================================================================
@@ -156,6 +155,8 @@ void App_StatemachineTask(void)
     case eAPP_STATE_INIT:
 
         OSStartTimer(&AppStateTimer);
+        OSStartTimer(&AppLcdUpdateTimer);
+
         // wait 2s before configuration load
         WaitTimeTicks = 2000UL/cOsTimerTick_ms;
         AppState = eAPP_WAIT_STATE;
@@ -184,23 +185,37 @@ void App_StatemachineTask(void)
 
         if (cFalse != bGpsMsgReceived)
         {
-            // set file system date and time
-            if (S_OK == FSIOMain_SetTimeDate(&NMEA_GPS_Data))
+            if (   (GpsStatusLocal & cGPS_STAT_TIME_SET    )
+                && (GpsStatusLocal & cGPS_STAT_DATE_SET    )
+                && (GpsStatusLocal & cGPS_STAT_LATLON_SET  )
+                && (GpsStatusLocal & cGPS_STAT_ALTITUDE_SET)
+                && (GpsStatusLocal & cGPS_STAT_SPEED_SET   )
+                && (GpsStatusLocal & cGPS_STAT_COURSE_SET  )               
+               )
             {
-                BeaconTypeSend = NMEAProc_AprsProcessingTransmit(&NMEA_GPS_Data);
-
-                if(BeaconTypeSend == cAprsProcSendData)
-                    AppState = eAPP_APRS_TRANSMIT_DATA;
-                else if(BeaconTypeSend == cAprsProcSendTrackerInfo)
-                    AppState = eAPP_APRS_TRANSMIT_INFO;
-                else if(BeaconTypeSend == cAprsProcNotSend)
+                // set file system date and time
+                if (S_OK == FSIOMain_SetTimeDate(&NMEA_GPS_Data))
                 {
-                    // position write only when aprs message is not sent
-                    if(cFalse != NMEAProc_PositioningWriteProcess(&NMEA_GPS_Data))
-                        AppState = eAPP_SD_CARD_WRITE_POSITION;
+                    // position write check
+                    if(cTrue == NMEAProc_PositioningWriteProcess(&NMEA_GPS_Data))
+                        AppNextState = eAPP_SD_CARD_WRITE_POSITION;
+                    else
+                        AppNextState = eAPP_NMEA_MSG_POOL;
+
+                    // APRS beacon send check
+                    BeaconTypeSend = NMEAProc_AprsProcessingTransmit(&NMEA_GPS_Data);
+
+                    if(BeaconTypeSend == cAprsProcSendData)
+                        AppState = eAPP_APRS_TRANSMIT_DATA;
+                    else if(BeaconTypeSend == cAprsProcSendTrackerInfo)
+                        AppState = eAPP_APRS_TRANSMIT_INFO;
+                    else 
+                        AppState = AppNextState;
                 }
-                else
-                    _assert(cFalse);
+            }
+            else
+            {
+                AppState = eAPP_STATE_WAIT_GPS;
             }
 
             bGpsMsgReceived = cFalse;
@@ -236,7 +251,8 @@ void App_StatemachineTask(void)
             bAprsMsgTxOk = cFalse;
             _DioWritePin(cDioPin_GreenLed, 0);
 
-            AppState = eAPP_NMEA_MSG_POOL;
+            _assert(AppState == AppNextState);
+            AppState = AppNextState;
         }
 
         break;
@@ -266,7 +282,6 @@ void App_StatemachineTask(void)
         if((cFalse != bPositionWriteOk) || (cFalse != OSIsTimerElapsed(&AppStateTimer, (cSD_CardPositiongWriteTimeout_ms/cOsTimerTick_ms))))
         {
             bPositionWriteOk = cFalse;
-
             AppState = eAPP_NMEA_MSG_POOL;
         }
 
@@ -359,144 +374,129 @@ static void App_Statemachine_LCD(void)
 {
     U8 u8TmpBuff[10];
 
-    if((LcdState == eLCD_CLEAR) || (cFalse != OSIsTimerElapsed(&AppLcdUpdateTimer, (cLcdUpdateTime_ms/cOsTimerTick_ms))))
+    if(cFalse != OSIsTimerElapsed(&AppLcdUpdateTimer, LcdUpdateTime))
     {
         switch(LcdState)
         {
-        case eLCD_STATE_INIT:
+            case eLCD_STATE_INIT:
 
-            OSStartTimer(&AppLcdUpdateTimer);
+                LcdUpdateTime = 1000UL/cOsTimerTick_ms;
+                LcdState = eLCD_SHOW_SD_CARD_INFO;
+                break;
+            //--------------------------------------------------------------------------------------------------------------
+            case eLCD_SHOW_SD_CARD_INFO:
 
-            LcdWaitTicks = 1000UL/cOsTimerTick_ms;
-            OSStartTimer(&LcdWaitTimer);
+                _lcdprintf(5, 1, "%s", "SD CARD");
 
-            LcdState = eLCD_STATE_WAIT_STATE;
-            LcdNextState = eLCD_SHOW_INFO;
+                if(_sd_card_present())
+                {
+                    _lcdprintf(5, 2, "%s", "PRESENT");
+                }
+                else
+                {
+                    _lcdprintf(3, 2, "%s", "NOT PRESENT");
+                }
 
-            break;
-        //--------------------------------------------------------------------------------------------------------------
-        case eLCD_SHOW_INFO:
+                LcdUpdateTime = 3000UL/cOsTimerTick_ms;
 
-            _lcdprintf(5, 1, "%s", "SD CARD");
-
-            if(_sd_card_present())
-            {
-                _lcdprintf(5, 2, "%s", "PRESENT");
-            }
-            else
-            {
-                _lcdprintf(3, 2, "%s", "NOT PRESENT");
-            }
-
-            LcdWaitTicks = 3000UL/cOsTimerTick_ms;
-            OSStartTimer(&LcdWaitTimer);
-
-            LcdState = eLCD_STATE_WAIT_STATE;
-            LcdNextState = eLCD_STATE_WAIT_GPS;
-
-            break;
-        //--------------------------------------------------------------------------------------------------------------
-        case eLCD_STATE_WAIT_GPS:
-            
-            if(AppState == eAPP_STATE_WAIT_GPS || AppState == eAPP_STATE_WAIT_TIME_SYNC)
-            {
-                _lcdprintf(1, 1, "%s", "Waiting GPS ...");
-
-                LcdWaitTicks = 3000UL/cOsTimerTick_ms;
-                OSStartTimer(&LcdWaitTimer);
-
-                LcdState     = eLCD_STATE_WAIT_STATE;
-                LcdNextState = eLCD_STATE_WAIT_GPS;
-            }
-            else
-            {
                 LcdState     = eLCD_CLEAR;
-                LcdNextState = eLCD_STATE_SHOW_LATLON;
-            }
-            
-            break;
-        //--------------------------------------------------------------------------------------------------------------
-        case eLCD_STATE_SHOW_LATLON:
+                LcdNextState = eLCD_CHECK_GPS;
 
-            if(cFalse == OSIsTimerElapsed(&LcdShowTimer, (cLcdShowTime_ms/cOsTimerTick_ms)))
-            {
-                memcpy(u8TmpBuff, NMEA_GPS_Data.AX25_GPS_Data.u8Latitude, sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Latitude));
-                u8TmpBuff[sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Latitude)] = '\0';
-                _lcdprintf(1, 1, "Lat:%s", u8TmpBuff);
+                break;
+            //--------------------------------------------------------------------------------------------------------------
+            case eLCD_CHECK_GPS:
+                
+                if(AppState == eAPP_STATE_WAIT_GPS || AppState == eAPP_STATE_WAIT_TIME_SYNC)
+                {
+                    _lcdprintf(1, 1, "%s", "Waiting GPS ...");
+                    LcdUpdateTime = 3000UL/cOsTimerTick_ms;
+                }
+                else
+                {
+                    LcdState     = eLCD_CLEAR;
+                    LcdNextState = eLCD_STATE_SHOW_LATLON;
+                }
+                
+                break;
+            //--------------------------------------------------------------------------------------------------------------
+            case eLCD_STATE_SHOW_LATLON:
 
-                memcpy(u8TmpBuff, NMEA_GPS_Data.AX25_GPS_Data.u8Longitude, sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Longitude));
-                u8TmpBuff[sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Longitude)] = '\0';
-                _lcdprintf(1, 2, "Lon:%s", u8TmpBuff);
-            }
-            else
-            {
-                LcdState     = eLCD_CLEAR;
-                LcdNextState = eLCD_STATE_SHOW_SPEED;
-            }
-            
-            break;
-        //--------------------------------------------------------------------------------------------------------------
-        case eLCD_STATE_SHOW_SPEED:
+                if(cFalse == OSIsTimerElapsed(&LcdShowTimer, (cLcdShowTime_ms/cOsTimerTick_ms)))
+                {
+                    memcpy(u8TmpBuff, NMEA_GPS_Data.AX25_GPS_Data.u8Latitude, sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Latitude));
+                    u8TmpBuff[sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Latitude)] = '\0';
+                    _lcdprintf(1, 1, "Lat:%s", u8TmpBuff);
 
-            //_lcdprintf(1, 2, "Sat used = %02d", NMEA_GPS_Data.u16SatNumber);
-            if(cFalse == OSIsTimerElapsed(&LcdShowTimer, (cLcdShowTime_ms/cOsTimerTick_ms)))
-            {
-                _lcdprintf(1, 1, "Speed:%03d km/h", NMEA_GPS_Data.u16GpsSpeed);
-                _lcdprintf(1, 2, "Alt:%04d m", NMEA_GPS_Data.u16Altitude);
-            }
-            else
-            {
-                LcdState     = eLCD_CLEAR;
-                LcdNextState = eLCD_SHOW_CLOCK;
-            }
+                    memcpy(u8TmpBuff, NMEA_GPS_Data.AX25_GPS_Data.u8Longitude, sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Longitude));
+                    u8TmpBuff[sizeof(NMEA_GPS_Data.AX25_GPS_Data.u8Longitude)] = '\0';
+                    _lcdprintf(1, 2, "Lon:%s", u8TmpBuff);
 
-            break;
-        //--------------------------------------------------------------------------------------------------------------
-        case eLCD_SHOW_CLOCK:
+                    LcdUpdateTime = cLcdUpdateTime_ms/cOsTimerTick_ms;
+                }
+                else
+                {
+                    LcdState     = eLCD_CLEAR;
+                    LcdNextState = eLCD_STATE_SHOW_SPEED;
+                }
+                
+                break;
+            //--------------------------------------------------------------------------------------------------------------
+            case eLCD_STATE_SHOW_SPEED:
 
-            if(cFalse == OSIsTimerElapsed(&LcdShowTimer, (cLcdShowTime_ms/cOsTimerTick_ms)))
-            {
-                _lcdprintf(4, 1, "%02d-%02d-%04d",NMEA_GPS_Data.DateTime.tm_mday, 
-                                                  NMEA_GPS_Data.DateTime.tm_mon,
-                                                  NMEA_GPS_Data.DateTime.tm_year);
+                //_lcdprintf(1, 2, "Sat used = %02d", NMEA_GPS_Data.u16SatNumber);
+                if(cFalse == OSIsTimerElapsed(&LcdShowTimer, (cLcdShowTime_ms/cOsTimerTick_ms)))
+                {
+                    _lcdprintf(1, 1, "Speed:%03d km/h", NMEA_GPS_Data.u16GpsSpeed);
+                    _lcdprintf(1, 2, "Alt:%04d m", NMEA_GPS_Data.u16Altitude);
 
-                _lcdprintf(5, 2, "%02d:%02d:%02d", NMEA_GPS_Data.DateTime.tm_hour,
-                                                   NMEA_GPS_Data.DateTime.tm_min,
-                                                   NMEA_GPS_Data.DateTime.tm_sec);
-            }
-            else
-            {
-                // state change
-                LcdState     = eLCD_CLEAR;
-                LcdNextState = eLCD_STATE_SHOW_LATLON;
-            }
+                    LcdUpdateTime = cLcdUpdateTime_ms/cOsTimerTick_ms;
+                }
+                else
+                {
+                    LcdState     = eLCD_CLEAR;
+                    LcdNextState = eLCD_SHOW_CLOCK;
+                }
 
-            break;
-        //--------------------------------------------------------------------------------------------------------------
-        case eLCD_CLEAR:
-            
-            _assert(LcdState != LcdNextState);
-            OSStartTimer(&LcdShowTimer);
-            // on state change clear LCD
-            HD44780_Putc('\f');
+                break;
+            //--------------------------------------------------------------------------------------------------------------
+            case eLCD_SHOW_CLOCK:
 
-            LcdState = LcdNextState;
+                if(cFalse == OSIsTimerElapsed(&LcdShowTimer, (cLcdShowTime_ms/cOsTimerTick_ms)))
+                {
+                    _lcdprintf(4, 1, "%02d-%02d-%04d",NMEA_GPS_Data.DateTime.tm_mday, 
+                                                      NMEA_GPS_Data.DateTime.tm_mon,
+                                                      NMEA_GPS_Data.DateTime.tm_year);
 
-            break;
-        //--------------------------------------------------------------------------------------------------------------
-        case eLCD_STATE_WAIT_STATE:
+                    _lcdprintf(5, 2, "%02d:%02d:%02d", NMEA_GPS_Data.DateTime.tm_hour,
+                                                       NMEA_GPS_Data.DateTime.tm_min,
+                                                       NMEA_GPS_Data.DateTime.tm_sec);
 
-            _assert(LcdState != LcdNextState);
+                    LcdUpdateTime = cLcdUpdateTime_ms/cOsTimerTick_ms;
+                }
+                else
+                {
+                    // state change
+                    LcdState     = eLCD_CLEAR;
+                    LcdNextState = eLCD_CHECK_GPS;
+                }
 
-            if(cFalse != OSIsTimerElapsed(&LcdWaitTimer, LcdWaitTicks))
+                break;
+            //--------------------------------------------------------------------------------------------------------------
+            case eLCD_CLEAR:
+                
+                _assert(LcdState != LcdNextState);
+                OSStartTimer(&LcdShowTimer);
+                LcdUpdateTime = cLcdUpdateTime_ms/cOsTimerTick_ms;
+                // on state change clear LCD
+                HD44780_Putc('\f');
+
                 LcdState = LcdNextState;
-
-            break;
-        //--------------------------------------------------------------------------------------------------------------
-        default:
-            _assert(cFalse);
-            LcdState = eLCD_STATE_WAIT_GPS;
-            break;
+                break;
+            //--------------------------------------------------------------------------------------------------------------
+            default:
+                _assert(cFalse);
+                LcdState = eLCD_CHECK_GPS;
+                break;
         }
 
         // restart timer
@@ -504,12 +504,17 @@ static void App_Statemachine_LCD(void)
     }
 }
 
-
-
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
 void App_Statemachine_SD_CardCallback(tCtrl Control)
 {
     Control = Control;
 
     LcdState     = eLCD_CLEAR;
-    LcdNextState = eLCD_SHOW_INFO;
+    LcdNextState = eLCD_SHOW_SD_CARD_INFO;
 }

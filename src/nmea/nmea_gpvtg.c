@@ -112,7 +112,7 @@ tGpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask Gp
     U16 u16SpdKnots;
     //U8 u8Char;
 
-    if(*pu8GpsField[cVTG_FixStatusIndex] != 'N')
+    if((*pu8GpsField[cVTG_FixStatusIndex] == 'A') || (*pu8GpsField[cVTG_FixStatusIndex] == 'D'))
     {
         // get speed
         if(*pu8GpsField[cVTG_SpeedKmhIndex] != '\0')
