@@ -37,6 +37,7 @@
 #define cTIMER3_ISR_Priority            (5U) // -> Highest ISR priority, above kernel ISR level!
 #define cTIMER1_ISR_Priority            (4U)
 #define cUART2_RX_ISR_Priority          (3U)
+#define cCOMP1_ISR_Priority             (2U)
 #define cUART2_TX_ISR_Priority          (0U)
 
 

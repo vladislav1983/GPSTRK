@@ -40,6 +40,7 @@
 #include "vtime.h"
 #include "vuart.h"
 #include "gpx.h"
+#include "comparator.h"
 
 
 /*=====================================================================================================================
@@ -116,6 +117,9 @@ void System_Init(void)
 #endif
 #ifdef _HD44780_Init
     _HD44780_Init();
+#endif
+#ifdef _Cmp_Init
+    _Cmp_Init();
 #endif
 // application initialization
 #ifdef _System_WDT_Init

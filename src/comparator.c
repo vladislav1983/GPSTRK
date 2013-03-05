@@ -7,62 +7,25 @@
  * ID:                  $Id$
  *
  *===================================================================================================================*/
-// $GPVTG
-// Track Made Good and Ground Speed.
-// 
-// eg1. $GPVTG,360.0,T,348.7,M,000.0,N,000.0,K*43
-// eg2. $GPVTG,054.7,T,034.4,M,005.5,N,010.2,K
-// 
-// 
-// 054.7,T      True track made good
-// 034.4,M      Magnetic track made good
-// 005.5,N      Ground speed, knots
-// 010.2,K      Ground speed, Kilometers per hour
-// 
-// 
-// eg3. $GPVTG,t,T,,,s.ss,N,s.ss,K*hh
-// 1    = Track made good
-// 2    = Fixed text 'T' indicates that track made good is relative to true north
-// 3    = not used
-// 4    = not used
-// 5    = Speed over ground in knots
-// 6    = Fixed text 'N' indicates that speed over ground in in knots
-// 7    = Speed over ground in kilometers/hour
-// 8    = Fixed text 'K' indicates that speed over ground is in kilometers/hour
-// 9    = Checksum
-// The actual track made good and speed relative to the ground.
-// 
-// $--VTG,x.x,T,x.x,M,x.x,N,x.x,K
-// x.x,T = Track, degrees True 
-// x.x,M = Track, degrees Magnetic 
-// x.x,N = Speed, knots 
-// x.x,K = Speed, Km/hr
-
 /*=====================================================================================================================
  * Body Identification  
  *===================================================================================================================*/
-#ifdef __NMEA_GPVTG_C
+#ifdef __COMPARATOR_C
     #error "!!! FileName ID. It should be Unique !!!"
 #else
-    #define __NMEA_GPVTG_C
+    #define __COMPARATOR_C
 #endif
 
 /*=====================================================================================================================
  * Included files to resolve specific definitions in this file
  *===================================================================================================================*/
-#include "nmea_gpvtg.h"
+#include "comparator.h"
+#include "comparator_mcp.h"
 
 
 /*=====================================================================================================================
  * Local constants
  *===================================================================================================================*/
-#define cVTG_FixStatusIndex         9  
-#define cVTG_SpeedKnotsIndex        4
-#define cVTG_SpeedKmhIndex          6
-
-
-
-
 
 /*=====================================================================================================================
  * Local macros
@@ -105,36 +68,50 @@
  *
  * Description: 
  *===================================================================================================================*/
-tGpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask GpsStat)
+void Cmp_Init(void)
 {
-    tGpsMask GpsStatLocal = GpsStat;
-    U8 *pu8Char;
-    U16 u16SpdKnots;
+    _DioPinConfig(cDioPin_CompInB, cPinModeInput);
+    _DioAnalogConfig(cDioPin_CompInB, cPinModeAnalog);
 
-    if((*pu8GpsField[cVTG_FixStatusIndex] == 'A') || (*pu8GpsField[cVTG_FixStatusIndex] == 'D'))
-    {
-        // get speed
-        if(*pu8GpsField[cVTG_SpeedKmhIndex] != '\0')
-        {
-            // get speed in knots
-            pu8Char = (U8*)strchr((const char *)&pu8GpsField[cVTG_SpeedKnotsIndex], '.');
-            u16SpdKnots = atoi((const char*)pu8Char);
-            sprintf((char*)GpsData->AX25_GPS_Data.u8Speed, "%03d", u16SpdKnots);
+    // Comparator setup
+    CM1CON = CMP_DISABLE                        /* Comparator is disabled */
+           | CMP_OUTPUT_DISABLE                 /* Comparator output is internal only */
+           | CMP_OUTPUT_NOT_INVERT              /* Comparator output not inverted */
+           | CMP_NO_CHANGE
+           | CMP_INTERRUPT_ON_ANY_EDGE          /* Interrupt generated on any edge of the selected comparator output*/
+           | CMP_POS_IP_CV_Ref                   
+           | CMP_NEG_IP_CXINB;   
 
-            // get speed in km/h
-            pu8Char = (U8*)strchr((const char *)&pu8GpsField[cVTG_SpeedKmhIndex], '.');
-
-#if !defined(SMART_BEACONING_DEBUG)
-            GpsData->u16GpsSpeed = atoi((const char*)pu8Char);
+    // Voltage reference setup
+    CVRCON = CMP_VRef_Disable                   /* CVREF circuit powered down */
+           | CMP_VRef_OUTPUT_Disable            /* CVREF voltage level is disconnected from CVREF pin */
+#if (cComparatorSteps == 24UL)
+           | CMP_VRef_SELECT_24_STEPS           /* 0 to 0.67 CVRSRC, with CVRSRC/24 step size */
+#else
+           | CMP_VRef_SELECT_32_STEPS           /* 0.25 CVRSRC to 0.75 CVRSRC, with CVRSRC/32 step size */
 #endif
+           | CMP_Vrsrc_AVDD_AVSS;               /* Comparator reference source CVRSRC = AVDD – AVSS */
 
-            GpsStatLocal |= cGPS_STAT_SPEED_SET;
-        }
-    }
+    // set reference voltage
+    CVRCONbits.CVR = ((U16)((cComparatorRefVoltage*cComparatorSteps)/3.300) & 0x000F);
 
-    return GpsStatLocal;
+    // set interrupt
+    DisableIntCMP;
+    CMP_Clear_Intr_Status_Bit;
+    SetPriorityIntCMP(cCOMP1_ISR_Priority);
+
+    // enable comparator
+    mCMP1_EnblDsbl(1);
+    // enable voltage reference
+    CVRCON |= CMP_VRef_Enable;
+
+    asm volatile("repeat #40"); //Delay some shit
+    Nop();
+
+    mCMP1_Clear_Event;
+    CMP_Clear_Intr_Status_Bit;
+    EnableIntCMP;
 }
-
 
 /*=====================================================================================================================
  *                                                                            
@@ -148,4 +125,12 @@ tGpsMask NMEAVtg_Decoder(U8 *pu8GpsField[], tNMEA_GPS_Data* GpsData, tGpsMask Gp
  *
  * Description: 
  *===================================================================================================================*/
+_DECLARE_ISR(_CompInterrupt)
+{
 
+     Nop();
+
+
+    mCMP1_Clear_Event;
+    CMP_Clear_Intr_Status_Bit;
+}
