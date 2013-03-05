@@ -261,6 +261,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\comparator.c"
+				>
+			</File>
+			<File
+				RelativePath=".\src\comparator.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\devconfig.c"
 				>
 			</File>
@@ -493,6 +501,10 @@
 				>
 				<File
 					RelativePath=".\src\peripherial\adc_mcp.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\peripherial\comparator_mcp.h"
 					>
 				</File>
 				<File
