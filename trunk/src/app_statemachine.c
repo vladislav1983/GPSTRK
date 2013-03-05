@@ -251,7 +251,7 @@ void App_StatemachineTask(void)
             bAprsMsgTxOk = cFalse;
             _DioWritePin(cDioPin_GreenLed, 0);
 
-            _assert(AppState == AppNextState);
+            _assert(AppState != AppNextState);
             AppState = AppNextState;
         }
 
@@ -486,7 +486,7 @@ static void App_Statemachine_LCD(void)
                 
                 _assert(LcdState != LcdNextState);
                 OSStartTimer(&LcdShowTimer);
-                LcdUpdateTime = cLcdUpdateTime_ms/cOsTimerTick_ms;
+                LcdUpdateTime = 20UL/cOsTimerTick_ms;
                 // on state change clear LCD
                 HD44780_Putc('\f');
 
