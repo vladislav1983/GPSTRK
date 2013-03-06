@@ -86,8 +86,8 @@ void __attribute__((noreturn)) AssertExternal(U16 u16Line, const char *File)
 
     sprintf((char*)&DbgFileBuff[0], " %s", File);
 
-    _DioPinConfig(cDioPin_AssertLed, 1);
-    _DioPinConfig(cDioPin_AssertLed, cPinModeOutput);
+    //_DioPinConfig(cDioPin_AssertLed, 1);
+    //_DioPinConfig(cDioPin_AssertLed, cPinModeOutput);
 
     while(1)
     {

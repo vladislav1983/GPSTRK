@@ -110,7 +110,31 @@ void Cmp_Init(void)
 
     mCMP1_Clear_Event;
     CMP_Clear_Intr_Status_Bit;
-    EnableIntCMP;
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+void Cmp_Control(tCtrl Ctrl)
+{
+    if (Ctrl == cCtrl_Start)
+    {
+        mCMP1_Clear_Event;
+        CMP_Clear_Intr_Status_Bit;
+        EnableIntCMP;
+    }
+    else if (Ctrl == cCtrl_Stop)
+    {
+        DisableIntCMP;
+    }
+    else
+    {
+        _assert(cFalse);
+    }
 }
 
 /*=====================================================================================================================
@@ -127,9 +151,7 @@ void Cmp_Init(void)
  *===================================================================================================================*/
 _DECLARE_ISR(_CompInterrupt)
 {
-
-     Nop();
-
+    Aprs_AnotherStationTxCallback();
 
     mCMP1_Clear_Event;
     CMP_Clear_Intr_Status_Bit;

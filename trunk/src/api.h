@@ -23,6 +23,9 @@
 #define cCallbackCtrlNOK                    1
 #define cCallbackCtrlError                  2
 
+// Generic controls
+#define cCtrl_Start                         3
+#define cCtrl_Stop                          4
 
 /*=====================================================================================================================
  * Callback channels                                                              
@@ -41,13 +44,16 @@ extern void NmeaMain_RxCharCallback(void);
 #define cAX25CtrlStartTrmt                  0
 #define cAX25CtrlStop                       1
 // APRS controls
-#define cAPRS_TransmitTrackerInfo           0
-#define cAPRS_TransmitData                  1
+#define cAprs_NotTransmit                   0
+#define cAPRS_TransmitTrackerInfo           1
+#define cAPRS_TransmitData                  2
+
 // callback controls
 #define cAprsCallbackCtrlOK                 0
 #define cAprsCallbackCtrlError              1
 // callback functions
 extern void Aprs_TransmitCallback(tCtrl Ctrl);
+extern void Aprs_AnotherStationTxCallback(void);
 
 /***********************************************************************************************************************
 ** Application state machine
