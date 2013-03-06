@@ -43,5 +43,6 @@
  * Exported functions                     				                        
  *===================================================================================================================*/
 extern void Cmp_Init(void);
+extern void Cmp_Control(tCtrl Ctrl);
 
 #endif /* __COMPARATOR_H */

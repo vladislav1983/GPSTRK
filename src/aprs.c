@@ -29,6 +29,7 @@
 #include "ax25.h"
 #include "measure.h"
 #include "ax25_crc.h"
+#include "comparator.h"
 
 /*=====================================================================================================================
  * Local constants
@@ -47,7 +48,8 @@
 #define cAprs_PID_Pos_with_timestamp_aprs       '@'
 
 #define cAprsTaskPeriod_us                      40E3
-#define cAprs_PttActivePeriod_ms                40UL
+#define cAprs_TxTimeout_us                      1000E3
+#define cAprs_AnotherStationTx_us               400E3
 
 /*=====================================================================================================================
  * Local macros
@@ -64,9 +66,12 @@
  *===================================================================================================================*/
 typedef enum teAprsTrmtState
 {
+    eAprs_TRMT_ANOTHER_STATION_TX_CHECK,
     eAprs_TRMT_SET_PTT,
     eAprs_TRMT_TRANSMIT,
-    eAPRS_TRMT_WAIT,
+    eAPRS_TRMT_WAIT_PTT,
+    eAPRS_TRMT_WAIT_ONE_TASK_PERIOD,
+    eAPRS_TRMT_WAIT_ANOTHER_STATION,
     eAPRS_IDLE
 }tAprsTrmtState;
 
@@ -78,7 +83,9 @@ static U8  u8Propath;
 static tAprsTrmtState AprsTrmtState = eAPRS_IDLE;
 static tOSAlarm AprsTaskAlarm;
 static tOSTimer AprsTimer;
-static BOOL bAprsTxType;
+static tOSTimer AprsTimeoutTimer;
+static tControl AprsTxType;
+static BOOL bAnotherStationTx;
 
 /*=====================================================================================================================
  * Constant Local Data
@@ -97,7 +104,7 @@ static const U8 au8AprsAltitudeHeader[] = "/A=";
 /*=====================================================================================================================
  * Local Functions Prototypes
  *===================================================================================================================*/
-static HRESULT Aprs_Transmit(BOOL bTrmtStatus);
+static HRESULT Aprs_Transmit(BOOL Control);
 
 
 /*=====================================================================================================================
@@ -115,9 +122,10 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus);
 void Arps_Init(void)
 {
     memset(&au8AprsBuff[0], 0, sizeof(au8AprsBuff));
-    u8Propath = 0;
-    AprsTrmtState = eAPRS_IDLE;
-    bAprsTxType = cAPRS_TransmitTrackerInfo;
+    u8Propath         = 0;
+    AprsTrmtState     = eAPRS_IDLE;
+    AprsTxType        = cAprs_NotTransmit;
+    bAnotherStationTx = cFalse;
 
     AprsTaskAlarm.TaskID = cAprsTaskId;
     OsSetAlarm(&AprsTaskAlarm, (cAprsTaskPeriod_us/cOsAlarmTickUs));
@@ -141,39 +149,88 @@ void Aprs_Task(void)
     {
     //------------------------------------------------------------------------------------------------------------------
     case eAPRS_IDLE:
-        // do nothing in this state
+        
+        if((cAPRS_TransmitTrackerInfo == AprsTxType) || (cAPRS_TransmitData == AprsTxType))
+        {
+            bAnotherStationTx = cFalse;
+            AprsTrmtState     = eAPRS_TRMT_WAIT_ONE_TASK_PERIOD;
+        }
+
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAprs_TRMT_ANOTHER_STATION_TX_CHECK:
+
+        if((cFalse == bAnotherStationTx))
+        {
+            _DioWritePin(cDioPin_AnotherStatTxLed, 0);
+            AprsTrmtState = eAprs_TRMT_SET_PTT;
+            Cmp_Control(cCtrl_Stop);
+        }
+        else if(cFalse != OSIsTimerElapsed(&AprsTimeoutTimer, (cAprs_TxTimeout_us/cOsTimerTickUs)))
+        {
+            _DioWritePin(cDioPin_AnotherStatTxLed, 0);
+            App_Statemachine_AprsMsgTxCallback(cCallbackCtrlError);
+            Cmp_Control(cCtrl_Stop);
+            AprsTxType = cAprs_NotTransmit;
+            AprsTrmtState = eAPRS_IDLE;
+        }
+        else
+        {
+            _DioWritePin(cDioPin_AnotherStatTxLed, 1);
+            bAnotherStationTx = cFalse;
+            OSStartTimer(&AprsTimer);
+            AprsTrmtState = eAPRS_TRMT_WAIT_ANOTHER_STATION;
+        }
+
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAprs_TRMT_SET_PTT:
+
         _DioWritePin(cDioPin_PTT, 0);
+        AprsTrmtState = eAPRS_TRMT_WAIT_PTT;
 
-        OSStartTimer(&AprsTimer);
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPRS_TRMT_WAIT_PTT:
 
-        AprsTrmtState = eAPRS_TRMT_WAIT;
+        AprsTrmtState = eAprs_TRMT_TRANSMIT;
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     case eAprs_TRMT_TRANSMIT:
 
-        // transmit aprs info message. 
-        (void)Aprs_Transmit(bAprsTxType);
-
+        _DioWritePin(cDioPin_AnotherStatTxLed, 0);
+        // transmit APRS info message. 
+        (void)Aprs_Transmit(AprsTxType);
         AprsTrmtState = eAPRS_IDLE;
 
         break;
     //------------------------------------------------------------------------------------------------------------------
-    case eAPRS_TRMT_WAIT:
-        
-        if(cFalse != OSIsTimerElapsed(&AprsTimer, (cAprs_PttActivePeriod_ms/cOsTimerTickUs)))
+    case eAPRS_TRMT_WAIT_ONE_TASK_PERIOD:
+
+        OSStartTimer(&AprsTimeoutTimer);
+        Cmp_Control(cCtrl_Start);
+        AprsTrmtState = eAprs_TRMT_ANOTHER_STATION_TX_CHECK;
+
+        break;
+    //------------------------------------------------------------------------------------------------------------------
+    case eAPRS_TRMT_WAIT_ANOTHER_STATION:
+
+        if(cFalse != OSIsTimerElapsed(&AprsTimer, (cAprs_AnotherStationTx_us/cOsTimerTickUs)))
         {
-            AprsTrmtState = eAprs_TRMT_TRANSMIT;
+            AprsTrmtState = eAprs_TRMT_ANOTHER_STATION_TX_CHECK;
         }
+
 
         break;
     //------------------------------------------------------------------------------------------------------------------
     default:
         _assert(cFalse);
+        Cmp_Control(cCtrl_Stop);
         AprsTrmtState = eAPRS_IDLE;
+        AprsTxType = cAprs_NotTransmit;
+
+        break;
     }
 }
 
@@ -213,20 +270,24 @@ void Aprs_TransmitCallback(tCtrl Ctrl)
  *===================================================================================================================*/
 void Aprs_Control(tControl Control)
 {
-    if(Control == cAPRS_TransmitTrackerInfo)
-    {
-        bAprsTxType = cAPRS_TransmitTrackerInfo;
-        AprsTrmtState = eAprs_TRMT_SET_PTT;
-    }
-    else if(Control == cAPRS_TransmitData)
-    {
-         bAprsTxType = cAPRS_TransmitData;
-         AprsTrmtState = eAprs_TRMT_SET_PTT;
-    }
-    else
-    {
-        _assert(cFalse);
-    }
+    _assert(   Control == cAPRS_TransmitTrackerInfo 
+            || Control == cAPRS_TransmitData
+            || Control == cAprs_NotTransmit);
+
+
+    AprsTxType = Control;
+}
+
+/*=====================================================================================================================
+ * Parameters: void
+ *
+ * Return: void
+ *
+ * Description: 
+ *===================================================================================================================*/
+void Aprs_AnotherStationTxCallback(void)
+{
+    bAnotherStationTx = cTrue;
 }
 
 /*=====================================================================================================================
@@ -241,7 +302,7 @@ void Aprs_Control(tControl Control)
  *
  * Description: 
  *===================================================================================================================*/
-static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
+static HRESULT Aprs_Transmit(tControl Control)
 {
     HRESULT res = S_NOK;
     U16 u16Idx;
@@ -339,7 +400,7 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
     au8AprsBuff[u16DataIndex] = cAprs_Protocol_ID;
     u16DataIndex++;
 
-    if(bTrmtStatus == cAPRS_TransmitData)
+    if(Control == cAPRS_TransmitData)
     {
         au8AprsBuff[u16DataIndex] = cAprs_PID_Pos_wo_timestamp_no_aprs;
         u16DataIndex++;
@@ -387,7 +448,7 @@ static HRESULT Aprs_Transmit(BOOL bTrmtStatus)
 
         // TODO: beacon text
     } 
-    else if(bTrmtStatus == cAPRS_TransmitTrackerInfo)
+    else if(Control == cAPRS_TransmitTrackerInfo)
     {
         au8AprsBuff[u16DataIndex] = cAprs_PID_Status;
         u16DataIndex++;

@@ -94,9 +94,9 @@ void DioInit(void)
     _DioWritePin(cDioPin_GpsLed, 1);
     _DioPinConfig(cDioPin_GpsLed, cPinModeOutput);
 
-    // Gps led config
-    _DioPinConfig(cDioPin_AssertLed, 1);
-    _DioPinConfig(cDioPin_AssertLed, cPinModeOutput);
+    // Another station Tx led config
+    _DioPinConfig(cDioPin_AnotherStatTxLed, 1);
+    _DioPinConfig(cDioPin_AnotherStatTxLed, cPinModeOutput);
 
     // sd card cfg
     _DioPinConfig(cDioPin_SD_CardLed, 0);
